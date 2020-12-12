@@ -36,7 +36,7 @@
 
 	<script>
 		function checkdata(f){
-			/*var hair = f.hair.value.trim();
+			var hair = f.hair.value.trim();
 			var size = f.size.value.trim();
 			var environment = f.environment.value.trim();
 			var intelligence = f.intelligence.value.trim();
@@ -48,7 +48,7 @@
 					|| sex == '' || neuter == '') {
 				alert("선택하지 않은 항목이 있습니다.");
 				return;
-			}*/
+			}
 			
 			f.submit();
 		}
