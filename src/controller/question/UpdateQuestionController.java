@@ -24,18 +24,18 @@ public class UpdateQuestionController implements Controller {
     	int que_id = -1;
     	String secret = "n";
 		if (request.getMethod().equals("GET")) {	
-    		// GET request: Question 수정 form 요청	
+    		// GET request: Question form	
 			que_id = Integer.parseInt(request.getParameter("que_id"));
 
 	    	if (request.getParameter("secret") != null) {
 	    		secret = "y";
 	    	}
-			Question que = manager.findQuestion(que_id);	// 수정하려는 question 정보 검색
+			Question que = manager.findQuestion(que_id);
 			request.setAttribute("que", que);				
-			return "/question/updateForm.jsp";   // 검색한 정보를 update form으로 전송     
+			return "/question/updateForm.jsp";
 	    }	
     	
-    	// POST request (Question 정보가 parameter로 전송됨)
+    	// POST request (Question parameter)
 		request.setCharacterEncoding("UTF-8");
 		String savePath = request.getRealPath("images");
 		int sizeLimit = 10 * 1024 * 1024;

@@ -87,12 +87,9 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/blog.css" rel="stylesheet">
   </head>
   <body>
- <!--   <jsp:include page="/work/index.jsp"/>
-	<hr> -->
+    <jsp:include page="/main/index.jsp"/>
   <div class="container">
         <div id="l-margin">
             <br><p id="test-toptext-p" class="text-center"> &#x1F63A 입양시험을 선택하셨습니다. </p>

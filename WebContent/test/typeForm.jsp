@@ -69,12 +69,9 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/blog.css" rel="stylesheet">
   </head>
   <body>
- <!--   <jsp:include page="/work/index.jsp"/>
-	<hr> -->
+    <jsp:include page="/main/index.jsp"/>
     <div class="container">
         <div class="text-center">
             <br>

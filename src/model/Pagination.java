@@ -1,18 +1,18 @@
 package model;
 
 public class Pagination {
-	private int pageSize = 10; // 한 페이지당 게시글 수
-	private int rangeSize = 10; // 한 블럭(range)당 페이지 수
-	private int curPage = 1; // 현재 페이지
-	private int curRange = 1; // 현재 블럭(range)
-	private int listCnt; // 총 게시글 수
-	private int pageCnt; // 총 페이지 수
-	private int rangeCnt; // 총 블럭(range) 수
-	private int startPage = 1; // 시작 페이지
-	private int endPage = 1; // 끝 페이지
-	private int startIndex; // 시작 index
-	private int prevPage; // 이전 페이지
-	private int nextPage; // 다음 페이지
+	private int pageSize = 10;
+	private int rangeSize = 10; 
+	private int curPage = 1;
+	private int curRange = 1;
+	private int listCnt;
+	private int pageCnt;
+	private int rangeCnt;
+	private int startPage = 1;
+	private int endPage = 1;
+	private int startIndex; 
+	private int prevPage;
+	private int nextPage;
 	
 	public Pagination(int listCnt, int curPage) {
 		setCurPage(curPage);

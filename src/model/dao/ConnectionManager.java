@@ -6,16 +6,13 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
 import javax.sql.DataSource;
 import org.apache.commons.dbcp2.BasicDataSource;
 
 public class ConnectionManager {
-    /*
-    private static final String DB_DRIVER = "oracle.jdbc.driver.OracleDriver";
-    private static final String DB_URL = "jdbc:oracle:thin:@202.20.119.117:1521:orcl";
-    private static final String DB_USERNAME = "dbp";
-    private static final String DB_PASSWORD = "dbp";
-    */
+
 	private static DataSource ds = null;
     
 	
@@ -39,17 +36,9 @@ public class ConnectionManager {
 		} 
 		
 		try {
-    		// DataSource »ı¼º ¹× ¼³Á¤
-			BasicDataSource bds = new BasicDataSource();
-	        bds.setDriverClassName(prop.getProperty("db.driver"));
-	        bds.setUrl(prop.getProperty("db.url"));
-	        bds.setUsername(prop.getProperty("db.username"));
-	        bds.setPassword(prop.getProperty("db.password"));     
-			ds = bds;
-			
-			// Âü°í: WASÀÇ DataSource¸¦ ÀÌ¿ëÇÒ °æ¿ì: 
-			// Context init = new InitialContext();
-			// ds = (DataSource)init.lookup("java:comp/env/jdbc/OracleDS");
+			// WASì˜ DataSourceë¥¼ ì´ìš©
+			Context init = new InitialContext();
+			ds = (DataSource)init.lookup("java:comp/env/jdbc/oracle_test");
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} 	   
@@ -74,7 +63,6 @@ public class ConnectionManager {
 		}
 	}
 
-	// ÇöÀç È°¼ºÈ­ »óÅÂÀÎ Connection ÀÇ °³¼ö¿Í ºñÈ°¼ºÈ­ »óÅÂÀÎ Connection °³¼ö Ãâ·Â
 	public void printDataSourceStats() {
 		try {
 			BasicDataSource bds = (BasicDataSource) ds;

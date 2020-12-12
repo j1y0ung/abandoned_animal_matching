@@ -5,7 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import controller.member.MemberSessionUtils;
-//import dao.MemberDAO;
+import dao.MemberDAO;
 
 public class ScoreTestController implements Controller {
 	@Override
@@ -19,17 +19,17 @@ public class ScoreTestController implements Controller {
 				request.getParameter("test19"), request.getParameter("test20")};
 		
 		int score = 0;	
-		//Ã¤Á¡
+		//Ã¤ï¿½ï¿½
 		for (String answer : answers) {
-			if (answer.equals("1")) {score = score + 5;}
+			if (answer != null && answer.equals("1")) {score = score + 5;}
 		}
 		
 		String currentId = MemberSessionUtils.getLoginMemberId(request.getSession());
 		
 		
-		if (score >= 90) {
-			//MemberDAO.getInstance().upgradeMembership(currentId);
-		}
+//		if (score >= 90) {
+//			MemberDAO.getInstance().upgradeMembership(currentId);
+//		}
 		request.setAttribute("score", score);
 		return "/test/result.jsp";
 	}

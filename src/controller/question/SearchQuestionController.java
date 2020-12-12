@@ -28,7 +28,6 @@ public class SearchQuestionController implements Controller {
     	
     	List<Question> queList = manager.searchQuestion(search, categories, startIndex, pageSize);
     	
-    	// queList 객체를 request에 저장하여 큐앤에이 리스트 화면으로 이동(forwarding)
     	request.setAttribute("queList", queList);		
     	request.setAttribute("pagination", pagination);	
     	return "/question/list.jsp";    

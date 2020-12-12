@@ -9,27 +9,27 @@ import model.Reply;
 
 public class ReplyDAO {
 	private JDBCUtil jdbcUtil = null;
-	
+
 	public ReplyDAO() {
 		jdbcUtil = new JDBCUtil();
 	}
-	
+
 	/**
-	 * Question Å×ÀÌºí¿¡ »õ·Î¿î Çà »ı¼º (PK °ªÀº Sequence¸¦ ÀÌ¿ëÇÏ¿© ÀÚµ¿ »ı¼º)
+	 * Question í…Œì´ë¸”ì— ìƒˆë¡œìš´ í–‰ ìƒì„± (PK ê°’ì€ Sequenceë¥¼ ì´ìš©í•˜ì—¬ ìë™ ìƒì„±)
 	 */
 	public Reply create(Reply reply) throws SQLException {
 		String sql = "INSERT INTO Reply VALUES (re_id_seq.nextval, ?, ?, SYSDATE, ?, ?)";		
 		Object[] param = new Object[] {reply.getQue_id(), reply.getWriter_id(), reply.getContent(),
 										reply.getParent_re_id()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	
-						
-		String key[] = {"re_id"};// PK ÄÃ·³ÀÇ ÀÌ¸§     
+
+		String key[] = {"re_id"};// PK ì»¬ëŸ¼ì˜ ì´ë¦„     
 		try {    
-			jdbcUtil.executeUpdate(key); // insert ¹® ½ÇÇà 
+			jdbcUtil.executeUpdate(key); // insert ë¬¸ ì‹¤í–‰ 
 		   	ResultSet rs = jdbcUtil.getGeneratedKeys();
 		   	if(rs.next()) {
-		   		int generatedKey = rs.getInt(1);  // »ı¼ºµÈ PK °ª 
-		   		reply.setRe_id(generatedKey); 	// idÇÊµå¿¡ ÀúÀå
+		   		int generatedKey = rs.getInt(1);  // ìƒì„±ëœ PK ê°’ 
+		   		reply.setRe_id(generatedKey); 	// idí•„ë“œì— ì €ì¥
 		   	}
 		   	return reply;
 		} catch (Exception ex) {
@@ -41,9 +41,9 @@ public class ReplyDAO {
 		}		
 		return null;			
 	}
-	
+
 	/**
-	 * ±âÁ¸ÀÇ reply Á¤º¸¸¦ ¼öÁ¤
+	 * ê¸°ì¡´ì˜ reply ì •ë³´ë¥¼ ìˆ˜ì •
 	 */
 	public int update(Reply reply) throws SQLException {
 		String sql = "UPDATE Reply "
@@ -51,7 +51,7 @@ public class ReplyDAO {
 					+ "WHERE re_id=?";
 		Object[] param = new Object[] {reply.getContent(), reply.getRe_id()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	
-			
+
 		try {				
 			int result = jdbcUtil.executeUpdate();	
 			return result;
@@ -65,9 +65,9 @@ public class ReplyDAO {
 		}		
 		return 0;
 	}
-	
+
 	/**
-	 * ÁÖ¾îÁø ID¿¡ ÇØ´çÇÏ´Â reply Á¤º¸¸¦ »èÁ¦.+ ÇØ´ç re_id¸¦ parent_re_id·Î °®°í ÀÖ´Â ´ë´ñ±Ûµµ »èÁ¦
+	 * ì£¼ì–´ì§„ IDì— í•´ë‹¹í•˜ëŠ” reply ì •ë³´ë¥¼ ì‚­ì œ.+ í•´ë‹¹ re_idë¥¼ parent_re_idë¡œ ê°–ê³  ìˆëŠ” ëŒ€ëŒ“ê¸€ë„ ì‚­ì œ
 	 */
 	public void remove(int re_id) throws SQLException {
 		String sql = "DELETE FROM Reply WHERE parent_re_id=?";
@@ -87,9 +87,9 @@ public class ReplyDAO {
 			jdbcUtil.close();	
 		}		
 	}
-	
+
 	/**
-	 * ÇØ´ç que_idÀÇ °Ô½Ã±Û¿¡ µî·ÏµÈ Ãµ¹øÂ° ´ñ±ÛµéÀÇ ¸ñ·Ï Á¤º¸¸¦ °Ë»öÇÏ¿© List¿¡ ÀúÀå ¹× ¹İÈ¯
+	 * í•´ë‹¹ que_idì˜ ê²Œì‹œê¸€ì— ë“±ë¡ëœ ì²œë²ˆì§¸ ëŒ“ê¸€ë“¤ì˜ ëª©ë¡ ì •ë³´ë¥¼ ê²€ìƒ‰í•˜ì—¬ Listì— ì €ì¥ ë° ë°˜í™˜
 	 */
 	public List<Reply> findReplyList(int que_id) throws SQLException {
         String sql = "SELECT re_id, que_id, writer_id, reg_date, content, parent_re_id "
@@ -98,7 +98,7 @@ public class ReplyDAO {
         		   + "ORDER BY re_id";   
         Object[] param = new Object[] {que_id};	
 		jdbcUtil.setSqlAndParameters(sql, param);	
-					
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
 			List<Reply> replyList = new ArrayList<Reply>();
@@ -113,13 +113,13 @@ public class ReplyDAO {
 				replyList.add(reply);
 			}		
 			return replyList;					
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
-	
+
 }

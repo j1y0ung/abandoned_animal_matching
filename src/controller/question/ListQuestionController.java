@@ -24,7 +24,6 @@ public class ListQuestionController implements Controller {
     	
     	int listCnt = -1;
     	int curPage = (request.getParameter("curPage") == null ? 1 : Integer.parseInt(request.getParameter("curPage")));
-		//최신순 -> orderOfDate, 댓글순 -> orderOfReply, 조회순->orderOfClick
     	
     	if (order.equals("my_question")) {
     		listCnt = manager.totalMyQuestion(currentId);
@@ -48,7 +47,7 @@ public class ListQuestionController implements Controller {
 
     	request.setAttribute("order", order);
 		request.setAttribute("secretAlert", request.getAttribute("secretAlert"));
-		// queList 객체를 request에 저장하여 큐앤에이 리스트 화면으로 이동(forwarding)
+
 		request.setAttribute("queList", queList);
 		request.setAttribute("listCnt", listCnt);
 		request.setAttribute("pagination", pagination);

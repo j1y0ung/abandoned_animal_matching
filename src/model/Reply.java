@@ -3,12 +3,12 @@ package model;
 import java.util.Date;
 
 public class Reply {
-	private int re_id; // 답변 아이디(식별자-시퀀스)
-	private int que_id; // 질문글 아이디
-	private String writer_id; // 답변 작성자 아이디ㄴㄴ
-	private Date reg_date; // 코멘트 작성날짜
-	private String content; // 코멘트 내용
-	private int parent_re_id; // 코멘트의 부모코멘트->대댓글 기능
+	private int re_id;
+	private int que_id;
+	private String writer_id;
+	private Date reg_date;
+	private String content;
+	private int parent_re_id;
 	
 	public Reply() { };
 	

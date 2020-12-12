@@ -84,8 +84,6 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/blog.css" rel="stylesheet">
 <script>
 function questionCreate() {
 	if (form.title.value == "") {
@@ -100,16 +98,10 @@ function questionCreate() {
 	}
 	form.submit();
 }
-
-function questionList(targetUri) {
-	form.action = targetUri;
-	form.submit();
-}
 </script>
 </head>
 <body>
-<!--  	<jsp:include page="/work/index.jsp"/>
-	<hr> -->
+  	<jsp:include page="/main/index.jsp"/>
 <!-- Question 질문게시글 생성이 실패한 경우 exception 객체에 저장된 오류 메시지를 출력 -->
 <c:if test="${creationFailed}">
 	<font color="red"><c:out value="${exception.getMessage()}" /></font>
@@ -144,7 +136,7 @@ function questionList(targetUri) {
 		  	<div class="form-group">
             	<div class="text-right">
 		  			<button type="button" class="btn btn-primary btn-lg" onClick="questionCreate()">등록</button> &nbsp;
-		  			<button type="button" class="btn btn-secondary btn-lg" onClick="questionList('<c:url value='/question/list' />')">Q&A 목록</button>
+		  			<a href="<c:url value='/question/list' />" class="btn btn-secondary btn-lg">Q&A 목록</a>  
             	</div>
             </div>
 		  </div>

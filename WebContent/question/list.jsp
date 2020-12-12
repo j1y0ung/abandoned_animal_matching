@@ -86,8 +86,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/blog.css" rel="stylesheet">
+
 <script>
 function searchQuestion() {
 	if (form.search.value == "") {
@@ -97,11 +96,18 @@ function searchQuestion() {
 	} 
 	form.submit();
 }
+function createQuestion(targetUri) {
+	var mem_id = '<%=(String)session.getAttribute("mem_id")%>';
+	if (mem_id == "null") {
+		alert("로그인이 필요합니다.");
+		return false;
+	}
+	location.href = targetUri
+}
 </script>
   </head>
   <body>
-<!--  	<jsp:include page="/work/index.jsp"/>
-	<hr> -->
+  	<jsp:include page="/main/index.jsp"/>
 <c:if test="${secretAlert}">
 	<div class="alert alert-warning alert-dismissable">
 		<a href="#" class="close" data-dismiss="alert" aria-label="close">x</a>
@@ -179,7 +185,7 @@ function searchQuestion() {
 	<hr>
 	<div>
 		<div class="float-right">
-		<a class="btn btn-primary text-left" href="<c:url value='/question/create/form' />">글쓰기</a>
+		<button type="button" class="btn btn-primary text-left" onClick="createQuestion('<c:url value='/question/create/form' />')">글쓰기</button>
 		<a class="btn btn-secondary text-right" href="<c:url value='/question/list'>
 			<c:param name='order' value='my_question'/>
 			</c:url>">

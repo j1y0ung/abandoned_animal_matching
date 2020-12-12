@@ -1,0 +1,60 @@
+@charset "UTF-8";
+
+@font-face {
+	font-family: 'NEXON Lv1 Gothic OTF'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+@font-face {
+    font-family: 'RIDIBatang'; 
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+.bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+@media (min-width: 768px) {
+	.bd-placeholder-img-lg {
+		font-size: 3.5rem;
+    }
+}
+#margin{
+    margin-bottom: 50px;
+}
+#mainmenu{
+    font-family: 'RIDIBatang';
+}
+#projname{
+    font-family: 'NEXON Lv1 Gothic OTF';
+    font-size: 2rem;
+    text-anchor: middle;
+}
+#testbtn-dog{
+    margin-right: 20px;
+}
+#l-margin{
+    margin-left: 40px;
+}
+#test-text-p{
+    font-family: 'RIDIBatang';
+    font-size: 1rem;
+    color:rgb(168, 158, 21);
+}
+#test-toptext-p{
+    font-family: 'RIDIBatang';
+    font-size: 1rem;
+    color:dimgrey;
+}
+
+<!-- reuslt.jsp, lostpetRegisterForm.jsp 에 추가적으로 들어가는 css -->
+#text1{
+    font-size: 1.25rem;
+    text-anchor: middle;
+}

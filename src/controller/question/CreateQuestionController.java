@@ -51,9 +51,9 @@ public class CreateQuestionController implements Controller {
 			manager.createQuestion(que);
 			
 	    	log.debug("Create Question : {}", que);
-	        return "redirect:/question/list";	// 성공 시 커뮤니티 리스트 화면으로 redirect
+	        return "redirect:/question/list";
 	        
-		} catch (Exception e) {		// 예외 발생 시 입력 form으로 forwarding
+		} catch (Exception e) {
             request.setAttribute("creationFailed", true);
 			request.setAttribute("exception", e);
 			request.setAttribute("que", que);

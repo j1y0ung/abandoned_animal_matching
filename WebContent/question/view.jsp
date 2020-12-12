@@ -85,8 +85,7 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../resources/css/blog.css" rel="stylesheet">
+
 <script>
 function questionRemove() {
 	return confirm("정말 삭제하시겠습니까?");		
@@ -94,19 +93,23 @@ function questionRemove() {
 function replyRemove() {
 	return confirm("정말 삭제하시겠습니까?");		
 }
-function firstReplyCreate() {
-	if (firstReplyForm.content.value == "") {
-		alert("내용을 입력하십시오.");
-		firstReplyForm.content.focus();
+function createReply(f) {
+	var mem_id = '<%=(String)session.getAttribute("mem_id")%>';
+	if (mem_id == "null") {
+		alert("로그인이 필요합니다.");
 		return false;
 	}
-	firstReplyForm.submit();
+	if (f.content.value == "") {
+		alert("내용을 입력하십시오.");
+		f.content.focus();
+		return false;
+	}
+	f.submit();
 }
 </script>
 </head>
 <body>
-<!--  	<jsp:include page="/work/index.jsp"/>
-	<hr> -->
+  	<jsp:include page="/main/index.jsp"/>
 <div class="container">
     <div class="row">
         <div class="col">
@@ -182,7 +185,7 @@ function firstReplyCreate() {
 				   							<div class="form-group">
 												<br><textarea class="form-control textarea" rows="5" name="content">${reply.content}</textarea>
 											</div>
-											<input type="submit" class="btn btn-primary" value="등록">
+											<button type="button" class="btn btn-primary" onClick="createReply(this.form)">등록</button>
 				   						</div>
 				    				</form>
 				    			</div>
@@ -203,7 +206,7 @@ function firstReplyCreate() {
 					    			<div class="form-group">
 										<br><textarea class="form-control textarea" rows="5" name="content"></textarea>
 									</div>
-										<div class="text-right"><input type="submit" class="btn btn-success text" value="등록"></div>
+										<button type="button" class="btn btn-primary" onClick="createReply(this.form)">등록</button>
 								</div>
 					    	<br>
 					    </form>	 
@@ -235,7 +238,7 @@ function firstReplyCreate() {
 							   							<div class="form-group">
 															<br><textarea class="form-control textarea" rows="5" name="content">${secondReply.content}</textarea>
 														</div>
-														<input type="submit" class="btn btn-primary" value="등록">
+														<button type="button" class="btn btn-primary" onClick="createReply(this.form)">등록</button>
 							   						</div>
 							    				</form>
 							    			</div>
@@ -274,7 +277,7 @@ function firstReplyCreate() {
 	                    </div>
 	                </div>
 	                <div class="panel-footer text-right">
-	                	<button type="button" class="btn btn-success btn-lg" onClick="firstReplyCreate()">등록</button> &nbsp;
+	                	<button type="button" class="btn btn-success btn-lg" onClick="createReply(this.form)">등록</button> &nbsp;
 	                </div>
             	</div>
         	</form>

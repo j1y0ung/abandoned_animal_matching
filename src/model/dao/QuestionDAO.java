@@ -9,26 +9,26 @@ import model.Question;
 
 public class QuestionDAO {
 	private JDBCUtil jdbcUtil = null;
-	
+
 	public QuestionDAO() {			
 		jdbcUtil = new JDBCUtil();
 	}
-		
+
 	/**
-	 * Question Å×ÀÌºí¿¡ »õ·Î¿î Çà »ı¼º (PK °ªÀº Sequence¸¦ ÀÌ¿ëÇÏ¿© ÀÚµ¿ »ı¼º)
+	 * Question í…Œì´ë¸”ì— ìƒˆë¡œìš´ í–‰ ìƒì„± (PK ê°’ì€ Sequenceë¥¼ ì´ìš©í•˜ì—¬ ìë™ ìƒì„±)
 	 */
 	public Question create(Question que) throws SQLException {
 		String sql = "INSERT INTO Question VALUES (que_id_seq.nextval, ?, ?, SYSDATE, 0, ?, ?, ?)";		
 		Object[] param = new Object[] {que.getTitle(), que.getContent(), que.getWriter_id(), que.getSecret(), que.getFilename()};				
 		jdbcUtil.setSqlAndParameters(sql, param);	
-						
-		String key[] = {"que_id"};// PK ÄÃ·³ÀÇ ÀÌ¸§     
+
+		String key[] = {"que_id"};// PK ì»¬ëŸ¼ì˜ ì´ë¦„     
 		try {    
-			jdbcUtil.executeUpdate(key); // insert ¹® ½ÇÇà 
+			jdbcUtil.executeUpdate(key); // insert ë¬¸ ì‹¤í–‰ 
 		   	ResultSet rs = jdbcUtil.getGeneratedKeys();
 		   	if(rs.next()) {
-		   		int generatedKey = rs.getInt(1);  // »ı¼ºµÈ PK °ª 
-		   		que.setId(generatedKey); 	// idÇÊµå¿¡ ÀúÀå
+		   		int generatedKey = rs.getInt(1);  // ìƒì„±ëœ PK ê°’ 
+		   		que.setId(generatedKey); 	// idí•„ë“œì— ì €ì¥
 		   	}
 		   	return que;
 		} catch (Exception ex) {
@@ -42,7 +42,7 @@ public class QuestionDAO {
 	}
 
 	/**
-	 * ±âÁ¸ÀÇ Áú¹® Á¤º¸¸¦ ¼öÁ¤
+	 * ê¸°ì¡´ì˜ ì§ˆë¬¸ ì •ë³´ë¥¼ ìˆ˜ì •
 	 */
 	public int update(Question que) throws SQLException {
 		String sql = "UPDATE Question "
@@ -63,14 +63,14 @@ public class QuestionDAO {
 		}		
 		return 0;
 	}
-	
+
 	/**
-	 * ÁÖ¾îÁø ID¿¡ ÇØ´çÇÏ´Â Áú¹® Á¤º¸¸¦ »èÁ¦
+	 * ì£¼ì–´ì§„ IDì— í•´ë‹¹í•˜ëŠ” ì§ˆë¬¸ ì •ë³´ë¥¼ ì‚­ì œ
 	 */
 	public void remove(int que_id) throws SQLException {
 		String sql = "DELETE FROM Reply WHERE que_id=?";	 
 		String sql2 = "DELETE FROM Question WHERE que_id=?";	
-		
+
 		try {
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {que_id});
 			jdbcUtil.executeUpdate();	
@@ -88,8 +88,8 @@ public class QuestionDAO {
 	}
 
 	/**
-	 * ÁÖ¾îÁø  ID¿¡ ÇØ´çÇÏ´Â Áú¹® Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Ã£¾Æ Question µµ¸ŞÀÎ Å¬·¡½º¿¡ 
-	 * ÀúÀåÇÏ¿© ¹İÈ¯.
+	 * ì£¼ì–´ì§„  IDì— í•´ë‹¹í•˜ëŠ” ì§ˆë¬¸ ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì°¾ì•„ Question ë„ë©”ì¸ í´ë˜ìŠ¤ì— 
+	 * ì €ì¥í•˜ì—¬ ë°˜í™˜.
 	 */
 	public Question findQuestion(int que_id) throws SQLException {
         String sql = "SELECT title, content, dateTime, hits, writer_id, secret, filename "
@@ -117,9 +117,9 @@ public class QuestionDAO {
 		}
 		return que;
 	}
-	
+
 	/**
-	 * ÀüÃ¼ Áú¹® ¸ñ·Ï Á¤º¸¸¦ °Ë»öÇÏ¿© List¿¡ ÀúÀå ¹× ¹İÈ¯
+	 * ì „ì²´ ì§ˆë¬¸ ëª©ë¡ ì •ë³´ë¥¼ ê²€ìƒ‰í•˜ì—¬ Listì— ì €ì¥ ë° ë°˜í™˜
 	 */
 	public List<Question> findQuestionList(int startIndex, int pageSize) throws SQLException {
         String sql = "SELECT * FROM ( "
@@ -129,7 +129,7 @@ public class QuestionDAO {
         		   + "ORDER BY q.que_id) "
         		   + "WHERE NUM BETWEEN ? AND ?";
         jdbcUtil.setSqlAndParameters(sql, new Object[] {startIndex+1, startIndex+pageSize});
-					
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
 			List<Question> queList = new ArrayList<Question>();
@@ -146,18 +146,18 @@ public class QuestionDAO {
 				queList.add(que);
 			}		
 			return queList;					
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
-	
+
 	/**
-	 * ÁÖ¾îÁø  °Ë»ö¾î¸¦ Æ÷ÇÔÇÏ´Â Áú¹® Á¤º¸¸¦ µ¥ÀÌÅÍº£ÀÌ½º¿¡¼­ Ã£¾Æ Question µµ¸ŞÀÎ Å¬·¡½º¿¡ 
-	 * ÀúÀåÇÏ¿© ¹İÈ¯.
+	 * ì£¼ì–´ì§„  ê²€ìƒ‰ì–´ë¥¼ í¬í•¨í•˜ëŠ” ì§ˆë¬¸ ì •ë³´ë¥¼ ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ì°¾ì•„ Question ë„ë©”ì¸ í´ë˜ìŠ¤ì— 
+	 * ì €ì¥í•˜ì—¬ ë°˜í™˜.
 	 */
 	public List<Question> searchQuestion(String search, String categories, int startIndex, int pageSize) throws SQLException {
 		String sql = "SELECT * FROM ( "
@@ -167,7 +167,7 @@ public class QuestionDAO {
      		   		+ "GROUP BY q.que_id, q.title, q.datetime, q.hits, q.writer_id, q.secret, q.filename "
      		   		+ "ORDER BY q.que_id) "
      		   		+ "WHERE NUM BETWEEN ? AND ?";
-		
+
 		String sql2 = "SELECT * FROM ( "
 				   + "SELECT q.que_id, q.title, q.dateTime, q.hits, q.writer_id, q.secret, COUNT(r.que_id) AS total_reply, q.filename, ROW_NUMBER() OVER (ORDER BY q.que_id) NUM "
 	     		   + "FROM Question q LEFT OUTER JOIN Reply r ON q.que_id = r.que_id "
@@ -176,14 +176,14 @@ public class QuestionDAO {
 	     		   + "ORDER BY q.que_id) "
 				   + "WHERE NUM BETWEEN ? AND ?";
 
-		
+
 		if (categories.equals("1")) {
 			jdbcUtil.setSqlAndParameters(sql, new Object[] {"%"+search+"%", startIndex+1, startIndex+pageSize});
 		}
 		else {
 			jdbcUtil.setSqlAndParameters(sql2, new Object[] {"%"+search+"%", "%"+search+"%", startIndex+1, startIndex+pageSize});
 		}	
-					
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
 			List<Question> queList = new ArrayList<Question>();
@@ -200,16 +200,16 @@ public class QuestionDAO {
 				queList.add(que);
 			}		
 			return queList;					
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
 	/**
-	 * Á¶È¸¼ö Áõ°¡.
+	 * ì¡°íšŒìˆ˜ ì¦ê°€.
 	 */
 	public int addHits(int que_id) throws SQLException {
 		String sql = "UPDATE Question "
@@ -230,13 +230,13 @@ public class QuestionDAO {
 		}		
 		return 0;
 	}
-	
+
 	/**
-	 * Æ¯Á¤ ±âÁØ¼øÀ¸·Î ÀüÃ¼ Áú¹® ¸ñ·Ï Á¤º¸¸¦ °Ë»öÇÏ¿© List¿¡ ÀúÀå ¹× ¹İÈ¯
+	 * íŠ¹ì • ê¸°ì¤€ìˆœìœ¼ë¡œ ì „ì²´ ì§ˆë¬¸ ëª©ë¡ ì •ë³´ë¥¼ ê²€ìƒ‰í•˜ì—¬ Listì— ì €ì¥ ë° ë°˜í™˜
 	 */
 	public List<Question> sortQuestionListBy(String standard, int startIndex, int pageSize) throws SQLException {
 		String sql = "";
-		
+
 		if (standard.equals("orderOfDate")) {
 			sql = "SELECT * FROM ( "
 				+ "SELECT q.que_id, q.title, q.dateTime, q.hits, q.writer_id, q.secret, COUNT(r.que_id) AS total_reply, q.filename, ROW_NUMBER() OVER (ORDER BY q.dateTime DESC, q.que_id) NUM "
@@ -257,9 +257,9 @@ public class QuestionDAO {
 			    + "ORDER BY q.hits DESC, q.que_id) ";
 		}
 		sql += "WHERE NUM BETWEEN ? AND ?";
-        
+
 		jdbcUtil.setSqlAndParameters(sql, new Object[] {startIndex+1, startIndex+pageSize});
-					
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
 			List<Question> queList = new ArrayList<Question>();
@@ -276,16 +276,16 @@ public class QuestionDAO {
 				queList.add(que);
 			}		
 			return queList;					
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
 	/**
-	 * ÇöÀç ·Î±×ÀÎÇÑ »ç¿ëÀÚÀÇ Question ¸®½ºÆ®¸¦ °Ë»öÇÏ¿© List¿¡ ÀúÀå ¹× ¹İÈ¯
+	 * í˜„ì¬ ë¡œê·¸ì¸í•œ ì‚¬ìš©ìì˜ Question ë¦¬ìŠ¤íŠ¸ë¥¼ ê²€ìƒ‰í•˜ì—¬ Listì— ì €ì¥ ë° ë°˜í™˜
 	 */
 	public List<Question> findMyQuestionList(String currentId, int startIndex, int pageSize) throws SQLException {
         String sql = "SELECT * FROM ( "
@@ -295,9 +295,9 @@ public class QuestionDAO {
         		   + "GROUP BY q.que_id, q.title, q.datetime, q.hits, q.writer_id, q.secret, q.filename "
         		   + "ORDER BY q.que_id) "
         		   + "WHERE NUM BETWEEN ? AND ?";
-        
+
         jdbcUtil.setSqlAndParameters(sql, new Object[] {currentId, startIndex+1, startIndex+pageSize});	
-					
+
 		try {
 			ResultSet rs = jdbcUtil.executeQuery();					
 			List<Question> queList = new ArrayList<Question>();
@@ -314,16 +314,16 @@ public class QuestionDAO {
 				queList.add(que);
 			}		
 			return queList;					
-			
+
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		} finally {
-			jdbcUtil.close();		// resource ¹İÈ¯
+			jdbcUtil.close();		// resource ë°˜í™˜
 		}
 		return null;
 	}
 	/**
-	 * ÇØ´ç QuestionÀÇ Ã·ºÎÆÄÀÏ »èÁ¦
+	 * í•´ë‹¹ Questionì˜ ì²¨ë¶€íŒŒì¼ ì‚­ì œ
 	 */
 	public void deleteFile(int que_id) throws SQLException {
 		String sql = "UPDATE Question "
@@ -342,9 +342,9 @@ public class QuestionDAO {
 			jdbcUtil.close();	
 		}		
 	}
-	
+
 	/**
-	 * Question Å×ÀÌºíÀÇ ÇàÀÇ °³¼ö ¹İÈ¯
+	 * Question í…Œì´ë¸”ì˜ í–‰ì˜ ê°œìˆ˜ ë°˜í™˜
 	 */
 	public int totalQuestion() throws SQLException {
         String sql = "SELECT COUNT(*) "
@@ -363,9 +363,9 @@ public class QuestionDAO {
 		}
 		return sum;
 	}
-	
+
 	/**
-	 * Æ¯Á¤ »ç¿ëÀÚ°¡ ¾´ °Ô½Ã±ÛÀÇ ÃÑ °³¼ö ¹İÈ¯
+	 * íŠ¹ì • ì‚¬ìš©ìê°€ ì“´ ê²Œì‹œê¸€ì˜ ì´ ê°œìˆ˜ ë°˜í™˜
 	 */
 	public int totalMyQuestion(String currentId) throws SQLException {
         String sql = "SELECT COUNT(*) "
@@ -385,9 +385,9 @@ public class QuestionDAO {
 		}
 		return sum;
 	}
-	
+
 	/**
-	 * °Ë»ö °á°ú °Ô½Ã±ÛÀÇ ÃÑ °³¼ö ¹İÈ¯
+	 * ê²€ìƒ‰ ê²°ê³¼ ê²Œì‹œê¸€ì˜ ì´ ê°œìˆ˜ ë°˜í™˜
 	 */
 	public int totalSearchQuestion(String search, String categories) throws SQLException {
         String sql = "SELECT COUNT(*) "

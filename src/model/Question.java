@@ -2,16 +2,15 @@ package model;
 
 import java.util.Date;
 
-public class Question { // 질문 게시글
-	private int id; // 게시글 아이디--시퀀스로 1씩 증가.
-	private String writer_id; //게시글 작성자  -> member 테이블의 mem_id 참조.
-								// 지금은 userInfo의 userId 참조
-	private String content; // 게시글 내용
-	private String title; // 게시글 제목
-	private int hits; // 게시글 조회수
-	private Date date; // 게시글 작성 날짜
-	private int total_reply; // 해당 게시글의 댓글 개수 
-	private String secret; // 비밀글
+public class Question { 
+	private int id; 
+	private String writer_id; 
+	private String content;
+	private String title;
+	private int hits;
+	private Date date;
+	private int total_reply;
+	private String secret;
 	private String filename;
 
 	public Question() { }

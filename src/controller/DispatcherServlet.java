@@ -31,22 +31,17 @@ public class DispatcherServlet extends HttpServlet {
     	String contextPath = request.getContextPath();
     	String servletPath = request.getServletPath();
     	
-    	// URL 중 servletPath에 대응되는 controller를 구함
         Controller controller = rm.findController(servletPath);
         try {
-        	// controller를 통해 request 처리 후, 이동할 uri를 반환 받음
             String uri = controller.execute(request, response);
             
-            if (uri == null) return;	// Ajax request 처리 완료
+            if (uri == null) return;
             
- 			// 반환된 uri에 따라 forwarding 또는 redirection 여부를 결정하고 이동 
             if (uri.startsWith("redirect:")) {	
-            	// redirection 지시
             	String targetUri = contextPath + uri.substring("redirect:".length());
             	response.sendRedirect(targetUri);	// redirect to url            
             }
             else {
-            	// forwarding 수행
             	RequestDispatcher rd = request.getRequestDispatcher(uri);
                 rd.forward(request, response);		// forward to the view page
             }                   

@@ -27,7 +27,7 @@ public class CreateReplyController implements Controller {
 		manager.createReply(reply);
 			
 		log.debug("Create Reply : {}", reply);
-        return "/question/view";	// 성공 시 view 화면으로 redirect
+        return "/question/view";
 	        
 	}
 }
