@@ -17,7 +17,7 @@
 			}
 			
 			//ajax를 통해 삭제 처리
-			var url = "/team4/review/delete";
+			var url = "/review/delete";
 			var param = "rev_idx="+rev_idx;
 			
 			//삭제를 GET으로 하면 
@@ -38,7 +38,7 @@
 				}
 				
 				// 전체 목록을 select 하는 url로 다시 이동(서블릿)
-				location.href="/team4/review/list";
+				location.href="/review/list";
 				//이동하면, select하고 list만들어서 이 페이지가 다시 나옴(forward 하니까)
 			}
 		}
@@ -56,7 +56,7 @@
 	
 	<div class="regi">
 		<c:if test="${sessionScope.membership !='준회원' && sessionScope.membership !='비회원'}">
-			<input type="button" id="reg" value="입양후기등록" onclick="location.href='/team4/review/review_reg_form.jsp';">
+			<input type="button" id="reg" value="입양후기등록" onclick="location.href='/review/review_reg_form.jsp';">
 		</c:if>
 	</div>
 	

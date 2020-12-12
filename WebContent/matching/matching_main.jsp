@@ -57,7 +57,7 @@
 					alert("강아지 매칭 권한이 없습니다.");
 				}
 				else {
-					location.href = "/team4/matching/matching_dog.jsp";
+					location.href = "/matching/matching_dog.jsp";
 				}
 			}
 		}
