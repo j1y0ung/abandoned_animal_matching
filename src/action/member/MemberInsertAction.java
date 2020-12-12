@@ -27,6 +27,6 @@ public class MemberInsertAction extends HttpServlet {
 		MemberVO vo = new MemberVO(0, name, id, pwd, phone, email, "준회원");
 		MemberDAO.getInstance().insert( vo );
 
-		response.sendRedirect("/member/list");
+		response.sendRedirect("/member/member_login.jsp");
 	}
 } 

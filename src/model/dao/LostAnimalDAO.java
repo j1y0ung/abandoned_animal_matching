@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import model.LostAnimal;
+import model.Reply;
 
 public class LostAnimalDAO {
 	
@@ -26,8 +27,6 @@ public class LostAnimalDAO {
 	
 	public void createNewLostAnimal(String animalType, String ownername, String ownerPhone, String animalSpecies, int animalAge,
 			String animalGender, String region) throws SQLException {//항목추가
-
-		ResultSet rs = null;
 		String progress = "접수완료";
 		
 		String query =  "INSERT INTO LOSTANIMAL VALUES (la_seq.NEXTVAL, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -35,13 +34,17 @@ public class LostAnimalDAO {
 		Object[] param = new Object[] {animalType, ownername, ownerPhone, animalSpecies, animalAge, animalGender, progress, region};
 		jdbcUtil.setSqlAndParameters(query, param);
 		
+		String key[] = {"RECEIPTNUM"};
 		try {	
-			rs = jdbcUtil.executeQuery();
+			jdbcUtil.executeUpdate(key);
 
-		} catch (Exception ex) { ex.printStackTrace();}
-			finally {									
-				jdbcUtil.close();
-			}
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {		
+			jdbcUtil.commit();
+			jdbcUtil.close();	
+		}	
 	}
 	
 	public void deleteLostAnimal(int receiptNum) throws SQLException {//항목삭제
@@ -56,11 +59,13 @@ public class LostAnimalDAO {
 			
 			rs = jdbcUtil.executeQuery();
 			
-		} catch (Exception ex) { ex.printStackTrace();}
-			finally 
-			{									
-				jdbcUtil.close();
-			}
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {		
+			jdbcUtil.commit();
+			jdbcUtil.close();	
+		}
 	}
 	
 	public List<LostAnimal> LostAnimalList() throws SQLException {//전체리스트가져오기
@@ -92,10 +97,13 @@ public class LostAnimalDAO {
 				list.add(la);
 			}
 			return list;
-		} catch (Exception ex) { ex.printStackTrace();}
-			finally {									
-				jdbcUtil.close();
-			}
+		} catch (Exception ex) {
+			jdbcUtil.rollback();
+			ex.printStackTrace();
+		} finally {		
+			jdbcUtil.commit();
+			jdbcUtil.close();	
+		}
 		return null;
 	}
 	
