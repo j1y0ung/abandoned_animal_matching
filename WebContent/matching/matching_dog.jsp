@@ -35,7 +35,7 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 
 	<script>
-		function checkdata(f){
+		function checkdata( f ){
 			var hair = f.hair.value.trim();
 			var size = f.size.value.trim();
 			var environment = f.environment.value.trim();
@@ -57,11 +57,11 @@
 
 <body>
 	<jsp:include page="/main/index.jsp"/>
-
+	
 	<div class="container">
 		<div id="l-margin">
 			<br><p id="test-toptext-p" class="text-center"> 강아지 매칭 </p>
-			<form method="get" action="/team4/matching/dog" enctype="multipart/form-data">
+			<form name="f" method="get" action="/matching/dog" enctype="multipart/form-data">
 				1. 털빠짐<br>
 				<input type='radio' name='hair' value='l'/>적음
 				<input type='radio' name='hair' value='m'/>많음<br>
@@ -84,10 +84,10 @@
 				7. 중성화여부<br>
 				<input type='radio' name='neuter' value='Y'/>예
 				<input type='radio' name='neuter' value='N'/>아니오<br>
-
+				
 				<input type="button" value="매칭 결과 보기" onclick="checkdata(this.form)">
 			</form>
 		</div>
 	</div>
 </body>
-</html> 
+</html>

@@ -12,7 +12,7 @@
 	
 	<script>
 		function send( f ){
-			f.action = "/team4/member/update";
+			f.action = "/member/update";
 			f.method = "POST";
 			f.submit();
 		}
@@ -59,7 +59,7 @@
 						<td colspan="2">
 							<input type="hidden" name="updateCode" value="personal">
 							<input type="button" value="회원정보 수정" onclick="send( this.form );">
-							<input type="reset" value="취소" onclick="location.href='/team4/member/mypage'">
+							<input type="reset" value="취소" onclick="location.href='/member/mypage'">
 						</td>
 					</tr>
 				</table>

@@ -57,7 +57,7 @@
     	}
     	
     	f.method = 'post';
-    	f.action = '/team4/test/main';
+    	f.action = '/test/main';
     	f.submit();
     } 
     
@@ -89,7 +89,7 @@
     	f.specialMark.value = specialMark;        	
     	f.weight.value = weight;
     	f.method = 'post';
-    	f.action = '/team4/search';	// 주소 파싱할 api 호출 
+    	f.action = '/search';	// 주소 파싱할 api 호출 
     	f.submit();
     }
     </script>

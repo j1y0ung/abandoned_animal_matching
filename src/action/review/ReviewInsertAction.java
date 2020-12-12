@@ -56,6 +56,6 @@ public class ReviewInsertAction extends HttpServlet {
 		int res = ReviewDAO.getInstance().insert(vo);
 		System.out.println("결과값 : " + res);
 
-		response.sendRedirect("/team4/review/list");
+		response.sendRedirect("/review/list");
 	}
 } 

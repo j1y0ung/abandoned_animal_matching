@@ -14,7 +14,7 @@
 			}
 			
 			//ajax를 통해 삭제 처리
-			var url = "/team4/member/delete";
+			var url = "/member/delete";
 			var param = "mem_id="+mem_id;
 			
 			sendRequest(url,param,delResultFn,"POST");
@@ -31,7 +31,7 @@
 				else{
 					alert("회원 삭제 성공");
 				}
-				location.href="/team4/member/list";
+				location.href="/member/list";
 			}
 		}
 		
@@ -44,7 +44,7 @@
 			var mem_id = f.mem_id.value.trim();
 			var mem_membership = f.mem_membership.value.trim();
 			
-			var url = "/team4/member/update";
+			var url = "/member/update";
 			var param = "updateCode=" + updateCode + "&mem_id=" + mem_id + "&mem_membership=" + mem_membership;
 			
 			sendRequest(url,param,updateResultFn,"POST");
@@ -62,7 +62,7 @@
 					alert("회원정보 업데이트 성공");
 				}
 				
-				location.href="/team4/member/list";
+				location.href="/member/list";
 			}
 		}
 	</script>

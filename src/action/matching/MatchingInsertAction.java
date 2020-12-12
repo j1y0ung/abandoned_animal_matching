@@ -44,7 +44,7 @@ public class MatchingInsertAction extends HttpServlet {
 		int res = MatchingDAO.getInstance().insert( vo ); // 1: 성공, 0: 실패
 		System.out.println("res: " + res);
 
-//		response.sendRedirect("/team4/main/mainPage.jsp");
+//		response.sendRedirect("/main/mainPage.jsp");
 		RequestDispatcher disp = request.getRequestDispatcher("/main/mainPage.jsp");
 		disp.forward(request, response);
 	}

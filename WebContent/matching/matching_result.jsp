@@ -93,7 +93,7 @@
 													보호소 주소: ${results.mat_careAddress}<br>
 													보호소 전화번호: ${results.mat_tel}<br>
 
-													<form name="f" method="get" action="/team4/matching/insert" enctype="multipart/form-data" >
+													<form name="f" method="get" action="/matching/insert" enctype="multipart/form-data" >
 														<c:set var="img" value="${results.mat_img}"/>
 														<c:set var="id" value="${results.mat_id}"/>
 														<c:set var="age" value="${results.mat_age}"/>
@@ -152,7 +152,7 @@
 													보호소 주소: ${results.mat_careAddress}<br>
 													보호소 전화번호: ${results.mat_tel}<br>
 													
-													<form name="f" method="get" action="/team4/matching/insert" enctype="multipart/form-data" >
+													<form name="f" method="get" action="/matching/insert" enctype="multipart/form-data" >
 														<c:set var="img" value="${results.mat_img}"/>
 														<c:set var="id" value="${results.mat_id}"/>
 														<c:set var="age" value="${results.mat_age}"/>

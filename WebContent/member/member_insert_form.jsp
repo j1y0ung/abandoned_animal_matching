@@ -23,7 +23,7 @@
 				return;
 			}			
 			
-			f.action = "/team4/member/insert";
+			f.action = "/member/insert";
 			f.method = "POST";
 			f.submit();
 			
@@ -38,7 +38,7 @@
 			}
 			
 			//id를 Ajax를 통해서 서버로 전송
-			var url = "/team4/member/checkId";
+			var url = "/member/checkId";
 			
 			//id에 @#와 같은 특수문자가 포함되어 있는 경우를 대비하여 인코딩하여 보낸다.
 			var param = "id=" + encodeURIComponent(id);
@@ -111,7 +111,7 @@
 					<tr>
 						<td colspan="2">
 							<input type="button" value="가입" onclick="send( this.form );">
-							<input type="reset" value="취소" onclick="location.href='/team4/member/list'">
+							<input type="reset" value="취소" onclick="location.href='/member/list'">
 						</td>
 					</tr>
 				</table>

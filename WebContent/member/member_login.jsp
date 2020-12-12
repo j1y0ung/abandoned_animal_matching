@@ -18,7 +18,7 @@
 				return;
 			}
 			
-			var url = "/team4/member/login";
+			var url = "/member/login";
 			var param = "id=" + encodeURIComponent(id) +
 						"&pwd=" + encodeURIComponent(pwd);
 			sendRequest( url, param, resultFn, "POST" );
@@ -37,7 +37,7 @@
 				}
 				else if( json[0].param == 'clear' ) {
 					// main 페이지를 보이기 전에 거쳐갈 컨트롤러 서블릿
-					location.href = "/team4/main/mainPage.jsp";
+					location.href = "/main/mainPage.jsp";
 				}
 			}
 		}

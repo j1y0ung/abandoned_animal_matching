@@ -18,7 +18,7 @@
 <body>
 	<jsp:include page="/main/index.jsp"/>
 
-	<form name="f" method="post" action="/team4/review/insert" enctype="multipart/form-data">
+	<form name="f" method="post" action="/review/insert" enctype="multipart/form-data">
 		<table align="center" width="600" border="1" style="border-collapse : collapse">
 			<tr>
 				<td>제목</td>
