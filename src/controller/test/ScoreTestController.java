@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import controller.Controller;
 import controller.member.MemberSessionUtils;
 import dao.MemberDAO;
+import vo.MemberVO;
 
 public class ScoreTestController implements Controller {
 	@Override
@@ -23,13 +24,46 @@ public class ScoreTestController implements Controller {
 		for (String answer : answers) {
 			if (answer != null && answer.equals("1")) {score = score + 5;}
 		}
-		
 		String currentId = MemberSessionUtils.getLoginMemberId(request.getSession());
 		
+		//----------시험 통과자 회원등급 변경하는 부분-----------
+		String passTest = request.getParameter("testKind"); // 통과한 시험 종류
+		String updateMembership = null;
+		int checkCat = MemberDAO.getInstance().selectPassCat(currentId);
+		int checkDog = MemberDAO.getInstance().selectPassDog(currentId);
+		System.out.println("현재 통과한 시험 종류: " + passTest);
+		System.out.println("고양이 시험: " + checkCat + "/ 강아지 시험: " + checkDog);
+		System.out.println("내 시험점수: " + score);
+		MemberVO vo;
 		
-//		if (score >= 90) {
-//			MemberDAO.getInstance().upgradeMembership(currentId);
-//		}
+		if (score >= 90) {
+			System.out.println("90점 이상");
+			if(passTest.equals("cat")) { // 고양이 시험 통과자
+				if(checkDog == 1) {
+					updateMembership = "댕냥마스터";
+				}
+				else {
+					updateMembership = "예비집사";
+				}
+				vo = new MemberVO(currentId, "y");
+				MemberDAO.getInstance().updatePassCat( vo );
+			}
+			else { // 강아지 시험 통과자
+				if(checkCat == 1) {
+					updateMembership = "댕냥마스터";
+				}
+				else {
+					updateMembership = "예비견주";
+				}
+				vo = new MemberVO(currentId, "y");
+				MemberDAO.getInstance().updatePassDog( vo );
+			}
+		}
+		vo = new MemberVO(currentId, updateMembership);
+		int res = MemberDAO.getInstance().updateManager( vo ); //1이면 성공, 0이면 실패
+		System.out.println("res = " + res);
+		//-------------------------------------------------------------
+		
 		request.setAttribute("score", score);
 		return "/test/result.jsp";
 	}

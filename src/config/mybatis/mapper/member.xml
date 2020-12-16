@@ -19,7 +19,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			#{mem_pwd},
 			#{mem_phone},
 			#{mem_email},
-			#{mem_membership})
+			#{mem_membership},
+			#{mem_passCat},
+			#{mem_passDog}
+			)
 	</insert>
 	
 	<delete id="member_delete" parameterType="string">
@@ -32,9 +35,29 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		where mem_id=#{mem_id}
 	</update>
 	
+	<select id="member_selectPassCat" parameterType="java.lang.String" resultType="string">
+		select mem_passCat from member where mem_id=#{mem_id}
+	</select>
+	
+	<select id="member_selectPassDog" parameterType="java.lang.String" resultType="string">
+		select mem_passDog from member where mem_id=#{mem_id}
+	</select>
+	
 	<update id="member_update_manager" parameterType="member">
 		update member
-		set mem_membership=#{mem_membership}
+		set mem_membership=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_update_passCat" parameterType="member">
+		update member
+		set mem_passCat=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_update_passDog" parameterType="member">
+		update member
+		set mem_passDog=#{inputStr}
 		where mem_id=#{mem_id}
 	</update>
 

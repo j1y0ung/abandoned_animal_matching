@@ -192,6 +192,7 @@
                 <input type="radio" name="test20" value="1">클라미디아 바이러스<br>
                 <br><p></p>
                 <div class="text-center">
+                <input type="hidden" name="testKind" value="cat">
                 <input type="submit" value="제출하기">
                 </div>
              </form>

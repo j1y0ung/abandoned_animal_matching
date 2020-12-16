@@ -204,6 +204,7 @@
                 <input type="radio" name="test20" value="0">아니다. 작은 반려견(대략 닥스훈트 크기 정도까지)만 함께 둘 수 있다.<br>
                 <br><p></p>
                 <div class="text-center">
+                <input type="hidden" name="testKind" value="dog">
                 <input type="submit" value="제출하기">
                 </div>
              </form>

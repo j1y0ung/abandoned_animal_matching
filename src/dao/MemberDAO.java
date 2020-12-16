@@ -97,4 +97,58 @@ public class MemberDAO {
 		
 		return res;
 	}
+	
+	public int selectPassCat( String mem_id ) {
+		String res = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.selectOne("member_selectPassCat", mem_id);
+		
+		sqlSession.close();
+		if(res.equals("y")) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	public int selectPassDog( String mem_id ) {
+		String res = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.selectOne("member_selectPassDog", mem_id);
+		
+		sqlSession.close();
+		if(res.equals("y")) {
+			return 1;
+		}else {
+			return 0;
+		}
+	}
+	
+	public int updatePassCat(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_update_passCat", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+	
+	public int updatePassDog(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_update_passDog", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
 }

@@ -10,14 +10,18 @@ public class MemberVO implements Serializable {
 	private String	mem_phone;
 	private String	mem_email;
 	private String	mem_membership;
+	private String mem_passCat;
+	private String mem_passDog;
+	private String inputStr;
 	
 	public MemberVO() {
+		super();
 	}
 	
-	public MemberVO(String mem_id, String mem_membership) {
+	public MemberVO(String mem_id, String inputStr) {
 		super();
 		this.mem_id = mem_id;
-		this.mem_membership = mem_membership;
+		this.inputStr = inputStr;
 	}
 
 	public MemberVO(String mem_id, String mem_pwd, String mem_phone, String mem_email) {
@@ -38,6 +42,20 @@ public class MemberVO implements Serializable {
 		this.mem_phone = mem_phone;
 		this.mem_email = mem_email;
 		this.mem_membership = mem_membership;
+	}
+
+	public MemberVO(int mem_idx, String mem_name, String mem_id, String mem_pwd, String mem_phone, String mem_email,
+			String mem_membership, String mem_passCat, String mem_passDog) {
+		super();
+		this.mem_idx = mem_idx;
+		this.mem_name = mem_name;
+		this.mem_id = mem_id;
+		this.mem_pwd = mem_pwd;
+		this.mem_phone = mem_phone;
+		this.mem_email = mem_email;
+		this.mem_membership = mem_membership;
+		this.mem_passCat = mem_passCat;
+		this.mem_passDog = mem_passDog;
 	}
 
 	public String getMem_name() {
@@ -94,5 +112,29 @@ public class MemberVO implements Serializable {
 
 	public void setMem_idx(int mem_idx) {
 		this.mem_idx = mem_idx;
+	}
+
+	public String getMem_passCat() {
+		return mem_passCat;
+	}
+
+	public void setMem_passCat(String mem_passCat) {
+		this.mem_passCat = mem_passCat;
+	}
+
+	public String getMem_passDog() {
+		return mem_passDog;
+	}
+
+	public void setMem_passDog(String mem_passDog) {
+		this.mem_passDog = mem_passDog;
+	}
+
+	public String getInputStr() {
+		return inputStr;
+	}
+
+	public void setInputStr(String inputStr) {
+		this.inputStr = inputStr;
 	}
 }
