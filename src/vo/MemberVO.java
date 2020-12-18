@@ -34,6 +34,13 @@ public class MemberVO implements Serializable {
 		this.mem_id = mem_id;
 		this.inputStr = inputStr;
 	}
+	
+	// 시험 탈락일 변경시 사용
+	public MemberVO(String mem_id, Date inputDate) {
+		super();
+		this.mem_id = mem_id;
+		this.inputDate = inputDate;
+	}
 
 	// 마이페이지에서 정보 수정시 사용
 	public MemberVO(String mem_id, String mem_pwd, String mem_phone, String mem_email) {
