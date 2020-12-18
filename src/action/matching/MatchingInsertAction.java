@@ -43,9 +43,10 @@ public class MatchingInsertAction extends HttpServlet {
 								mat_img, mat_careName, mat_careAddress, mat_tel, mem_id);
 		int res = MatchingDAO.getInstance().insert( vo ); // 1: 성공, 0: 실패
 		System.out.println("res: " + res);
+		session.setAttribute("matvo", vo);
 
 //		response.sendRedirect("/main/mainPage.jsp");
 		RequestDispatcher disp = request.getRequestDispatcher("/main/mainPage.jsp");
 		disp.forward(request, response);
 	}
-} 
+}  

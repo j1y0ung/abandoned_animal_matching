@@ -88,8 +88,7 @@
 					<a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/logout' />">로그아웃</a>
 					<a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/mypage' />">마이페이지</a>
 					<c:if test="${ sessionScope.mem_id == 'admin' }">
-						<a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/list' />">회원관리</a>
-						<a class="btn btn-sm btn-outline-secondary" href="<c:url value='/matching/list' />">입양신청관리</a>
+						<a class="btn btn-sm btn-outline-secondary" href="<c:url value='/adminonly' />">관리</a>
 					</c:if>
 				</c:if>
 			</div>
@@ -99,7 +98,7 @@
 	<div class="nav-scroller py-1 mb-2" id="mainmenu">
 		<ul class="nav justify-content-center">
 			<li class="nav-item">
-				<a class="nav-link" href="<c:url value='/test/type/form' />">입양시험</a>
+				<a class="nav-link" href="<c:url value='/test/type' />">입양시험</a>
             </li>
 			<li class="nav-item">
 				<a class="nav-link" href="<c:url value='/searching' />">유기동물 검색</a>

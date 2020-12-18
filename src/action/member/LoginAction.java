@@ -41,7 +41,6 @@ public class LoginAction extends HttpServlet {
 			param = "clear";
 			HttpSession session = request.getSession();
 
-//			session.setAttribute("member", vo);
 			session.setAttribute(MemberSessionUtils.MEMBER_SESSION_KEY, id);
 			session.setAttribute("membership", vo.getMem_membership());
 		}

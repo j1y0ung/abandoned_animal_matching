@@ -21,11 +21,24 @@ public class MatchingListAction extends HttpServlet {
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
-
-		List<MatchingVO> list = MatchingDAO.getInstance().selectList();
-		request.setAttribute("list", list);
+		String code = request.getParameter("code");
+		String careName = request.getParameter("careName");
+		System.out.println("careName" + careName);
 		
-		RequestDispatcher disp = request.getRequestDispatcher("/matching/matching_list.jsp");
-		disp.forward(request, response);
+		if(code == null) {
+			List<MatchingVO> list = MatchingDAO.getInstance().selectList();
+			request.setAttribute("list", list);
+			
+			RequestDispatcher disp = request.getRequestDispatcher("/matching/matching_list.jsp");
+			disp.forward(request, response);
+		}
+		else {
+			List<MatchingVO> list = MatchingDAO.getInstance().careAdminList(careName);
+			request.setAttribute("list", list);
+			
+			RequestDispatcher disp = request.getRequestDispatcher("/matching/matching_adminlist.jsp");
+			disp.forward(request, response);
+			
+		}
 	}
 }

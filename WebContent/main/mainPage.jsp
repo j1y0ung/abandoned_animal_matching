@@ -3,12 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+	<meta charset="UTF-8">
+	<title>메인 페이지</title>
 </head>
+
 <body>
 <jsp:include page="/main/index.jsp"/>
-메인페이지
-
+	<div class="container" style="text-align: center;">
+		<img src="../images/mainImg.jpg" width="500">
+	</div>
 </body>
 </html>

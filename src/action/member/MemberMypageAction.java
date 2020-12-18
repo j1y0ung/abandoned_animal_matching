@@ -14,7 +14,7 @@ import javax.servlet.http.HttpSession;
 import dao.MatchingDAO;
 import dao.MemberDAO;
 import dao.ReviewDAO;
-
+import vo.MatchingVO;
 import vo.MemberVO;
 import vo.ReviewVO;
 
@@ -30,7 +30,9 @@ public class MemberMypageAction extends HttpServlet {
 		String mem_id = (String) session.getAttribute("mem_id");
 		
 		MemberVO vo = MemberDAO.getInstance().selectId(mem_id);
+		MatchingVO matvo = MatchingDAO.getInstance().selectOne(mem_id);
 		request.setAttribute("vo", vo);
+		request.setAttribute("matvo", matvo);
 		
 		RequestDispatcher disp = request.getRequestDispatcher("/member/member_mypage.jsp");
 		disp.forward(request, response);

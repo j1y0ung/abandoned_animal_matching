@@ -36,9 +36,9 @@ public class RequestMapping {
         mappings.put("/reply/delete", new DeleteReplyController());
         mappings.put("/reply/update", new UpdateReplyController());
         // 입양 테스트 관련 request URI 추가
-        mappings.put("/test/type/form", new ForwardController("/test/typeForm.jsp"));
-        mappings.put("/test/dog/form", new ForwardController("/test/dogForm.jsp"));
-        mappings.put("/test/cat/form", new ForwardController("/test/catForm.jsp"));
+        mappings.put("/test/type", new TestTypeController());
+        mappings.put("/test/dog/form", new DogTestFormController());
+        mappings.put("/test/cat/form", new CatTestFormController());
         mappings.put("/test/score", new ScoreTestController());
         // 실종동물
         mappings.put("/lostpet/register/form", new ForwardController("/lostpet/lostpetRegisterForm.jsp"));

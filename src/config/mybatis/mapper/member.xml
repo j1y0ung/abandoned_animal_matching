@@ -4,11 +4,15 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 <mapper namespace="member">
 	
 	<select id="member_list" parameterType="java.lang.String" resultType="member">
-		select * from member
+		select * from member order by mem_idx DESC
 	</select>
 	
 	<select id="member_one" parameterType="java.lang.String" resultType="member">
 		select * from member where mem_id=#{mem_id}
+	</select>
+	
+	<select id="member_careAdmin" parameterType="java.lang.String" resultType="member">
+		select * from member where mem_careAdmin != 'X' and mem_isAdmin='n'
 	</select>
 	
 	<insert id="member_insert" parameterType="member">
@@ -19,9 +23,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			#{mem_pwd},
 			#{mem_phone},
 			#{mem_email},
-			#{mem_membership},
-			#{mem_passCat},
-			#{mem_passDog}
+			SYSDATE,
+			DEFAULT, DEFAULT, DEFAULT, null, null, DEFAULT, DEFAULT, #{mem_careAdmin}, DEFAULT, null
 			)
 	</insert>
 	
@@ -60,5 +63,28 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		set mem_passDog=#{inputStr}
 		where mem_id=#{mem_id}
 	</update>
+	
+	<update id="member_careadmin_update" parameterType="member">
+		update member
+		set mem_careAdmin=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_isadmin_update" parameterType="member">
+		update member
+		set mem_isAdmin=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+		
+	<update id="member_update_catFail" parameterType="member">
+		update member
+		set mem_catFailDate=#{inputDate}, mem_catFailNum = mem_catFailNum + 1
+		where mem_id=#{mem_id}
+	</update>
 
+	<update id="member_update_dogFail" parameterType="member">
+		update member
+		set mem_dogFailDate=#{inputDate}, mem_dogFailNum = mem_dogFailNum + 1
+		where mem_id=#{mem_id}
+	</update>
 </mapper>

@@ -23,10 +23,21 @@ public class MemberInsertAction extends HttpServlet {
 		String pwd = request.getParameter("pwd");
 		String phone = request.getParameter("phone");
 		String email = request.getParameter("email");
+		String careAdmin = request.getParameter("careAdmin");
+		
+		if(careAdmin.equals("")) {
+			careAdmin = "X";
+			System.out.println("보호소관리자 아님: " + careAdmin);
+			MemberVO vo = new MemberVO(0, name, id, pwd, phone, email, careAdmin);
+			MemberDAO.getInstance().insert( vo );
+		}
+		else {
+			System.out.println("보호소 관리자임: " + careAdmin);
+			MemberVO vo = new MemberVO(0, name, id, pwd, phone, email, careAdmin);
+			MemberDAO.getInstance().insert( vo );
+		}
 
-		MemberVO vo = new MemberVO(0, name, id, pwd, phone, email, "준회원", "n", "n");
-		MemberDAO.getInstance().insert( vo );
 
 		response.sendRedirect("/member/member_login.jsp");
 	}
-} 
+}

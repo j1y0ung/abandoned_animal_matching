@@ -11,10 +11,12 @@ public class Shelter {
 	private int vetPersonCnt; // 수의사인원수
 	private String weekOprStime; // 평일운영시작시각
 	private String weekOprEtime; // 평일운영종료시각
-	
+	private String weekendOprStime; // 주말운영시작시각
+	private String weekendOprEtime; // 주말운영종료시각
 	public Shelter() {}
 	public Shelter(String careAddr, String careNm, String careTel, String closeDay, double lat, double lng,
-			String saveTrgtAnimal, int vetPersonCnt, String weekOprStime, String weekOprEtime) {
+			String saveTrgtAnimal, int vetPersonCnt, String weekOprStime, String weekOprEtime, 
+			String weekendOprStime, String weekendOprEtime) {
 		super();
 		this.careAddr = careAddr;
 		this.careNm = careNm;
@@ -26,6 +28,8 @@ public class Shelter {
 		this.vetPersonCnt = vetPersonCnt;
 		this.weekOprStime = weekOprStime;
 		this.weekOprEtime = weekOprEtime;
+		this.weekendOprStime = weekendOprStime;
+		this.weekendOprEtime = weekendOprEtime;
 	}
 
 	public String getCareAddr() {
@@ -108,6 +112,18 @@ public class Shelter {
 		this.weekOprEtime = weekOprEtime;
 	}
 
+	public String getWeekendOprStime() {
+		return weekendOprStime;
+	}
+	public void setWeekendOprStime(String weekendOprStime) {
+		this.weekendOprStime = weekendOprStime;
+	}
+	public String getWeekendOprEtime() {
+		return weekendOprEtime;
+	}
+	public void setWeekendOprEtime(String weekendOprEtime) {
+		this.weekendOprEtime = weekendOprEtime;
+	}
 	@Override
 	public String toString() {
 		return "Shelter [careAddr=" + careAddr + ",\n careNm=" + careNm + ",\n careTel=" + careTel + ",\n closeDay="

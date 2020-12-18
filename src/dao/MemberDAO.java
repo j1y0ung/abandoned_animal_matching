@@ -35,6 +35,17 @@ public class MemberDAO {
 		return list;
 	}
 	
+	//보호소 관리자 신청자 목록 조회용
+	public List<MemberVO> selectAdmin(){
+		List<MemberVO> list = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		list = sqlSession.selectList("member.member_careAdmin");
+		
+		sqlSession.close();
+		return list;
+	}
+	
 	public int insert(MemberVO vo) {
 		int res = 0;
 		
@@ -66,6 +77,32 @@ public class MemberDAO {
 		
 		SqlSession sqlSession = factory.openSession();
 		res = sqlSession.update("member.member_update_manager", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+	
+	public int updateCareAdmin(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_careadmin_update", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+	
+	public int updateIsAdmin(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_isadmin_update", vo);
 		
 		//내용 변경 갱신하기
 		sqlSession.commit();
@@ -151,4 +188,31 @@ public class MemberDAO {
 		
 		return res;
 	}
+	
+	public int updateCatFail(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_update_catFail", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+	
+	public int updateDogFail(MemberVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("member.member_update_dogFail", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+
 }

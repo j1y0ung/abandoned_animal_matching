@@ -50,11 +50,17 @@
 			var membership = '<c:out value="${membership}"/>';
 			
 			if (kind == 'cat') {
-				alert("서비스 준비중입니다");
+				//alert("서비스 준비중입니다");
+				if(membership == "준회원" || membership == "예비견주") {
+					alert("해당 서비스 이용 권한이 없습니다.");
+				}
+				else {
+					location.href = "/matching/matching_cat.jsp";
+				}
 			}
 			else{
 				if(membership == "준회원" || membership == "예비집사") {
-					alert("강아지 매칭 권한이 없습니다.");
+					alert("해당 서비스 이용 권한이 없습니다.");
 				}
 				else {
 					location.href = "/matching/matching_dog.jsp";

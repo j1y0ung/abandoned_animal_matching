@@ -69,6 +69,67 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
+  	<script>
+		function check(kind) {
+			var membership = "${membership}";
+
+			if (kind == "cat") {
+				var catFailNum = "${catFailNum}";
+				catFailNum = parseInt(catFailNum);
+				var catTimeFinish = "${catTimeFinish}";
+				
+				if(membership=="준회원" || membership=="예비견주") {
+					if (catFailNum == 0) {
+						alert("첫 번째 고양이 시험");
+						location.href = "/test/cat/form";
+					} else if (catFailNum == 1) {
+						if (catTimeFinish=="y") {
+							alert("첫 번째 재시험");
+							location.href = "/test/cat/form";
+						} else {
+							alert("시험 응시일로부터 24시간이 지나야 재응시할 수 있습니다.");
+						}
+					} else {
+						if (catTimeFinish=="y") {
+							alert(catFailNum + " 번째 재시험");
+							location.href = "/test/cat/form";
+						} else {
+							alert("시험 응시일로부터 " + (catFailNum-1)*3 + "개월이 지나야 재응시할 수 있습니다.");
+						} 
+					}
+				} else {
+					alert("시험 응시 자격이 없습니다.");
+				}
+			} else {
+				var dogFailNum = "${dogFailNum}";
+				dogFailNum = parseInt(dogFailNum);
+				var dogTimeFinish = "${dogTimeFinish}";
+				
+				if(membership=="준회원" || membership=="예비집사") {
+					if (dogFailNum == 0) {
+						alert("첫 번째 강아지 시험");
+						location.href = "/test/dog/form";
+					} else if (dogFailNum == 1) {
+						if (dogTimeFinish=="y") {
+							alert("첫 번째 재시험");
+							location.href = "/test/dog/form";
+						} else {
+							alert("시험 응시일로부터 24시간이 지나야 재응시할 수 있습니다.");
+						}
+					} else {
+						if (dogTimeFinish=="y") {
+							alert(dogFailNum + " 번째 재시험");
+							location.href = "/test/dog/form";
+						} else {
+							alert("시험 응시일로부터 " + (dogFailNum-1)*3 + "개월이 지나야 재응시할 수 있습니다.");
+						} 
+					}
+				} else {
+					alert("시험 응시 자격이 없습니다.");
+				}
+			}
+		}
+	</script>
   </head>
   <body>
     <jsp:include page="/main/index.jsp"/>
@@ -76,8 +137,8 @@
         <div class="text-center">
             <br>
             <p>입양테스트를 원하는 동물의 종을 선택해주세요.</p><br/>
-            <a class="btn btn-outline-primary btn-lg" href="<c:url value='/test/dog/form' />">강아지<br/>&#x1F436</a>
-            <a class="btn btn-outline-success btn-lg" href="<c:url value='/test/cat/form' />">고양이<br/>&#x1F63A</a>
+            <a class="btn btn-outline-primary btn-lg" onclick="check('dog');">강아지<br/>&#x1F436</a>
+            <a class="btn btn-outline-success btn-lg" onclick="check('cat');">고양이<br/>&#x1F63A</a>
             <br/><br/><br/>
         </div>
   </div>

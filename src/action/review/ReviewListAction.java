@@ -42,7 +42,7 @@ public class ReviewListAction extends HttpServlet {
 		// util 패키지에 Paging 클래스 생성
 		Paging paging = new Paging( pageSize, totalSize, currentPage );
 		// 생성자에서 3개의 값을 가지고 calc() 메서드를 수행하여 모든 멤버변수의 값이 만들어졌다.
-		System.out.println(paging);
+//		System.out.println(paging);
 
 		// startNo, endNo를 가지고 쿼리문을 수행해야 하는데, 파라미터가 여러개라서 HashMap 사용
 		HashMap<String, String> map = new HashMap<>();
@@ -70,4 +70,4 @@ public class ReviewListAction extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("/review/review_list.jsp");
 		disp.forward(request, response);
 	}
-} 
+}

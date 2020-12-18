@@ -97,7 +97,7 @@ function searchQuestion() {
 	form.submit();
 }
 function createQuestion(targetUri) {
-	var mem_id = '<%=(String)session.getAttribute("mem_id")%>';
+	var mem_id = "${mem_id}";
 	if (mem_id == "null") {
 		alert("로그인이 필요합니다.");
 		return false;

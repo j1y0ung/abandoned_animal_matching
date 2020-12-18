@@ -46,8 +46,9 @@ public class DispatcherServlet extends HttpServlet {
                 rd.forward(request, response);		// forward to the view page
             }                   
         } catch (Exception e) {
-            logger.error("Exception : {}", e);
-            throw new ServletException(e.getMessage());
+        	System.out.println("오류남");
+//            logger.error("Exception : {}", e);
+//            throw new ServletException(e.getMessage());
         }
     }
 }

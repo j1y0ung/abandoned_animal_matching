@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import service.MyBatisConnector;
 import vo.MatchingVO;
 import vo.MemberVO;
+import vo.ReviewVO;
 
 // 수정중
 public class MatchingDAO {
@@ -37,6 +38,27 @@ public class MatchingDAO {
 		return list;
 	}
 	
+	public List<MatchingVO> careAdminList(String careName){
+		List<MatchingVO> list = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		list = sqlSession.selectList("matching.matching_admin_list", careName);
+		
+		sqlSession.close();
+		return list;
+	}
+	
+	public MatchingVO selectOne(String mem_id) {
+		MatchingVO vo = null;
+
+		SqlSession sqlSesson = factory.openSession();
+		vo = sqlSesson.selectOne("matching.matching_list_one", mem_id);
+
+		sqlSesson.close();
+
+		return vo;
+	}
+	
 	public int insert(MatchingVO vo) {
 		int res = 0;
 		
@@ -62,15 +84,28 @@ public class MatchingDAO {
 //		return vo;
 //	}
 //	
-//	public int delete(String mem_id) {
-//		int res = 0;
-//		
-//		SqlSession sqlSession = factory.openSession();
-//		res=sqlSession.delete("matching.matching_delete", mem_id);
-//		
-//		sqlSession.commit();
-//		sqlSession.close();
-//		
-//		return res;
-//	}
+	public int delete(MatchingVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res=sqlSession.delete("matching.matching_delete", vo);
+		
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
+	
+	public int update(MatchingVO vo) {
+		int res = 0;
+		
+		SqlSession sqlSession = factory.openSession();
+		res = sqlSession.update("matching.matching_update", vo);
+		
+		//내용 변경 갱신하기
+		sqlSession.commit();
+		sqlSession.close();
+		
+		return res;
+	}
 }

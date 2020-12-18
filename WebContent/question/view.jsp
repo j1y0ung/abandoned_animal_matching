@@ -94,7 +94,7 @@ function replyRemove() {
 	return confirm("정말 삭제하시겠습니까?");		
 }
 function createReply(f) {
-	var mem_id = '<%=(String)session.getAttribute("mem_id")%>';
+	var mem_id = "${mem_id}";
 	if (mem_id == "null") {
 		alert("로그인이 필요합니다.");
 		return false;

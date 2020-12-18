@@ -54,12 +54,6 @@
 <body>
 	<jsp:include page="/main/index.jsp"/>
 	
-	<div class="regi">
-		<c:if test="${sessionScope.membership !='준회원' && sessionScope.membership !='비회원'}">
-			<input type="button" id="reg" value="입양후기등록" onclick="location.href='/review/review_reg_form.jsp';">
-		</c:if>
-	</div>
-	
 	<table align="center" style="border-collapse : collapse">
 		<c:if test="${ empty list }">
 			<tr>

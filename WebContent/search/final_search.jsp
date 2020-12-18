@@ -182,7 +182,6 @@
 </head>
 
 <body>
-<jsp:include page="/main/index.jsp"/>
 <form method="post" name="testForm" id="testForm" action="<c:url value='/test/main' />">
 	<input type="hidden" name="noticeNo" value="전국" />
 	<input type="hidden" name="processState" value="보호중" />

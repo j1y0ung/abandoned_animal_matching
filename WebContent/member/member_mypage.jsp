@@ -1,6 +1,8 @@
+<%@page import="vo.MatchingVO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="vo" value="${requestScope.vo}" />
+<c:set var="matvo" value="${requestScope.matvo}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,20 +14,22 @@
 	
 	<script>
 		function send( f ){
-			f.action = "/member/update";
+			f.action = "/matching/list";
 			f.method = "POST";
 			f.submit();
 		}
 		
-		function reg(mem_id) {
-			alert("입양신청");
+		function update(f) {
+			f.action = "/member/update";
+			f.method = "POST";
+			f.submit();
 		}
 	</script>
 </head>
-	
+
 <body>
 	<jsp:include page="/main/index.jsp"/>
-	
+
 	<div class="container">
 		<div id="l-margin">
 			<br><p id="test-toptext-p" class="text-center"> 내 정보 </p>
@@ -56,10 +60,33 @@
 						<td>${ vo.mem_membership }</td>
 					</tr>
 					<tr>
+						<td>입양 신청 현황</td>
+						<td>
+							<c:if test="${ matvo.mat_img != null }">
+								<img src="${matvo.mat_img }" style="width:100px; height:130px;"/><br>
+								${matvo.mat_kind}<br>
+								상태: ${matvo.mat_state}<br>
+								<c:if test="${ matvo.mat_state == '승인완료' }">
+									<input type="button" value="입양후기작성" onclick="location.href='/review/review_reg_form.jsp'">
+								</c:if>
+							</c:if>
+						</td>
+					</tr>
+					<c:if test="${ vo.mem_membership == '보호소관리자' }">
+						<tr>
+							<td colspan="2">
+								<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
+								<input type="hidden" name="code" value="adm">
+								<input type="button" value="입양신청관리" onclick="send(this.form);">
+							</td>
+						</tr>
+					</c:if>
+					<tr>
 						<td colspan="2">
-							<input type="hidden" name="updateCode" value="personal">
-							<input type="button" value="회원정보 수정" onclick="send( this.form );">
-							<input type="reset" value="취소" onclick="location.href='/member/mypage'">
+							<form>
+								<input type="hidden" name="updateCode" value="personal">
+								<input type="button" value="수정" onclick="update(this.form);">
+							</form>
 						</td>
 					</tr>
 				</table>

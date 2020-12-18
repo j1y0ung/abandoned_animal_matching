@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>입양 신청 목록</title>
+	<title>개별 보호소 입양신청목록</title>
 	
 	<script type="text/javascript" src="../js/httpRequest.js"></script>
 	<script>
@@ -33,7 +33,7 @@
 				else{
 					alert("성공적으로 처리되었습니다.");
 				}
-				location.href="/adminonly";
+				location.href="/matching/matching_adminlist.jsp";
 			}
 		}
 		
@@ -63,13 +63,13 @@
 					alert("성공적으로 처리되었습니다.");
 				}
 				
-				location.href="/adminonly";
+				location.href="/matching/matching_adminlist.jsp";
 			}
 		}
 	</script>
 	<style>
 		table{
-			width: 100%;
+			width: 1000px;
 		}
 		table.type09 {
 			border-collapse: collapse;
@@ -99,6 +99,8 @@
 </head>
 	
 <body>
+	<jsp:include page="/main/index.jsp"/>
+	
 	<div id="l-margin">
 		<br><p id="test-toptext-p" class="text-center"></p>
 		<table class="type09">

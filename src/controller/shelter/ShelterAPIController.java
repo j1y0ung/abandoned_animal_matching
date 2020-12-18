@@ -1,9 +1,5 @@
 package controller.shelter;
 
-import java.io.InputStreamReader;
-import java.io.StringReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
 import java.net.URLEncoder;
 
 import javax.servlet.http.HttpServletRequest;
@@ -13,126 +9,94 @@ import model.Shelter;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-//import org.xmlpull.v1.XmlPullParser;
-//import org.xmlpull.v1.XmlPullParserFactory;
 
 import controller.Controller;
 
-import java.io.BufferedReader;
-//         수정중 !!
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 public class ShelterAPIController implements Controller {
 	private static final Logger logger = LoggerFactory.getLogger(ShelterAPIController.class);
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
     	String careNm = request.getParameter("careNm");
     	String careAddr = request.getParameter("careAddr");
-        StringBuilder urlBuilder = new StringBuilder("http://openapi.animal.go.kr/openapi/service/rest/animalShelterSrvc/shelterInfo"); /*URL*/
+
+    	StringBuilder urlBuilder = new StringBuilder("http://openapi.animal.go.kr/openapi/service/rest/animalShelterSrvc/shelterInfo"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=HbM57h9b65o6N5ZgQKu0EQFN627NiWx6KrFAmK3diIrALrTzWqoJdH4243ZW%2Fw81P3CsfVwBvEbvohTeCT3jlw%3D%3D"); /*Service Key*/
-        //urlBuilder.append("&" + URLEncoder.encode("care_reg_no","UTF-8") + "=" + URLEncoder.encode("326999201900001", "UTF-8")); /*보호센터등록번호*/
         urlBuilder.append("&" + URLEncoder.encode("care_nm","UTF-8") + "=" + URLEncoder.encode(careNm, "UTF-8")); /*동물보호센터명*/
-        
-        URL url = new URL(urlBuilder.toString());
-        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-        conn.setRequestMethod("GET");
-        conn.setRequestProperty("Content-type", "application/json");
-        System.out.println("Response code: " + conn.getResponseCode());
-        
-        BufferedReader rd;
-        if(conn.getResponseCode() >= 200 && conn.getResponseCode() <= 300) {
-            rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-        } else {
-            rd = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+        try {
+	        String url = urlBuilder.toString();
+	        DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+	        DocumentBuilder dBuilder  = dbFactory.newDocumentBuilder();
+	        Document doc = dBuilder.parse(url);
+	        
+	        doc.getDocumentElement().normalize();
+	        System.out.println("Root Element : "+ doc.getDocumentElement().getNodeName());
+	        
+	        Shelter st = null;
+	        NodeList nodeList = doc.getElementsByTagName("item");
+	        for(int temp =0; temp<nodeList.getLength(); temp++) {
+	        	Node nNode = nodeList.item(temp);
+	        	 if(nNode.getNodeType()==Node.ELEMENT_NODE) {
+	        		 Element element = (Element) nNode;
+	        		 if (!getTagValue("careAddr", element).equals(careAddr)) {
+	        			 continue;
+	        		 }
+	        		 st = new Shelter();
+	        		 st.setCareNm(careNm);
+	        		 st.setCareAddr(careAddr);
+	        		 if (getTagValue("saveTrgtAnimal", element) != null) {
+	        			 st.setSaveTrgtAnimal(getTagValue("saveTrgtAnimal", element));
+	        		 }
+	        		 if (getTagValue("lat", element) != null) {
+	        			 st.setLat(Double.valueOf(getTagValue("lat", element)));
+	        		 }
+	        		 if (getTagValue("lng", element) != null) {
+	        			 st.setLng(Double.valueOf(getTagValue("lng", element)));
+	        		 }
+	        		 if (getTagValue("weekOprStime", element) != null) {
+	        			 st.setWeekOprStime(getTagValue("weekOprStime", element));
+	        		 }
+	        		 if (getTagValue("weekOprEtime", element) != null) {
+	        			 st.setWeekOprEtime(getTagValue("weekOprEtime", element));
+	        		 }
+	        		 if (getTagValue("weekendOprStime", element) != null) {
+	        			 st.setWeekendOprStime(getTagValue("weekendOprStime", element));
+	        		 }
+	        		 if (getTagValue("weekendOprEtime", element) != null) {
+	        			 st.setWeekendOprEtime(getTagValue("weekendOprEtime", element));
+	        		 }
+	        		 if (getTagValue("closeDay", element) != null) {
+	        			 st.setCloseDay(getTagValue("closeDay", element));
+	        		 }
+	        		 if (getTagValue("vetPersonCnt", element) != null) {
+	        			 st.setVetPersonCnt(Integer.parseInt(getTagValue("vetPersonCnt", element)));
+	        		 }
+	        		 if (getTagValue("careTel", element) != null) {
+	        			 st.setCareTel(getTagValue("careTel", element));
+	        		 }
+	        	 }
+	        }
+	        System.out.println(st);
+	        request.setAttribute("st", st);
         }
-        String data="";
-        String line;
-        while ((line = rd.readLine()) != null) {
-            data += line;
-        }
-        rd.close();
-        conn.disconnect();
-        
-        String tagType = "";
-//        XmlPullParserFactory factory = XmlPullParserFactory.newInstance();
-//        XmlPullParser parser = factory.newPullParser();
-//        Shelter st = null;
-//        try {
-//	        parser.setInput(new StringReader(data));
-//	        int eventType = parser.getEventType();
-//	        while (eventType != XmlPullParser.END_DOCUMENT) {
-//	        	switch(eventType) {
-//		        	case XmlPullParser.END_DOCUMENT:
-//		        		break;
-//		        	case XmlPullParser.START_DOCUMENT:
-//		        		break;
-//		        	case XmlPullParser.START_TAG:
-//		        		String tag = parser.getName();
-//		        		if (tag.equals("careAddr")) {
-//		        			tagType = "careAddr";
-//		        		} else if (tag.equals("careNm")) {
-//		        			tagType = "careNm";
-//		        		} else if (tag.equals("careTel")) {
-//		        			tagType = "careTel";
-//		        		} else if (tag.equals("closeDay")) {
-//		        			tagType = "closeDay";
-//		        		} else if (tag.equals("lat")) {
-//		        			tagType = "lat";
-//		        		} else if (tag.equals("lng")) {
-//		        			tagType = "lng";
-//		        		} else if (tag.equals("saveTrgtAnimal")) {
-//		        			tagType = "saveTrgtAnimal";
-//		        		} else if (tag.equals("vetPersonCnt")) {
-//		        			tagType = "vetPersonCnt";
-//		        		} else if (tag.equals("weekOprStime")) {
-//		        			tagType = "weekOprStime";
-//		        		} else if (tag.equals("weekOprEtime")) {
-//		        			tagType = "weekOprEtime";
-//		        		}
-//		        		break;
-//		        	case XmlPullParser.END_TAG:
-//		        		break;
-//		        	case XmlPullParser.TEXT:
-//		        		switch (tagType) {
-//		        			case "careAddr":
-//		        				if (careAddr.equals(parser.getText())) {
-//		        					st = new Shelter();
-//		        					st.setCareAddr(parser.getText());
-//		        				}
-//		        				break;
-//		        			case "careNm":
-//		        				st.setCareNm(parser.getText());
-//		        				break;
-//		        			case "careTel":
-//		        				st.setCareTel(parser.getText());
-//		        				break;
-//		        			case "closeDay":
-//		        				st.setCloseDay(parser.getText());
-//		        				break;
-//		        			case "lat":
-//		        				st.setLat(Double.parseDouble(parser.getText()));
-//		        				break;
-//		        			case "lng":
-//		        				st.setLng(Double.parseDouble(parser.getText()));
-//		        				break;
-//		        			case "saveTrgtAnimal":
-//		        				st.setSaveTrgtAnimal(parser.getText());
-//		        				break;
-//		        			case "vetPersonCnt":
-//		        				st.setVetPersonCnt(Integer.parseInt(parser.getText()));
-//		        				break;
-//		        			case "weekOprStime":
-//		        				st.setWeekOprStime(parser.getText());
-//		        				break;
-//		        			case "weekOprEtime":
-//		        				st.setWeekOprEtime(parser.getText());
-//		        				break;	
-//		        		}
-//		        	tagType = "";
-//		        	break;
-//	        	}
-//	        	eventType = parser.next();
-//	        }
-//        } catch (Exception e) { e.printStackTrace(); }
-//        if (st != null) {request.setAttribute("st", st);}
-        return "/shelter/info.jsp";
-    }
+        catch (Exception e) {
+        	e.printStackTrace();
+	    }
+        return "/shelter/shelter_info.jsp";
+	}
+	private static String getTagValue(String tag, Element ele) {
+		try {
+			NodeList nodeList = ele.getElementsByTagName(tag).item(0).getChildNodes();
+			Node nValue = (Node) nodeList.item(0);
+			if(nValue == null) {
+				return null;
+			}
+			return nValue.getNodeValue();
+		} catch (Exception e) {return null;}
+	}
 }

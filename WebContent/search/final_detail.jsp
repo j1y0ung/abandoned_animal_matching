@@ -182,7 +182,6 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 </head>
 <body>
-<jsp:include page="/main/index.jsp"/>
 <form method="post" name="testForm" id="testForm" action="<c:url value='/test/main' />">
 	<input type="hidden" name="noticeNo" value="전국" />
 	<input type="hidden" name="processState" value="보호중" />
@@ -284,7 +283,13 @@
                         <h6 class="mb-1"><strong>|&nbsp;특징</strong>&emsp;&emsp;<%=request.getParameter("specialMark")%></h6>
                         <br>
                         <h6 class="mb-1"><strong>|&nbsp;발견장소</strong>&emsp;&emsp;<%=request.getParameter("orgNm")%> <%=request.getParameter("happenPlace")%> 발견</h6>
-                        <h6 class="mb-1"><strong>|&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%></h6>
+                        <h6 class="mb-1"><strong>|&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%>&nbsp;
+                        <a class="btn btn-warning" href="<c:url value='/shelter/info'>
+						<c:param name='careNm' value='<%=request.getParameter("careNm") %>'/>
+						<c:param name='careAddr' value='<%=request.getParameter("careAddr") %>'/>
+						</c:url>">
+						보호소 정보 보기</a></h6>
+                        <h6 class="mb-1"><strong>|&nbsp;보호소 주소</strong>&emsp;&emsp;<%=request.getParameter("careAddr")%></h6>
                         <h6 class="mb-1"><strong>|&nbsp;보호소 전화번호</strong>&emsp;&emsp;<%=request.getParameter("careTel")%></h6>
                         <h6 class="mb-1"><strong>|&nbsp;접수일</strong>&emsp;&emsp;<%=request.getParameter("happenDate")%></h6>
                 	</div>

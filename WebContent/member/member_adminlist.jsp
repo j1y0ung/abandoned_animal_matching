@@ -4,17 +4,17 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원 목록 페이지</title>
+	<title>보호소 관리자 신청자 목록</title>
 	
 	<script>
-		function del(mem_id) {
-			if(confirm("해당 회원을 삭제하시겠습니까?")==false){
+		function reject(mem_id) {
+			if(confirm("승인 거부하시겠습니까?")==false){
 				return;
 			}
 			
 			//ajax를 통해 삭제 처리
-			var url = "/member/delete";
-			var param = "mem_id="+mem_id;
+			var url = "/admin/update";
+			var param = "updateCode=1&mem_id="+mem_id;
 			
 			sendRequest(url,param,delResultFn,"POST");
 		}
@@ -34,17 +34,13 @@
 			}
 		}
 		
-		function update(f) {
-			if(confirm("회원정보를 수정하시겠습니까?")==false){
+		function update(mem_id) {
+			if(confirm("승인 하시겠습니까?")==false){
 				return;
 			}
 			
-			var updateCode = f.updateCode.value.trim();
-			var mem_id = f.mem_id.value.trim();
-			var mem_membership = f.mem_membership.value.trim();
-			
-			var url = "/member/update";
-			var param = "updateCode=" + updateCode + "&mem_id=" + mem_id + "&mem_membership=" + mem_membership;
+			var url = "/admin/update";
+			var param = "updateCode=2&mem_id="+mem_id;
 			
 			sendRequest(url,param,updateResultFn,"POST");
 		}
@@ -104,38 +100,30 @@
 			<table class="type09">
 				<thead>
 					<tr>
+						<th scope="cols">보호소명</th>
 						<th scope="cols">이름</th>
 						<th scope="cols">아이디</th>
-						<th scope="cols">비밀번호</th>
 						<th scope="cols">전화번호</th>
 						<th scope="cols">이메일</th>
 						<th scope="cols">가입일</th>
-						<th scope="cols">회원등급</th>
+						<th scope="cols">..</th>
 					</tr>
 				</thead>
 				<tbody>
 					<c:forEach var="vo" items="${ list }">
 						<tr>
+							<td>${ vo.mem_careAdmin }</td>
 							<td>${ vo.mem_name }</td>
 							<td>${ vo.mem_id }</td>
-							<td>${ vo.mem_pwd }</td>
 							<td>${ vo.mem_phone }</td>
 							<td>${ vo.mem_email }</td>
 							<td>${ vo.mem_regDate }</td>
-							<td><!-- 관리자가 회원등급 직접 바꿔줄 수 있음 -->
+							<td>
 								<form>
-									<select name="mem_membership">
-										<option value="" selected disabled hidden>${ vo.mem_membership }</option>
-									  	<option value="준회원">준회원</option>
-									  	<option value="예비집사">예비집사</option>
-									  	<option value="예비견주">예비견주</option>
-									  	<option value="댕냥마스터">댕냥마스터</option>
-									  	<option value="보호소관리자">보호소관리자</option>
-									</select>
 									<input type="hidden" name="mem_id" value="${vo.mem_id }">
 									<input type="hidden" name="updateCode" value="manager">
-									<input type="button" value="수정" onclick="update(this.form);">
-									<input type="button" value="삭제" onclick="del('${vo.mem_id}');">
+									<input type="button" value="승인" onclick="update('${vo.mem_id}');">
+									<input type="button" value="거절" onclick="reject('${vo.mem_id}');">
 								</form>
 							</td>
 						</tr>

@@ -9,6 +9,11 @@ public class MemberSessionUtils {
         String mem_id = (String)session.getAttribute(MEMBER_SESSION_KEY);
         return mem_id;
     }
+    
+    public static String getMembership(HttpSession session) {
+        String membership = (String)session.getAttribute("membership");
+        return membership;
+    }
 
     public static boolean hasLogined(HttpSession session) {
         if (getLoginMemberId(session) != null) {

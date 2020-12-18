@@ -3,19 +3,21 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-
 	<title>회원가입 페이지</title>
 
 	<script src="../js/httpRequest.js"></script>
 	<script>
 		var b_idCheck = false;
-	
+		
 		function send( f ){
+			console.log("send!");
 			var id = f.id.value.trim();
 			var pwd = f.pwd.value.trim();
 			var name = f.name.value.trim();
 			var phone = f.phone.value.trim();
 			var email = f.email.value.trim();
+			var careAdmin = f.careAdmin.value.trim();
+			console.log(careAdmin);
 			
 			//유효성 체크
 			if( !b_idCheck ){
@@ -61,12 +63,18 @@
 				}
 				alert( json[1].id + "는 사용 가능한 아이디 입니다." );
 				b_idCheck = true;
-				
-				//사용 가능한 아이디라는것이 판별 되었으면, 더이상 변경이 불가능하도록 비활성화 처리
-				document.getElementById("id").readOnly = true;
 			}
 		}//resultFn()
+		function isChecked() {
+			document.getElementById('check_view_box').style.display='block';
+		}
 	</script>
+	
+	<style>
+	#inputCare {
+		width: 300px;
+	}
+	</style>
 </head>
 
 <body>
@@ -74,47 +82,25 @@
 
 	<div class="container">
 		<div id="l-margin">
-			<br><p id="test-toptext-p" class="text-center"> 회원가입 </p>
+			<br><p id="test-toptext-p" class="text-center"></p>
 			<form>
-				<table border="1">
-					<tr>
-						<th>아이디</th>
-						<td>
-							<input name="id" id="id">
-							<input type="button" value="중복체크" onclick="check_id();">
-						</td>
-					</tr>
-					<tr>
-						<th>비밀번호</th>
-						<td>
-							<input type="password" name="pwd">
-						</td>
-					</tr>
-					<tr>
-						<th>이름</th>
-						<td>
-							<input name="name">
-						</td>
-					</tr>
-					<tr>
-						<th>전화번호</th>
-						<td>
-							<input name="phone">
-						</td>
-					</tr>
-					<tr>
-						<th>이메일</th>
-						<td>
-							<input name="email">
-						</td>
-					</tr>
-					<tr>
-						<td colspan="2">
-							<input type="button" value="가입" onclick="send( this.form );">
-							<input type="reset" value="취소" onclick="location.href='/member/list'">
-						</td>
-					</tr>
-				</table>
+				아이디<br>
+				<input name="id" id="id">
+				<input type="button" value="중복체크" onclick="check_id();"><br>
+				비밀번호<br>
+				<input type="password" name="pwd"><br>
+				이름<br>
+				<input name="name"><br>
+				전화번호<br>
+				<input name="phone"><br>
+				이메일<br>
+				<input name="email"><br><br>
+				보호소 관리자입니다
+				<input id="yes" type="checkbox" onclick="isChecked();" value=1><br>
+				<input type="text" id="check_view_box" name="careAdmin" style="width:300px; display:none;" placeholder="보호소명을 정확히 입력해주세요" /><br><br>
+				
+				<input type="button" value="가입" onclick="send( this.form );">
+				<input type="reset" value="취소" onclick="location.href='/member/list'">
 			</form>
 		</div>
 	</div>
