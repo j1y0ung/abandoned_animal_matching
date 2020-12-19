@@ -19,20 +19,20 @@ public class TestTypeController implements Controller {
 	
 	@Override
     public String execute(HttpServletRequest request, HttpServletResponse response)	throws Exception {
-		if (MemberSessionUtils.hasLogined(request.getSession())) {
+		if (MemberSessionUtils.hasLogined(request.getSession())) {// 로그인 한 유저의 경우
 			String currentId = MemberSessionUtils.getLoginMemberId(request.getSession());
 			String membership = MemberSessionUtils.getMembership(request.getSession());
 			MemberVO vo = MemberDAO.getInstance().selectId(currentId);
 			
-			Date catFailDate = vo.getMem_catFailDate();
-			int catFailNum = vo.getMem_catFailNum();
-			Date dogFailDate = vo.getMem_dogFailDate();
-			int dogFailNum = vo.getMem_dogFailNum();
+			Date catFailDate = vo.getMem_catFailDate(); // 고양이 시험 탈락한 날짜
+			int catFailNum = vo.getMem_catFailNum(); // 고양이 시험 떨어진 횟수
+			Date dogFailDate = vo.getMem_dogFailDate(); // 강아지 시험 탈락한 날짜
+			int dogFailNum = vo.getMem_dogFailNum(); // 강아지 시험 탈락 횟수
 			String catTimeFinish = "n";
 			String dogTimeFinish = "n";
-			Date currentDate = new Date();
+			Date currentDate = new Date(); // 현재 시간
 			
-			if (catFailDate != null) {
+			if (catFailDate != null) { // 고양이 시험 탈락했던 사용자
 				System.out.println(catFailDate);
 				if (catFailNum == 1) { // 한 번 떨어지고 재응시의 경우
 					if (currentDate.getDate() - catFailDate.getDate() >= 1) { // 첫 응시일로부터 24시간이 지났을 경우
@@ -47,7 +47,7 @@ public class TestTypeController implements Controller {
 					}
 				}
 			}
-			if (dogFailDate != null) {
+			if (dogFailDate != null) {// 강아지 시험 탈락했던 사용자
 				System.out.println(dogFailDate);
 				if (dogFailNum == 1) { // 한 번 떨어지고 재응시의 경우
 					if (currentDate.getDate() - dogFailDate.getDate() >= 1) { // 첫 응시일로부터 24시간이 지났을 경우
@@ -70,7 +70,7 @@ public class TestTypeController implements Controller {
 			System.out.println("고양이시험 불합격 횟수: " + catFailNum);
 			System.out.println("강아지시험 불합격 횟수: " + dogFailNum);
 
-		} else {
+		} else { // 로그인 안 했을 경우 membership -> 비회원
 			request.setAttribute("membership", "비회원");
 		}
 		

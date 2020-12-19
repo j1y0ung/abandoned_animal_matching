@@ -16,6 +16,7 @@ public class CatTestFormController implements Controller {
 		// TODO Auto-generated method stub
 		
 		TestDAO dao = new TestDAO();
+		// db에서 고양이 시험 문제 + 선택지 + 정답 랜덤으로 15개 가지고 옴.
 		List<CatTest> catTestList = dao.catTestList();
 		request.setAttribute("catTestList", catTestList);
 	

@@ -89,9 +89,9 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
   </head>
   <script>
-  	var SetTime = 180;
+  	var SetTime = 180; // 3분 타이머 설정
   	
-  	function msg_time() {
+  	function msg_time() {  // 3분이 지나면 자동으로 폼 제출
   		m = Math.floor(SetTime / 60) + "분 " + (SetTime % 60) + "초";
   		var msg = "현재 남은 시간은 <font color='red'>" + m + "</font> 입니다.";
   		document.all.ViewTimer.innerHTML = msg;
@@ -113,6 +113,7 @@
             <div id="ViewTimer"></div>
             <br>
             <form method="POST" name="form" action="<c:url value='/test/score' />">
+            	<!-- 마음가짐 5문제 -> 고정 문제 -->
                 <br><p id="test-text-p"> / 마음가짐 / </p><br>
                 <p>1. 반려묘 키우는 데 발생하는 한 달 평균 10 - 20만원의 고정비를 낼 수 있다.</p>
                 <input type="radio" name="test1" value="1">O &nbsp;
@@ -130,6 +131,7 @@
                 <input type="radio" name="test5" value="1">O &nbsp;
                 <input type="radio" name="test5" value="0">X<br><p></p>
                 <c:set var="i" value="6"/>
+                <!-- db에서 가져온 랜덤 15문제 -->
                 <c:forEach var="catTest" items="${catTestList}">
                 	<p>${i}.${catTest.catQ}</p>
                 	<input type="radio" name="test${i}_@i" value="1">${catTest.catQ_1} <br>

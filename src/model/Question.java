@@ -4,14 +4,14 @@ import java.util.Date;
 
 public class Question { 
 	private int id; 
-	private String writer_id; 
-	private String content;
-	private String title;
-	private int hits;
-	private Date date;
-	private int total_reply;
-	private String secret;
-	private String filename;
+	private String writer_id; // 작성자 id
+	private String content; // 게시글 내용
+	private String title; // 게시글 제목
+	private int hits; // 게시글 조회수
+	private Date date; // 게시글 작성날짜
+	private int total_reply; // 게시글에 달린 댓글의 수
+	private String secret; // 비밀글 여부
+	private String filename; // 첨부파일 이름
 
 	public Question() { }
 	

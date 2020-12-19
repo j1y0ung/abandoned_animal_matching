@@ -25,6 +25,7 @@ public class ShelterAPIController implements Controller {
     	String careNm = request.getParameter("careNm");
     	String careAddr = request.getParameter("careAddr");
 
+    	// 동물보호센터 정보 조회서비스 API 에서 보호소 정보 가지고 옴.
     	StringBuilder urlBuilder = new StringBuilder("http://openapi.animal.go.kr/openapi/service/rest/animalShelterSrvc/shelterInfo"); /*URL*/
         urlBuilder.append("?" + URLEncoder.encode("ServiceKey","UTF-8") + "=HbM57h9b65o6N5ZgQKu0EQFN627NiWx6KrFAmK3diIrALrTzWqoJdH4243ZW%2Fw81P3CsfVwBvEbvohTeCT3jlw%3D%3D"); /*Service Key*/
         urlBuilder.append("&" + URLEncoder.encode("care_nm","UTF-8") + "=" + URLEncoder.encode(careNm, "UTF-8")); /*동물보호센터명*/

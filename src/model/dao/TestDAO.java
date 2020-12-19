@@ -13,7 +13,7 @@ public class TestDAO {
 	public TestDAO() {
 		jdbcUtil = new JDBCUtil();
 	}
-	
+	// dogtest테이블에서 강아지 시험문제, 선지4개, 정답 합쳐서 총 15개 무작위로 반환
 	public List<DogTest> dogTestList() {
 
 		List<DogTest> dogTestList = new ArrayList<DogTest>();
@@ -46,7 +46,7 @@ public class TestDAO {
 		return null;
 
 	}
-	
+	// CatTest테이블에서 고양이 시험문제, 선지4개, 정답 합쳐서 총 15개 무작위로 반환
 	public List<CatTest> catTestList() {
 
 		List<CatTest> catTestList = new ArrayList<CatTest>();

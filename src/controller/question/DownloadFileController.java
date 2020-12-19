@@ -12,7 +12,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import controller.Controller;
-import model.service.MemberManager;
+import model.service.QuestionManager;
 import model.Question;
 
 public class DownloadFileController implements Controller {
@@ -23,14 +23,15 @@ public class DownloadFileController implements Controller {
 		request.setCharacterEncoding("UTF-8");
 		int que_id = Integer.parseInt(request.getParameter("que_id"));
 		
-		MemberManager manager = MemberManager.getInstance();
+		QuestionManager manager = QuestionManager.getInstance();
+		// 해당 게시글 찾기
 		Question que = manager.findQuestion(que_id);
-		
+		// 해당 게시글의 첨부파일이름
 		String filename = que.getFilename();
 		
 		String uploadFileName = request.getSession().getServletContext().getRealPath("/images") + "/" + filename;
 		File downFile = new File(uploadFileName);
-		
+		// 파일 다운로드
 		if (downFile.exists() && downFile.isFile()) {
 			try {
 				long filesize = downFile.length();

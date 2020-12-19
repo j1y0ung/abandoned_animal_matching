@@ -2,12 +2,12 @@ package model;
 
 public class DogTest {
 	
-	String dogQ;
-	String dogQ_1;
-	String dogQ_2;
-	String dogQ_3;
-	String dogQ_4;
-	String dogA;		
+	String dogQ; // 강아지 문제
+	String dogQ_1; // 강아지 문제 선지1
+	String dogQ_2; // 강아지 문제 선지2
+	String dogQ_3; // 강아지 문제 선지3
+	String dogQ_4; // 강아지 문제 선지4
+	String dogA; // 강아지 문제 정답	
 	
 	public DogTest() {
 		super();

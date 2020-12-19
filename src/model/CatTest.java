@@ -2,12 +2,12 @@ package model;
 
 public class CatTest {
 
-	String catQ;
-	String catQ_1;
-	String catQ_2;
-	String catQ_3;
-	String catQ_4;
-	String catA;
+	String catQ; // 고양이 문제
+	String catQ_1; // 고양이 문제 선지1
+	String catQ_2; // 고양이 문제 선지2
+	String catQ_3; // 고양이 문제 선지3
+	String catQ_4; // 고양이 문제 선지4
+	String catA; // 해당 문제 정답
 	
 	public CatTest() {
 		super();

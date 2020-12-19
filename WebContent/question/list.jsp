@@ -97,6 +97,7 @@ function searchQuestion() {
 	form.submit();
 }
 function createQuestion(targetUri) {
+	// 로그인한 사용자가 아닐 경우 게시글 등록 불가
 	var mem_id = "${mem_id}";
 	if (mem_id == "null") {
 		alert("로그인이 필요합니다.");
@@ -130,6 +131,7 @@ function createQuestion(targetUri) {
 		</c:url>">
 	조회순&nbsp;</a>
 	<div class="float-right"> 
+	<!--게시글 검색 --> 
 	 <form class="form-inline" name="form" method="POST" action="<c:url value='/question/search' />"> 
  		<div class="form-group">
  			<select class="form-control" name="categories">
@@ -161,6 +163,7 @@ function createQuestion(targetUri) {
 					<c:set var="i" value="${i+1}"/>
 					<th scope="row">${i}</th>
 					<td>
+						<!-- 게시글 제목 클릭하면 게시글 id와 작성자 id와 비밀글 여부 파라미터로 전달 -->
 						<a href="<c:url value='/question/view'>
 							<c:param name='que_id' value='${que.id}'/>
 							<c:param name='que_writer_id' value='${que.writer_id}'/>

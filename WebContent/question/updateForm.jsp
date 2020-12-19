@@ -121,6 +121,7 @@ function queModify() {
 		  <div class="row-lg-10">
             <div class="form-group">
 				<input type="file" class="form-control" name="filename" placeholder="파일 선택">
+				<!-- 기존 게시글에 첨부파일이 존재했을 경우 -->
 				<c:if test="${que.filename ne null}">
 					기존 첨부파일: <a href="<c:url value='/question/downloadfile'>
                 	<c:param name='que_id' value='${que.id}'/>

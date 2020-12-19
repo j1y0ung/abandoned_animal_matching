@@ -4,11 +4,11 @@ import java.util.Date;
 
 public class Reply {
 	private int re_id;
-	private int que_id;
-	private String writer_id;
-	private Date reg_date;
-	private String content;
-	private int parent_re_id;
+	private int que_id; // 게시글 id
+	private String writer_id; // 댓글 작성자 id
+	private Date reg_date; // 댓글 작성 날짜
+	private String content; // 댓글 내용
+	private int parent_re_id; // 댓글의 부모 re_id -> 대댓글 기능
 	
 	public Reply() { };
 	

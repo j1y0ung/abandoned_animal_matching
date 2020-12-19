@@ -89,6 +89,7 @@
     <div class="container">
   		<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAd3t73rKM-WoSl9o7HA7Q-8pWLp1hWc&callback=initMap&region=kr"></script>
   		<script>
+  		<!-- API에서 가져온 보호소 정보중 lat, lng를 기준으로 구글맵 띄움 -->
    			function initMap() {
 	      		var site = { lat: ${st.lat} ,lng: ${st.lng} };
 	      		var map = new google.maps.Map(

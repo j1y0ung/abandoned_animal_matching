@@ -87,14 +87,15 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 
 <script>
-function questionRemove() {
+function questionRemove() {// 게시글 삭제
 	return confirm("정말 삭제하시겠습니까?");		
 }
-function replyRemove() {
+function replyRemove() {// 댓글 삭제
 	return confirm("정말 삭제하시겠습니까?");		
 }
-function createReply(f) {
+function createReply(f) {// 답변 등록
 	var mem_id = "${mem_id}";
+	// 세션에 등록된 mem_id가 null인 경우 -> (비로그인) 댓글 생성 불가
 	if (mem_id == "null") {
 		alert("로그인이 필요합니다.");
 		return false;
@@ -137,6 +138,7 @@ function createReply(f) {
                 	</c:url>">${que.filename}</a><br></c:if>
                 </div>
                 <div class="card-footer">
+                	<!-- 로그인한 사용자의 아이디와 게시글 작성자 아이디가 같을 경우에만 게시글의 수정, 삭제가 가능 -->
 				    <c:if test="${currentId eq que.writer_id}">
 				    	<a class="btn btn-success" href="<c:url value='/question/update'>
 				     		   <c:param name='que_id' value='${que.id}'/>
@@ -160,7 +162,9 @@ function createReply(f) {
     	<div class="col">
     		<c:set var="i" value="0"/>
     		<c:set var="j" value="0"/>
+    		<!-- 게시글에 달린 댓글들 출력  -->>
     		<c:forEach var="reply" items="${replyList}">
+    			<!-- 원댓글들만 출력 not 대댓글 -->
     			<c:if test="${reply.parent_re_id eq '0'}">
 					<div class="card border-light">
 				  	<div class="card-header">
@@ -173,6 +177,8 @@ function createReply(f) {
 					<div class="card-body">
 				    	<p class="card-text">${reply.content}</p>
 				    	<div class = "text-left">
+				    		<!-- (원댓글의 경우 not 대댓글)
+				    		로그인한 사용자의 아이디와 댓글 작성자의 아이디가 같을 경우 댓글 수정, 삭제 가능 -->
 				    		<c:if test="${currentId eq reply.writer_id}"><br>	
 				    			<div class="accordion" id="accordionEx">
 				    				<form name="updateForm_@i" method="POST" action="<c:url value='/reply/update' />">
@@ -195,6 +201,7 @@ function createReply(f) {
 								 	 </c:url>" onclick="return replyRemove();">삭제</a> &nbsp;	 
 							</c:if>
 				    	</div>
+				    	<!-- 대댓글 작성폼 -->
 				    	<div class="accordion" id="accordionExample">
 				    	<form name="secondReplyForm_@i" method="POST" action="<c:url value='/reply/create' />"> 
     	    				<input type="hidden" name="que_id" value="${que.id}"/>
@@ -212,7 +219,9 @@ function createReply(f) {
 					    </form>	 
 					    </div>
 					    <c:set var="i" value="${i+1}"/>
+					     <!-- 원댓글에 달린 대댓글 -->
 				    	<c:forEach var="secondReply" items="${replyList}">
+				    		<!-- 대댓글의 parent_re_id가 원댓글의 re_id인  경우, 원댓글 밑에 원댓글에 달린 대댓글 표시 -->
 							<c:if test="${secondReply.parent_re_id eq reply.re_id}">
 								<div class="col-11 pull-right">
 								<div class="card border-light">
@@ -226,6 +235,7 @@ function createReply(f) {
 								<div class="card-body">
 							    	<p class="card-text">${secondReply.content}</p><br>
 							    	<div class = "text-right">
+							    		<!-- 로그인한 사용자의 아이디와 대댓글 작성자의 아이디가 같을 경우 대댓글 수정, 삭제 가능 -->
 							    		<c:if test="${currentId eq secondReply.writer_id}">
 							    			<div class="accordion" id="accordionExam">
 							    				<form name="updateSecondForm_@i" method="POST" action="<c:url value='/reply/update' />">
@@ -267,6 +277,7 @@ function createReply(f) {
 <div class="container">
     <div class="row">
     	<div class="col">
+    		<!-- 원댓글을 달수 있는 폼 -->
     		<form name="firstReplyForm" method="POST" action="<c:url value='/reply/create' />"> 
     			<input type="hidden" name="que_id" value="${que.id}"/> 
     			<input type="hidden" name="parent_re_id" value="0"/>

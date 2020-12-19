@@ -8,12 +8,12 @@ import model.Reply;
 import model.dao.QuestionDAO;
 import model.dao.ReplyDAO;
 
-public class MemberManager {
-	private static MemberManager memberMan = new MemberManager();
+public class QuestionManager {
+	private static QuestionManager queMan = new QuestionManager();
 	private QuestionDAO queDAO;
 	private ReplyDAO replyDAO;
 
-	private MemberManager() {
+	private QuestionManager() {
 		try {
 			queDAO = new QuestionDAO();
 			replyDAO = new ReplyDAO();
@@ -22,8 +22,8 @@ public class MemberManager {
 		}			
 	}
 	
-	public static MemberManager getInstance() {
-		return memberMan;
+	public static QuestionManager getInstance() {
+		return queMan;
 	}
 	
 	public Question createQuestion(Question que) throws SQLException {

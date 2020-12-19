@@ -73,12 +73,12 @@
 		function check(kind) {
 			var membership = "${membership}";
 
-			if (kind == "cat") {
+			if (kind == "cat") { // 고양이 시험 선택한 경우
 				var catFailNum = "${catFailNum}";
-				catFailNum = parseInt(catFailNum);
-				var catTimeFinish = "${catTimeFinish}";
+				catFailNum = parseInt(catFailNum); // 고양이 시험 불합격한 횟수
+				var catTimeFinish = "${catTimeFinish}"; // y면 재시험 응시 가능
 				
-				if(membership=="준회원" || membership=="예비견주") {
+				if(membership=="준회원" || membership=="예비견주") { // 준회원과 예비견주의 경우에만 고양이 시험 응시 가능
 					if (catFailNum == 0) {
 						alert("첫 번째 고양이 시험");
 						location.href = "/test/cat/form";
@@ -100,12 +100,12 @@
 				} else {
 					alert("시험 응시 자격이 없습니다.");
 				}
-			} else {
+			} else {  // 강아지 시험 선택한 경우
 				var dogFailNum = "${dogFailNum}";
-				dogFailNum = parseInt(dogFailNum);
-				var dogTimeFinish = "${dogTimeFinish}";
+				dogFailNum = parseInt(dogFailNum); // 강아지 시험 불합격한 횟수
+				var dogTimeFinish = "${dogTimeFinish}"; // y면 재시험 응시 가능
 				
-				if(membership=="준회원" || membership=="예비집사") {
+				if(membership=="준회원" || membership=="예비집사") { // 준회원과 예비집사만 강아지 시험 응시 가능
 					if (dogFailNum == 0) {
 						alert("첫 번째 강아지 시험");
 						location.href = "/test/dog/form";
