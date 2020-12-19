@@ -25,4 +25,4 @@ public class AdminListAction extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("/member/member_adminlist.jsp");
 		disp.forward(request, response);
 	}
-}
+} 

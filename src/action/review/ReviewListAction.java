@@ -70,4 +70,4 @@ public class ReviewListAction extends HttpServlet {
 		RequestDispatcher disp = request.getRequestDispatcher("/review/review_list.jsp");
 		disp.forward(request, response);
 	}
-}
+} 

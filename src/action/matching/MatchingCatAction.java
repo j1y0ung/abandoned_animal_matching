@@ -30,7 +30,6 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import vo.MatchingSelectVO;
 import vo.MatchingVO;
 
 //고양이 매칭작업 후 매칭 결과 페이지로 이동

@@ -11,6 +11,7 @@ public class ReviewVO implements Serializable {
 	private String	rev_date;
 	private String	mem_id; // 입양후기 작성자 아이디
 	private String	mat_id; // 입양후기 대상 동물의 유기번호
+	private String rev_titleImg; // 리뷰 리스트에 보일 이미지
 
 	public ReviewVO() {
 	}
@@ -25,6 +26,19 @@ public class ReviewVO implements Serializable {
 		this.rev_date = rev_date;
 		this.mem_id = mem_id;
 		this.mat_id = mat_id;
+	}
+
+	public ReviewVO(int rev_idx, String rev_title, String rev_content, String rev_img, String rev_date, String mem_id,
+			String mat_id, String rev_titleImg) {
+		super();
+		this.rev_idx = rev_idx;
+		this.rev_title = rev_title;
+		this.rev_content = rev_content;
+		this.rev_img = rev_img;
+		this.rev_date = rev_date;
+		this.mem_id = mem_id;
+		this.mat_id = mat_id;
+		this.rev_titleImg = rev_titleImg;
 	}
 
 	public int getRev_idx() {
@@ -81,5 +95,13 @@ public class ReviewVO implements Serializable {
 
 	public void setMat_id(String mat_id) {
 		this.mat_id = mat_id;
+	}
+
+	public String getRev_titleImg() {
+		return rev_titleImg;
+	}
+
+	public void setRev_titleImg(String rev_titleImg) {
+		this.rev_titleImg = rev_titleImg;
 	}
 } 

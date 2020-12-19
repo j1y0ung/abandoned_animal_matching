@@ -65,6 +65,7 @@
 				b_idCheck = true;
 			}
 		}//resultFn()
+
 		function isChecked() {
 			document.getElementById('check_view_box').style.display='block';
 		}

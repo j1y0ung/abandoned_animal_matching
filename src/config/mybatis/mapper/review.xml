@@ -13,8 +13,10 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			#{rev_title},
 			#{rev_content},
 			#{rev_img},
+			#{rev_titleImg},
 			SYSDATE, 
-			null, null)
+			#{mem_id},
+			#{mat_id})
 	</insert>
 	
 	<select id="review_list_one" parameterType="int" resultType="review"> 

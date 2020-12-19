@@ -42,6 +42,9 @@ public class ReviewInsertAction extends HttpServlet {
 		// 파일 외의 파라미터 획득 (request 에선 찾을수 없음)
 		String rev_title = mr.getParameter("rev_title");
 		String rev_content = mr.getParameter("rev_content");
+		String rev_titleImg = mr.getParameter("titleImg");
+		String mem_id = mr.getParameter("mem_id");
+		String mat_id = mr.getParameter("mat_id");
 
 		System.out.println(rev_title);
 		System.out.println(rev_content);
@@ -51,6 +54,9 @@ public class ReviewInsertAction extends HttpServlet {
 		vo.setRev_title(rev_title);
 		vo.setRev_content(rev_content);
 		vo.setRev_img(rev_img);
+		vo.setRev_titleImg(rev_titleImg);
+		vo.setMem_id(mem_id);
+		vo.setMat_id(mat_id);
 
 		// DB에 insert
 		int res = ReviewDAO.getInstance().insert(vo);

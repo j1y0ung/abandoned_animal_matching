@@ -33,7 +33,6 @@ import org.apache.http.impl.client.HttpClients;
 import org.w3c.dom.Element;
 import org.xml.sax.InputSource;
 
-import vo.MatchingSelectVO;
 import vo.MatchingVO;
 
 // 강아지 매칭작업 후 매칭 결과 페이지로 이동

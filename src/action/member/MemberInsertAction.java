@@ -40,4 +40,4 @@ public class MemberInsertAction extends HttpServlet {
 
 		response.sendRedirect("/member/member_login.jsp");
 	}
-}
+} 

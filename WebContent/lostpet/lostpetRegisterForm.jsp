@@ -1,5 +1,6 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html lang="en">
@@ -133,7 +134,9 @@
 	        <br/><br/>
 	        <button type="button" class="btn btn-light" onClick="lostPetCreate()">확인</button>
 	        <br/><br/>
-	        <a href="<c:url value='/lostpet/list' />" class="btn btn-light">진행상황보기</a>
+	        <c:if test="${ sessionScope.mem_id == 'admin' }">
+	        	<a href="<c:url value='/lostpet/list' />" class="btn btn-light">진행상황보기</a>
+	        </c:if>
             </form>
         </div>
   </div>

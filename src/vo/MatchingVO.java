@@ -36,24 +36,6 @@ public class MatchingVO implements Serializable {
 
 	public MatchingVO(int mat_idx, String mat_id, String mat_kind, String mat_sex, String mat_age, String mat_color,
 			String mat_size, String mat_detail, String mat_img, String mat_careName, String mat_careAddress,
-			String mat_tel) {
-		super();
-		this.mat_idx = mat_idx;
-		this.mat_id = mat_id;
-		this.mat_kind = mat_kind;
-		this.mat_sex = mat_sex;
-		this.mat_age = mat_age;
-		this.mat_color = mat_color;
-		this.mat_size = mat_size;
-		this.mat_detail = mat_detail;
-		this.mat_img = mat_img;
-		this.mat_careName = mat_careName;
-		this.mat_careAddress = mat_careAddress;
-		this.mat_tel = mat_tel;
-	}
-
-	public MatchingVO(int mat_idx, String mat_id, String mat_kind, String mat_sex, String mat_age, String mat_color,
-			String mat_size, String mat_detail, String mat_img, String mat_careName, String mat_careAddress,
 			String mat_tel, String mem_id) {
 		super();
 		this.mat_idx = mat_idx;
@@ -110,6 +92,24 @@ public class MatchingVO implements Serializable {
 		this.mem_id = mem_id;
 		this.mat_date = mat_date;
 		this.mat_state = mat_state;
+	}
+	
+	public MatchingVO(int mat_idx, String mat_id, String mat_kind, String mat_sex, String mat_age, String mat_color,
+			String mat_size, String mat_detail, String mat_img, String mat_careName, String mat_careAddress,
+			String mat_tel) {
+		super();
+		this.mat_idx = mat_idx;
+		this.mat_id = mat_id;
+		this.mat_kind = mat_kind;
+		this.mat_sex = mat_sex;
+		this.mat_age = mat_age;
+		this.mat_color = mat_color;
+		this.mat_size = mat_size;
+		this.mat_detail = mat_detail;
+		this.mat_img = mat_img;
+		this.mat_careName = mat_careName;
+		this.mat_careAddress = mat_careAddress;
+		this.mat_tel = mat_tel;
 	}
 
 	public int getMat_idx() {

@@ -75,16 +75,5 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		set mem_isAdmin=#{inputStr}
 		where mem_id=#{mem_id}
 	</update>
-		
-	<update id="member_update_catFail" parameterType="member">
-		update member
-		set mem_catFailDate=#{inputDate}, mem_catFailNum = mem_catFailNum + 1
-		where mem_id=#{mem_id}
-	</update>
 
-	<update id="member_update_dogFail" parameterType="member">
-		update member
-		set mem_dogFailDate=#{inputDate}, mem_dogFailNum = mem_dogFailNum + 1
-		where mem_id=#{mem_id}
-	</update>
 </mapper>
