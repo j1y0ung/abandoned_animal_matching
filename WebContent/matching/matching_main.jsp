@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<c:set var="membership" value="${sessionScope.membership}" />
 <!DOCTYPE html>
 <html>
 <head>
@@ -47,11 +46,12 @@
 	
 	<script>
 		function check(kind) {
-			var membership = '<c:out value="${membership}"/>';
+			var membership = "${membership}";
+			console.log(membership);
+			console.log("출력됨");
 			
 			if (kind == 'cat') {
-				//alert("서비스 준비중입니다");
-				if(membership == "준회원" || membership == "예비견주") {
+				if(membership == "준회원" || membership == "예비견주" || membership == "" || membership == "비회원") {
 					alert("해당 서비스 이용 권한이 없습니다.");
 				}
 				else {
@@ -59,7 +59,7 @@
 				}
 			}
 			else{
-				if(membership == "준회원" || membership == "예비집사") {
+				if(membership == "준회원" || membership == "예비집사" || membership == "" || membership == "비회원") {
 					alert("해당 서비스 이용 권한이 없습니다.");
 				}
 				else {

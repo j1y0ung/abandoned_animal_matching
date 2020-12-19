@@ -67,7 +67,10 @@
 								${matvo.mat_kind}<br>
 								상태: ${matvo.mat_state}<br>
 								<c:if test="${ matvo.mat_state == '승인완료' }">
-									<input type="button" value="입양후기작성" onclick="location.href='/review/review_reg_form.jsp'">
+									<form>
+										<input type="hidden" name="img" value="${matvo.mat_img }">
+										<input type="button" value="입양후기작성" onclick="location.href='/review/review_reg_form.jsp'">
+									</form>
 								</c:if>
 							</c:if>
 						</td>

@@ -53,4 +53,8 @@ public class MatchingSelectVO implements Serializable {
 	public void setSex(String sex) {
 		this.sex = sex;
 	}
+	
+	public int listSize() {
+		return getKind().size();
+	}
 } 

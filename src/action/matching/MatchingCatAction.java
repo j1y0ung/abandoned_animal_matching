@@ -49,11 +49,11 @@ public class MatchingCatAction extends HttpServlet {
    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
       request.setCharacterEncoding("utf-8");
       
-      String lightColor[] = {"노르웨이숲", "렉돌", "먼치킨", "샴", "스코티시 폴드", "스핑크스", "아비시니안", "터키시 반", "터키시 앙고라", "페르시안", "페르시안 친칠라", "한국 고양이"};
-      String darkColor[] = {"러시안 블루", "메인쿤", "믹스", "뱅갈", "브리티시 숏헤어", "사바나", "샴", "스코티시 폴드", "아메리칸 숏헤어", "아비시니안", "한국 고양이"};
+      String lightColor[] = {"노르웨이숲", "렉돌", "먼치킨", "샴", "스코티시", "스핑크스", "아비시니안", "터키시", "페르시안", "한국"};
+      String darkColor[] = {"러시안", "메인쿤", "믹스", "뱅갈", "브리티시", "사바나", "샴", "스코티시", "아메리칸", "아비시니안", "한국"};
       
-      String longHair[] = {"노르웨이숲", "렉돌", "메인쿤", "스코티시 폴드", "터키시 앙고라", "터키시 반", "페르시안", "페르시안 친칠라"};
-      String shortHair[] = {"러시안 블루", "먼치킨", "믹스", "뱅갈", "브리티시 숏헤어", "사바나", "샴", "스코티시 폴드", "스핑크스", "아메리칸 숏헤어", "아비시니안", "한국 고양이"};
+      String longHair[] = {"노르웨이숲", "렉돌", "메인쿤", "스코티시", "터키시", "페르시안"};
+      String shortHair[] = {"러시안", "먼치킨", "믹스", "뱅갈", "브리티시", "사바나", "샴", "스코티시", "스핑크스", "아메리칸", "아비시니안", "한국"};
       
       String color = request.getParameter("color");
       String hair = request.getParameter("hair");
@@ -68,18 +68,14 @@ public class MatchingCatAction extends HttpServlet {
 //      System.out.println("현재시간: " + currentTime);
       
       // 파싱할 최종 url
-      String url = apiUrl + "endde=" + currentTime + "&upkind=422400&state=protect&pageNo=1&numOfRows=1000&" + "neuter_yn=" + neuter;
+      String url = apiUrl + "endde=" + currentTime + "&upkind=422400&state=protect&pageNo=1&numOfRows=5000&" + "neuter_yn=" + neuter;
       
-      MatchingSelectVO matchingSelect = new MatchingSelectVO();
-      matchingSelect.setSize(size);
-      matchingSelect.setColor(color);
-      matchingSelect.setSex(sex);
-      
-      //------------- 매칭 코드---------------
+      //------------- 품종 거르기 ---------------
+      List selectkind = new ArrayList();
       if(hair.equals("l")) {
          System.out.println("장모종: ");
          for(int i = 0; i < 8; i++) {
-            matchingSelect.getKind().add(longHair[i]);
+        	 selectkind.add(longHair[i]);
             System.out.print(longHair[i] + "/");
          }
          System.out.println("추가됨");
@@ -88,9 +84,9 @@ public class MatchingCatAction extends HttpServlet {
             System.out.println("밝은색 고양이: ");
             // 장모종 중 밝은색 고양이 삭제
             for(int i = 0; i < 11; i++) {
-               if(matchingSelect.getKind().contains(darkColor[i])) {
+               if(selectkind.contains(darkColor[i])) {
                   System.out.println(darkColor[i] + "/");
-                  matchingSelect.getKind().remove(darkColor[i]);
+                  selectkind.remove(darkColor[i]);
                }
             }
             System.out.println("삭제됨");
@@ -98,9 +94,9 @@ public class MatchingCatAction extends HttpServlet {
          else if(color.equals("d")) {
             // 장모종 중 어두운색 고양이 삭제
             for(int i = 0; i < 12; i++) {
-               if(matchingSelect.getKind().contains(lightColor[i])) {
+               if(selectkind.contains(lightColor[i])) {
                   System.out.println(lightColor[i] + "/");
-                  matchingSelect.getKind().remove(lightColor[i]);
+                  selectkind.remove(lightColor[i]);
                }
             }
             System.out.println("삭제됨");
@@ -109,7 +105,7 @@ public class MatchingCatAction extends HttpServlet {
       else if(hair.equals("s")) {
          System.out.println("단모종: ");
          for(int i = 0; i < 12; i++) {
-            matchingSelect.getKind().add(shortHair[i]);
+        	 selectkind.add(shortHair[i]);
             System.out.print(shortHair[i] + "/");
          }
          System.out.println("추가됨");
@@ -118,9 +114,9 @@ public class MatchingCatAction extends HttpServlet {
             System.out.println("밝은 색 고양이: ");
             // 단모종 중 어두운 색 고양이 삭제
             for(int i = 0; i < 11; i++) {
-               if(matchingSelect.getKind().contains(darkColor[i])) {
+               if(selectkind.contains(darkColor[i])) {
                   System.out.println(darkColor[i] + "/");
-                  matchingSelect.getKind().remove(darkColor[i]);
+                  selectkind.remove(darkColor[i]);
                }
             }
             System.out.println("삭제됨");
@@ -129,18 +125,17 @@ public class MatchingCatAction extends HttpServlet {
             System.out.println("어두운 색 고양이: ");
             // 단모종 중 밝은 색 고양이 삭제
             for(int i = 0; i < 12; i++) {
-               if(matchingSelect.getKind().contains(lightColor[i])) {
+               if(selectkind.contains(lightColor[i])) {
                   System.out.println(lightColor[i] + "/");
-                  matchingSelect.getKind().remove(lightColor[i]);
+                  selectkind.remove(lightColor[i]);
                }
             }
             System.out.println("삭제됨");
          }
       }
-      System.out.println(matchingSelect.getKind()); // 매칭으로 걸러지고 남은 품종들 콘솔 출력
+      System.out.println(selectkind); // 매칭으로 걸러지고 남은 품종들 콘솔 출력
       
       HttpSession session = request.getSession();
-      session.setAttribute("selected", matchingSelect);
       // ------------------------------------------
 
       Document document = null;
@@ -176,9 +171,13 @@ public class MatchingCatAction extends HttpServlet {
          NodeList itemList = document.getElementsByTagName("item");
          List<MatchingVO> matchingList = new ArrayList<MatchingVO>(itemList.getLength());   
          
+         int k = 0;
          for (int i = 0; i < itemList.getLength(); i++) {
             Element item = (Element)itemList.item(i);
-            MatchingVO matching = new MatchingVO(i+1);
+            String age = null, careAddr = null, careNm = null, careTel = null, colorCd = null, desertionNo = null,
+					kindCd = null, popfile = null, sexCd = null, specialMark = null, weight = null;
+			String rslt_age = null, rslt_careAddr = null, rslt_careNm = null, rslt_careTel = null, rslt_colorCd = null, rslt_desertionNo = null,
+					rslt_kindCd = null, rslt_popfile = null, rslt_sexCd = null, rslt_specialMark = null, rslt_weight = null;
             
             for (Node ch = item.getFirstChild(); ch != null; ch = ch.getNextSibling()) {
                String nodeName = ch.getNodeName();
@@ -186,63 +185,115 @@ public class MatchingCatAction extends HttpServlet {
                
                switch (nodeName) {
                   case "age": // 나이
-                     matching.setMat_age(text);
+                	  age = text;
+//						System.out.println("age: " + age);
                      break;
                   case "careAddr": // 보호소 주소
-                     matching.setMat_careAddress(text);
+                	  careAddr = text;
+//						System.out.println("careAddr: " + careAddr);
                      break;
                   case "careNm": // 보호소명
-                     matching.setMat_careName(text);
+                	  careNm = text;
+//						System.out.println("careNm: " + careNm);
                      break;
                   case "careTel": // 보호소 전화번호
-                     matching.setMat_tel(text);
+                	  careTel = text;
+//						System.out.println("careTel: " + careTel);
                      break;
                   case "colorCd": // 색상
-                     matching.setMat_color(text);
+                	  colorCd = text;
                      break;
                   case "desertionNo": // 유기번호
-                     matching.setMat_id(text);
+                	  desertionNo = text;
+//						System.out.println("desertionNo: " + desertionNo);
                      break;
                   case "kindCd": // 품종
                      String rslt = text.substring(5, text.length());
-                     if (rslt.contains("노르웨이"))
-                        matching.setMat_kind("노르웨이 숲");
-                     else if (rslt.contains("랙돌"))
-                        matching.setMat_kind("렉돌");
-                     else if (rslt.contains("스코티쉬"))
-                        matching.setMat_kind("스코티시 폴드");
-                     else if (rslt.contains("터키쉬 반"))
-                        matching.setMat_kind("터키시 반");
-                     else if (rslt.contains("터키쉬 앙고라"))
-                        matching.setMat_kind("터키시 앙고라");
-                     else if (rslt.contains("친칠라"))
-                        matching.setMat_kind("페르시안 친칠라");
-                     else if (rslt.contains("러시안"))
-                        matching.setMat_kind("러시안 블루");
-                     else if (rslt.contains("믹스"))
-                        matching.setMat_kind("믹스묘");
-                     else if (rslt.contains("브리티"))
-                        matching.setMat_kind("브리티시 숏헤어");
-                     else if (rslt.contains("아메리칸"))
-                        matching.setMat_kind("아메리칸 숏헤어");
-                     else
-                        matching.setMat_kind(text);
+						for(int j = 0; j < selectkind.size(); j++) {
+							if (rslt.contains(selectkind.get(j).toString())) {
+								kindCd = text;
+							}
+						}
+//						System.out.println("kindCd: " + kindCd);
+//                     if (rslt.contains("노르웨이"))
+//                        matching.setMat_kind("노르웨이 숲");
+//                     else if (rslt.contains("랙돌"))
+//                        matching.setMat_kind("렉돌");
+//                     else if (rslt.contains("스코티쉬"))
+//                        matching.setMat_kind("스코티시 폴드");
+//                     else if (rslt.contains("터키쉬 반"))
+//                        matching.setMat_kind("터키시 반");
+//                     else if (rslt.contains("터키쉬 앙고라"))
+//                        matching.setMat_kind("터키시 앙고라");
+//                     else if (rslt.contains("친칠라"))
+//                        matching.setMat_kind("페르시안 친칠라");
+//                     else if (rslt.contains("러시안"))
+//                        matching.setMat_kind("러시안 블루");
+//                     else if (rslt.contains("믹스"))
+//                        matching.setMat_kind("믹스묘");
+//                     else if (rslt.contains("브리티"))
+//                        matching.setMat_kind("브리티시 숏헤어");
+//                     else if (rslt.contains("아메리칸"))
+//                        matching.setMat_kind("아메리칸 숏헤어");
+//                     else
+//                        matching.setMat_kind(text);
                      break;
                   case "popfile": // 사진
-                     matching.setMat_img(text);
+                	  popfile = text;
+//						System.out.println("popfile: " + popfile);
                      break;
                   case "sexCd": // 성별
-                     matching.setMat_sex(text);
+                	  if (text.contains(sex)) {
+							sexCd = text;
+						}
+//						System.out.println("sexCd: " + sexCd);
                      break;
                   case "specialMark": // 특이사항
-                     matching.setMat_detail(text);
+                	  specialMark = text;
+//						System.out.println("specialMark: " + specialMark);
                      break;
                   case "weight": // 몸무게
-                     matching.setMat_size(text);
+                	  String wei = text.substring(0, text.length()-4);
+						wei = wei.replace(',', '.');
+						String temp = wei.substring(wei.length()-1);
+						if (temp.equals(".")) {
+							wei = wei.substring(0, wei.length()-1);
+						}
+						double num;
+						if (!wei.equals("")) {
+							num = Double.parseDouble(wei);
+							
+							if (size.equals("s")) {
+								if (num < 10.00) {
+									weight = Double.toString(num);
+								}
+							}
+							else if(size.equals("l")) {
+								if (num >= 10.00) {
+									weight = Double.toString(num);
+								}
+							}
+						}
+						else {
+							if (size.equals("s")) {
+								weight = "?";
+							}
+						}
+//						System.out.println("weight: " + weight);
                      break;
                }            
             }         
-            matchingList.add(matching);
+            if (age != null && careAddr != null&& careNm != null&& careTel != null&& colorCd != null&& desertionNo != null&&
+					kindCd != null&& popfile != null&& sexCd != null&& specialMark != null&& weight != null) {
+				System.out.println("매칭됨##");
+				rslt_age = age; rslt_careAddr = careAddr; rslt_careNm = careNm; rslt_careTel = careTel; rslt_colorCd = colorCd; rslt_desertionNo = desertionNo;
+						rslt_kindCd = kindCd; rslt_popfile = popfile; rslt_sexCd = sexCd; rslt_specialMark = specialMark; rslt_weight = weight;
+				System.out.println("매칭된값: k:" + k + "/ desertionNo: " + rslt_desertionNo + "/ kindCd: " + rslt_kindCd +
+						"/ sexCd: " + rslt_sexCd + "/ age: " + rslt_age + "/ colorCd: " + rslt_colorCd + "/ weight: " + rslt_weight+ "/ specialMark: " + rslt_specialMark
+						+ "/ popfile: " + rslt_popfile+ "/ careNm: " + rslt_careNm+ "/ careAddr: " + rslt_careAddr+ "/ careTel: " + rslt_careTel + "\n");
+				MatchingVO matching = new MatchingVO(k++, desertionNo, kindCd, sexCd, age, colorCd, weight, specialMark, popfile, careNm, careAddr, careTel);
+				matchingList.add(matching);
+			}
          }
          
          // matchingList의 참조를 result.jsp로 전달
