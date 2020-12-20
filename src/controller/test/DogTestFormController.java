@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.DogTest;
-import model.dao.TestDAO;
+import dao.TestDAO;
 
 public class DogTestFormController implements Controller {
 	@Override

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+	<insert id="test_insert" parameterType="test">
+		insert into test values(
+			#{mem_id},
+			DEFAULT,
+			DEFAULT,
+			null,
+			null,
+			DEFAULT,
+			DEFAULT
+			)
+	</insert>
+	
+	<update id="test_update_passCat" parameterType="test">
+		update test
+		set passCat=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="test_update_passDog" parameterType="test">
+		update test
+		set passDog=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<select id="test_selectPassCat" parameterType="java.lang.String" resultType="string">
+		select passCat from test where mem_id=#{mem_id}
+	</select>
+	
+	<select id="test_selectPassDog" parameterType="java.lang.String" resultType="string">
+		select passDog from test where mem_id=#{mem_id}
+	</select>
+	
+	<update id="test_update_catFail" parameterType="test">
+		update test
+		set catFailDate=#{inputDate}, catFailNum = catFailNum + 1
+		where mem_id=#{mem_id}
+	</update>
+
+	<update id="teset_update_dogFail" parameterType="test">
+		update test
+		set dogFailDate=#{inputDate}, dogFailNum = dogFailNum + 1
+		where mem_id=#{mem_id}
+	</update>
+	
+	<!-- rownum을 사용하여 무작위로 15개 추출 -->
+	<select id="test_select_dogTestList" parameterType="java.lang.String" resultType="dogtest">
+		<![CDATA[
+		select * from (select dogQ, dogQ_1, dogQ_2, dogQ_3, dogQ_4, dogA from dogtest order by dbms_random.random()) where rownum <= 15
+		]]>
+	</select>
+	
+	<!-- rownum을 사용하여 무작위로 15개 추출 -->
+	<select id="test_select_catTestList" parameterType="java.lang.String" resultType="cattest">
+		<![CDATA[
+		select * from (select catQ, catQ_1, catQ_2, catQ_3, catQ_4, catA from cattest order by dbms_random.random()) where rownum <= 15
+		]]>
+	</select>
+	
+	<select id="test_one" parameterType="java.lang.String" resultType="test">
+		select * from test where mem_id=#{mem_id}
+	</select>
+</mapper>

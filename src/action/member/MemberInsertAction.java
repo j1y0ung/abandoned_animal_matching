@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.MemberDAO;
+import dao.TestDAO;
 import vo.MemberVO;
+import vo.TestVO;
 
 // 회원 추가 작업 - 파라미터 받아서 회원 리스트로 넘김
 @WebServlet("/member/insert")
@@ -37,7 +39,8 @@ public class MemberInsertAction extends HttpServlet {
 			MemberDAO.getInstance().insert( vo );
 		}
 
-
+		TestVO tvo = new TestVO(id);
+		TestDAO.getInstance().insert(tvo);
 		response.sendRedirect("/member/member_login.jsp");
 	}
 } 

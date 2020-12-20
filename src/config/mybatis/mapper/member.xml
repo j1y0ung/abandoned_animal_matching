@@ -16,7 +16,8 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 	</select>
 	
 	<insert id="member_insert" parameterType="member">
-		insert into member values(
+		insert into member (mem_idx, mem_name, mem_id, mem_pwd, mem_phone, mem_email, mem_regdate, mem_membership,
+		mem_careAdmin, mem_isAdmin, mat_id) values(
 			seq_member_idx.nextVal,
 			#{mem_name},
 			#{mem_id},
@@ -24,7 +25,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 			#{mem_phone},
 			#{mem_email},
 			SYSDATE,
-			DEFAULT, DEFAULT, DEFAULT, null, null, DEFAULT, DEFAULT, #{mem_careAdmin}, DEFAULT, null
+			DEFAULT, #{mem_careAdmin}, DEFAULT, null
 			)
 	</insert>
 	
@@ -38,29 +39,9 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		where mem_id=#{mem_id}
 	</update>
 	
-	<select id="member_selectPassCat" parameterType="java.lang.String" resultType="string">
-		select mem_passCat from member where mem_id=#{mem_id}
-	</select>
-	
-	<select id="member_selectPassDog" parameterType="java.lang.String" resultType="string">
-		select mem_passDog from member where mem_id=#{mem_id}
-	</select>
-	
 	<update id="member_update_manager" parameterType="member">
 		update member
 		set mem_membership=#{inputStr}
-		where mem_id=#{mem_id}
-	</update>
-	
-	<update id="member_update_passCat" parameterType="member">
-		update member
-		set mem_passCat=#{inputStr}
-		where mem_id=#{mem_id}
-	</update>
-	
-	<update id="member_update_passDog" parameterType="member">
-		update member
-		set mem_passDog=#{inputStr}
 		where mem_id=#{mem_id}
 	</update>
 	

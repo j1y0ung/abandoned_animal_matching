@@ -1,6 +1,5 @@
 package controller.test;
 
-import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import controller.Controller;
 import controller.member.MemberSessionUtils;
-import dao.MemberDAO;
-import vo.MemberVO;
+import dao.TestDAO;
+import vo.TestVO;
 
 public class TestTypeController implements Controller {
 	private static final Logger log = LoggerFactory.getLogger(TestTypeController.class);
@@ -22,12 +21,12 @@ public class TestTypeController implements Controller {
 		if (MemberSessionUtils.hasLogined(request.getSession())) {// 로그인 한 유저의 경우
 			String currentId = MemberSessionUtils.getLoginMemberId(request.getSession());
 			String membership = MemberSessionUtils.getMembership(request.getSession());
-			MemberVO vo = MemberDAO.getInstance().selectId(currentId);
+			TestVO vo = TestDAO.getInstance().selectId(currentId);
 			
-			Date catFailDate = vo.getMem_catFailDate(); // 고양이 시험 탈락한 날짜
-			int catFailNum = vo.getMem_catFailNum(); // 고양이 시험 떨어진 횟수
-			Date dogFailDate = vo.getMem_dogFailDate(); // 강아지 시험 탈락한 날짜
-			int dogFailNum = vo.getMem_dogFailNum(); // 강아지 시험 탈락 횟수
+			Date catFailDate = vo.getCatFailDate(); // 고양이 시험 탈락한 날짜
+			int catFailNum = vo.getCatFailNum(); // 고양이 시험 떨어진 횟수
+			Date dogFailDate = vo.getDogFailDate(); // 강아지 시험 탈락한 날짜
+			int dogFailNum = vo.getDogFailNum(); // 강아지 시험 탈락 횟수
 			String catTimeFinish = "n";
 			String dogTimeFinish = "n";
 			Date currentDate = new Date(); // 현재 시간

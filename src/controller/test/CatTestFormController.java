@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import controller.Controller;
 import model.CatTest;
-import model.dao.TestDAO;
+import dao.TestDAO;
 
 public class CatTestFormController implements Controller {
 

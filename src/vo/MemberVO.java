@@ -1,7 +1,7 @@
 package vo;
 
 import java.io.Serializable;
-import java.util.Date;
+
 @SuppressWarnings("serial")
 public class MemberVO implements Serializable {
 	private int		mem_idx;
@@ -12,14 +12,7 @@ public class MemberVO implements Serializable {
 	private String	mem_email;
 	private String	mem_regDate;		// 가입일
 	private String	mem_membership;
-	private String mem_passCat;			// 고양이 시험 통과 여부
-	private String mem_passDog;			// 강아지 시험 통과 여부
-	private Date mem_catFailDate;		// 고양이 시험 탈락일
-	private Date mem_dogFailDate;		// 강아지 시험 탈락일
-	private String inputStr;			// 멤버십 변경시 사용
-	private int mem_catFailNum;			// 고양이 시험 불합격 횟수
-	private int mem_dogFailNum;			// 강아지 시험 불합격 횟수
-	private Date inputDate;				// 시험 탈락일 변경시 사용
+	private String  inputStr;			// 멤버십 변경시 사용
 	private String	mem_careAdmin;		// 보호소명
 	private String	mem_isAdmin;		// 보호소 관리자 여부
 	private String	mat_id;				// 입양 완료된 동물
@@ -33,13 +26,6 @@ public class MemberVO implements Serializable {
 		super();
 		this.mem_id = mem_id;
 		this.inputStr = inputStr;
-	}
-	
-	// 시험 탈락일 변경시 사용
-	public MemberVO(String mem_id, Date inputDate) {
-		super();
-		this.mem_id = mem_id;
-		this.inputDate = inputDate;
 	}
 
 	// 마이페이지에서 정보 수정시 사용
@@ -120,22 +106,6 @@ public class MemberVO implements Serializable {
 		this.mem_idx = mem_idx;
 	}
 
-	public String getMem_passCat() {
-		return mem_passCat;
-	}
-
-	public void setMem_passCat(String mem_passCat) {
-		this.mem_passCat = mem_passCat;
-	}
-
-	public String getMem_passDog() {
-		return mem_passDog;
-	}
-
-	public void setMem_passDog(String mem_passDog) {
-		this.mem_passDog = mem_passDog;
-	}
-
 	public String getInputStr() {
 		return inputStr;
 	}
@@ -144,45 +114,6 @@ public class MemberVO implements Serializable {
 		this.inputStr = inputStr;
 	}
 
-	public Date getMem_catFailDate() {
-		return mem_catFailDate;
-	}
-
-	public void setMem_catFailDate(Date mem_catFailDate) {
-		this.mem_catFailDate = mem_catFailDate;
-	}
-
-	public Date getMem_dogFailDate() {
-		return mem_dogFailDate;
-	}
-
-	public void setMem_dogFailDate(Date mem_dogFailDate) {
-		this.mem_dogFailDate = mem_dogFailDate;
-	}
-
-	public int getMem_catFailNum() {
-		return mem_catFailNum;
-	}
-
-	public void setMem_catFailNum(int mem_catFailNum) {
-		this.mem_catFailNum = mem_catFailNum;
-	}
-
-	public int getMem_dogFailNum() {
-		return mem_dogFailNum;
-	}
-
-	public void setMem_dogFailNum(int mem_dogFailNum) {
-		this.mem_dogFailNum = mem_dogFailNum;
-	}
-
-	public Date getInputDate() {
-		return inputDate;
-	}
-
-	public void setInputDate(Date inputDate) {
-		this.inputDate = inputDate;
-	}
 	public String getMem_regDate() {
 		return mem_regDate;
 	}

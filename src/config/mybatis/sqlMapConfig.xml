@@ -8,6 +8,9 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<typeAlias type="vo.MemberVO" alias="member"/>
 		<typeAlias type="vo.ReviewVO" alias="review"/>
 		<typeAlias type="vo.MatchingVO" alias="matching"/>
+		<typeAlias type="vo.TestVO" alias="test"/>
+		<typeAlias type="model.DogTest" alias="dogtest"/>
+		<typeAlias type="model.CatTest" alias="cattest"/>
 	</typeAliases>
 
 	<environments default="">
@@ -23,6 +26,7 @@ PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
 		<mapper resource="config/mybatis/mapper/member.xml" />
 		<mapper resource="config/mybatis/mapper/review.xml" />
 		<mapper resource="config/mybatis/mapper/matching.xml" />
+		<mapper resource="config/mybatis/mapper/test.xml" />
 	</mappers>
 	
 </configuration>
