@@ -30,43 +30,22 @@
 <meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
 <meta name="theme-color" content="#563d7c">
 
-
-    <style>
+<style>
         @font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
         @font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
+		
+      #btnText{
+      	font-family: 'NEXON Lv1 Gothic OTF';
+      	font-size: 1.85rem;
+      	text-anchor: middle;
+      }    
+      #dscriptext{
+      	font-family: 'RIDIBatang';
+      	font-size: 1.2rem;
+      	margin-top: 40px;
+      	margin-bottom: 30px;
       }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      #margin{
-          margin-bottom: 50px;
-      }
-
-      #mainmenu{
-        font-family: 'RIDIBatang';
-      }
-
-      #projname{
-        font-family: 'NEXON Lv1 Gothic OTF';
-        font-size: 2rem;
-        text-anchor: middle;
-      }
-
-      #testbtn-dog{
-        margin-right: 20px;
-      }
-    </style>
+      </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
   	<script>
@@ -136,9 +115,10 @@
     <div class="container">
         <div class="text-center">
             <br>
-            <p>입양테스트를 원하는 동물의 종을 선택해주세요.</p><br/>
-            <a class="btn btn-outline-primary btn-lg" onclick="check('dog');">강아지<br/>&#x1F436</a>
-            <a class="btn btn-outline-success btn-lg" onclick="check('cat');">고양이<br/>&#x1F63A</a>
+            <p id="dscriptext">입양테스트를 원하는 동물의 종을 선택해주세요.</p><br/>
+            <a id="btnText" class="btn btn-outline-info btn-lg" style="width:150pt;height:80pt;" onclick="check('dog');">강아지<br/>&#x1F436</a>
+            &nbsp;&nbsp;&nbsp;&nbsp;
+            <a id="btnText" class="btn btn-outline-warning btn-lg" style="width:150pt;height:80pt;" onclick="check('cat');">고양이<br/>&#x1F63A</a>
             <br/><br/><br/>
         </div>
   </div>

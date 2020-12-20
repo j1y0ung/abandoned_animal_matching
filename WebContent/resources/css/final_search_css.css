@@ -24,6 +24,8 @@ body {
 .view {
     width: 100%;
     height: 200px;
+    position:relative;
+         z-index:2;
 }
 
 .wrapper {
@@ -32,13 +34,14 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0 auto;
+    margin-top: 50px;
 }
 
 .wrapper
 .search_box {
-    width: 1000px;
-    background: var(--search-color);
-    height: 65px;
+    width: 1100px;
+    background: var(--background-color);
+    height: 60px;
     border-radius: 4px;
     display: flex;
     padding: 10px;
@@ -50,10 +53,9 @@ body {
 .dropdown
 {
     width: 150px;
-    border-right: 2px solid var(--search-color);
-    color: var(--accent-color2);
     position: relative;
     cursor: pointer;
+    margin-left: 30px;
 }
 
 .wrapper
@@ -61,8 +63,7 @@ body {
 .dropdown2
 {
     width: 150px;
-    border-right: 2px solid var(--search-color);
-    color: var(--accent-color2);
+    position: relative;
     position: relative;
     cursor: pointer;
 }
@@ -71,11 +72,10 @@ body {
 .search_box
 .dropdown3
 {
-    width: 200px;
-    border-right: 2px solid var(--search-color);
-    color: var(--accent-color2);
+    width: 150px;
     position: relative;
     cursor: pointer;
+    margin-right: 50px;
 }
 
 .wrapper
@@ -112,81 +112,36 @@ body {
 .search_box
 .dropdown
 ul {
-    position: absolute;
-    top: 70px;
-    left: -10px;
-    background: var(--background-color2);
-    width: 150px;
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 8px 8px 6px -10px var(--shadow-color);
-    display: none;
+      
 }
 
 .wrapper
 .search_box
 .dropdown2
 ul {
-    position: absolute;
-    top: 70px;
-    left: -10px;
-    background: var(--background-color2);
-    width: 150px;
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 8px 8px 6px -10px var(--shadow-color);
-    display: none;
+    
 }
 
 .wrapper
 .search_box
 .dropdown3
 ul {
-    position: absolute;
-    top: 70px;
-    left: -10px;
-    background: var(--background-color2);
-    width: 180px;
-    border-radius: 4px;
-    padding: 20px;
-    box-shadow: 8px 8px 6px -10px var(--shadow-color);
-    display: none;
-}
-
-.wrapper
-.search_box
-.dropdown
-ul.active {
-    display: block;
-}
-
-.wrapper
-.search_box
-.dropdown2
-ul.active {
-    display: block;
-}
-
-.wrapper
-.search_box
-.dropdown3
-ul.active {
-    display: block;
+    
 }
 
 .wrapper
 .search_box
 .dropdown
 ul li {
-    padding-bottom: 20px;
-    user-select: none;
+   padding-bottom: 5px;
+     user-select: none;
 }
 
 .wrapper
 .search_box
 .dropdown2
 ul li {
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     user-select: none;
 }
 
@@ -194,7 +149,7 @@ ul li {
 .search_box
 .dropdown3
 ul li {
-    padding-bottom: 20px;
+    padding-bottom: 5px;
     user-select: none;
 }
 
@@ -223,51 +178,47 @@ ul li:last-child {
 .search_box
 .dropdown
 ul li:hover {
-    color: var(--accent-color);
+    color: var(--shadow-color);
 }
 
 .wrapper
 .search_box
 .dropdown2
 ul li:hover {
-    color: var(--accent-color);
+    color: var(--shadow-color);
 }
 
 .wrapper
 .search_box
 .dropdown3
 ul li:hover {
-    color: var(--accent-color);
+    color: var(--shadow-color);
 }
 
 .wrapper
 .search_box
 .dropdown:before {
-    content: "";
-    position: absolute;
+     position: absolute;
     top: 18px;
     right: 20px;
     border: 8px solid;
     border-color: var(--shadow-color) transparent transparent transparent;
-    
 }
 
 .wrapper
 .search_box
 .dropdown2:before {
-    content: "";
     position: absolute;
     top: 18px;
     right: 20px;
     border: 8px solid;
     border-color: var(--shadow-color) transparent transparent transparent;
-    
 }
 
 .wrapper
 .search_box
 .dropdown3:before {
-    content: "";
+    
     position: absolute;
     top: 18px;
     right: 20px;
@@ -408,14 +359,14 @@ user agent stylesheet
 
 <!-- final_datail.jsp -->
 .container {
-	position: relative;
+   position: relative;
 }
 
 .container
 .image {
-	position: absolute;
+   position: absolute;
 }
 
 .h2 {
-	
+   
 }

@@ -34,6 +34,8 @@
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
 	
 	<style>
+		@font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
+		@font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
 		@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 		p{
 			font-family: 'Do Hyeon', sans-serif;
@@ -42,6 +44,19 @@
 			text-align: center;
 		}
 		.btn {cursor:pointer;}	
+		
+		#btnText{
+      	font-family: 'NEXON Lv1 Gothic OTF';
+      	font-size: 1.85rem;
+      	text-anchor: middle;
+      }    
+      
+		#dscriptext{
+      	font-family: 'RIDIBatang';
+      	font-size: 1.2rem;
+      	margin-top: 40px;
+      	margin-bottom: 30px;
+      }
 	</style>
 	
 	<script>
@@ -74,11 +89,13 @@
 	<jsp:include page="/main/index.jsp"/>
 	
 	<div class="container">
-		<div id="l-margin">
-			<br><p id="test-toptext-p" class="text-center"> 매칭을 원하는 동물을 선택해주세요!</p>
+	<div class="text-center">
+			<br><p id="dscriptext">매칭을 원하는 동물을 선택해주세요!</p><br/>
 				<div id="select">
-					<img src="../images/cat.jpg" width="200" onclick="check('cat');">
-					<img src="../images/dog.jpg" width="200" onclick="check('dog');">
+					<button id="btnText" class="btn btn-outline-info btn-lg" style="width:150pt;height:80pt;" onclick="check('cat');">강아지<br/>&#x1F436</button>
+		            &nbsp;&nbsp;&nbsp;&nbsp;
+		            <button id="btnText" class="btn btn-outline-warning btn-lg" style="width:150pt;height:80pt;" onclick="check('cat');">고양이<br/>&#x1F63A</button>
+		            <br/><br/><br/>
 				</div>
 		</div>
 	</div>

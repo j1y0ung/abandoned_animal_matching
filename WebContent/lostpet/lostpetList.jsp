@@ -38,39 +38,11 @@
 	<meta name="msapplication-config" content="/docs/4.5/assets/img/favicons/browserconfig.xml">
 	<meta name="theme-color" content="#563d7c">
 	<style>
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
         @font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      #margin{
-          margin-bottom: 50px;
-      }
-
-      #mainmenu{
-        font-family: 'RIDIBatang';
-      }
-
-      #projname{
-        font-family: 'NEXON Lv1 Gothic OTF';
-        font-size: 2rem;
-        text-anchor: middle;
-      }
-
       #text1{
-        font-size: 1.25rem;
+      	margin-top:50px;
+      	font-family: 'RIDIBatang';
+        font-size: 1.1rem;
         text-anchor: middle;
       }
     </style>
@@ -90,13 +62,16 @@
 	  while ( lpIter.hasNext() ) {
 		LostAnimal lostPet = (LostAnimal)lpIter.next();
 --%>
-	<table align="center" border=1>
-		<th bgcolor="#E0F2F7">접수번호</th>
-		<th bgcolor="#E0F2F7">보호자이름</th>
-		<th bgcolor="#E0F2F7">동물종</th>
-		<th bgcolor="#E0F2F7">동물품종</th>
-		<th bgcolor="#E0F2F7">진행상태</th>
+	<table class="table" align="center">
+	 	<thead>
+		<th>접수번호</th>
+		<th>보호자이름</th>
+		<th>동물종</th>
+		<th>동물품종</th>
+		<th>진행상태</th>
 		<br><br>
+		</thead>
+		<tbody>
 	  <c:forEach var="lostPet" items="${lostPetList}">  	
 	  	<tr>	  	
 		  <td width="190" align="center" bgcolor="ffffff" height="20">
@@ -116,6 +91,7 @@
 		  </td>
 		</tr>
 	  </c:forEach> 
+	  </tbody>
 	</table>
 <%--
 	  }
