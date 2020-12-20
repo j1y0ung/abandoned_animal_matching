@@ -1,6 +1,5 @@
 <%@page contentType="text/html; charset=utf-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <!doctype html>
 <html lang="en">
@@ -35,39 +34,13 @@
 	<meta name="theme-color" content="#563d7c">
 
 	<style>
-        @font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
         @font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
-      }
-
-      #margin{
-          margin-bottom: 50px;
-      }
-
-      #mainmenu{
-        font-family: 'RIDIBatang';
-      }
-
-      #projname{
-        font-family: 'NEXON Lv1 Gothic OTF';
-        font-size: 2rem;
-        text-anchor: middle;
-      }
 
       #text1{
-        font-size: 1.25rem;
+      	margin-top:50px;
+      	margin-bottom:30px;
+      	font-family: 'RIDIBatang';
+        font-size: 1.1rem;
         text-anchor: middle;
       }
     </style>
@@ -120,24 +93,68 @@
   	<div class = "container">
         <div class="text-center">
             <p id="text1">실종동물 정보 등록</p>
+            <br>
+            <ul class="list-group">
+            <li class="list-group-item">
+            <br>
             <form name="form" method="POST" action="<c:url value='/lostpet/register' />">
-            <input type="radio" name="animalType" value="<%="강아지"%>">강아지 <input type="radio" name="animalType" value="<%="고양이"%>">고양이  
-            <br/><br/>
-	                보호자 이름: <input type="text" name="ownerName" size="10"><br/><br/>
-	                보호자 전화번호: <input type="text" name="ownerPhone" size="10"><br/><br/>
-	                동물 품종: <input type="text" name="animalSpecies" size="10"><br/><br/>
-	                실종 지역: <input type="text" name="region" size="10"><br/><br/>
-	                동물 나이: <input type="number" name="animalAge" size="10"><br/><br/>
-	                동물 성별: <input type="radio" name="animalGender" value="<%="암컷"%>">암컷 
-	        <input type="radio" name="animalGender" value="<%="수컷"%>">수컷 
-	        <input type="radio" name="animalGender" value="<%="모름"%>">모름
+             <fieldset>
+             <div class="form-group row">
+		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">동물 종류</label>
+		      <div class="col-sm-2">
+		      <input type="radio" name="animalType" value="<%="강아지"%>">강아지
+		      &nbsp;
+		      <input type="radio" name="animalType" value="<%="고양이"%>">고양이
+		      </div>
+	        </div>
+		    <div class="form-group row">
+		      <label for="InputownerName" class="col-sm-2 col-form-label">보호자 이름</label>
+		      <div class="col-sm-10">
+		      <input type="text" class="form-control" name="ownerName" id="InputownerName" placeholder="(ex.홍길동)">
+		       </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">보호자 전화번호</label>
+		      <div class="col-sm-10">
+		      <input type="text" class="form-control" name="ownerPhone" id="InputownerPhone" placeholder="(ex.010-1234-2345)">
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="InputanimalSpecies"  class="col-sm-2 col-form-label">동물 품종</label>
+		      <div class="col-sm-10">
+		      <input type="text" class="form-control" name="animalSpecies" id="InputanimalSpecies" placeholder="(ex.치와와)">
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="Inputregion"  class="col-sm-2 col-form-label">실종지역</label>
+		      <div class="col-sm-10">
+		      <input type="text" class="form-control" name="region" id="Inputregion" placeholder="(ex.경기도 파주 동패동)">
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="InputanimalAge"  class="col-sm-2 col-form-label">동물 나이</label>
+		      <div class="col-sm-10">
+		      <input type="number" class="form-control" name="animalAge" id="InputanimalAge" placeholder="(ex.1)">
+		      <small id="animalAgeHelp" class="form-text text-muted">1살이하는 1을 적어주세요.</small>
+		      </div>
+		    </div>
+		    <div class="form-group row">
+		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">동물 성별</label>
+		      <div class="col-sm-2">
+		      <input type="radio" name="animalGender" value="<%="암컷"%>">암컷&nbsp;
+		      <input type="radio" name="animalGender" value="<%="수컷"%>">수컷&nbsp;
+		      <input type="radio" name="animalGender" value="<%="모름"%>">모름
+		      </div>
+	        </div>
+
+	        <button type="button" class="btn btn-primary" onClick="lostPetCreate()">등록</button>
 	        <br/><br/>
-	        <button type="button" class="btn btn-light" onClick="lostPetCreate()">확인</button>
-	        <br/><br/>
-	        <c:if test="${ sessionScope.mem_id == 'admin' }">
-	        	<a href="<c:url value='/lostpet/list' />" class="btn btn-light">진행상황보기</a>
-	        </c:if>
+	        <a href="<c:url value='/lostpet/list' />" class="btn btn-light">진행상황보기</a>
+		  </fieldset>
             </form>
+            </li>
+            </ul>
+            <br><br>
         </div>
   </div>
 

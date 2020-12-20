@@ -42,27 +42,22 @@
         -ms-user-select: none;
         user-select: none;
       }
-
       @media (min-width: 768px) {
         .bd-placeholder-img-lg {
           font-size: 3.5rem;
         }
       }
-
       #margin{
           margin-bottom: 50px;
       }
-
       #mainmenu{
         font-family: 'RIDIBatang';
       }
-
       #projname{
         font-family: 'NEXON Lv1 Gothic OTF';
         font-size: 2rem;
         text-anchor: middle;
       }
-
       #testbtn-dog{
         margin-right: 20px;
       }
@@ -72,7 +67,6 @@
   	<script>
 		function check(kind) {
 			var membership = "${membership}";
-
 			if (kind == "cat") { // 고양이 시험 선택한 경우
 				var catFailNum = "${catFailNum}";
 				catFailNum = parseInt(catFailNum); // 고양이 시험 불합격한 횟수
@@ -142,9 +136,7 @@
             <br/><br/><br/>
         </div>
   </div>
-
   <hr>
-
 <footer class="blog-footer">
 </footer>
 </body>

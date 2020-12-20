@@ -8,10 +8,10 @@
 
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel=stylesheet href="../resources/css/final_search_css.css" type="text/css">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link rel=stylesheet href="../resources/css/final_search_css.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <title>검색</title>
+    <title>Dropdown Search Box</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
@@ -48,49 +48,49 @@
         });
         
         function goSearch() {
-        	console.log('call function');
-        	var f = document.getElementById('testForm');
-        	console.log(f);
-        	
-        	if(!f.searchKeyword.value) {
-        		f.searchKeyword.value = "";
-        	}
-        	
-        	f.method = 'post';
-        	f.action = '/test/main';
-        	f.submit();
+           console.log('call function');
+           var f = document.getElementById('testForm');
+           console.log(f);
+           
+           if(!f.searchKeyword.value) {
+              f.searchKeyword.value = "";
+           }
+           
+           f.method = 'post';
+           f.action = '/test/main';
+           f.submit();
         } 
         
         function goDetailPage(kind, age, careAddr, careNm, careTel, chargeNm, colorCd, desertionNo, filename, happenDt, happenPlace, kindCd, neuterYn, noticeEdt, noticeNo, noticeSdt, officetel, orgNm, popfile, processState, sexCd, specialMark, weight) {
-        	
-        	var f = document.getElementById('testForm');
-        	
-        	f.kind.value = kind;      	
-        	f.age.value = age;        	
-        	f.careAddr.value = careAddr;         	
-        	f.careNm.value = careNm;        	
-        	f.careTel.value = careTel;        	
-        	f.chargeNm.value = chargeNm;        	
-        	f.colorCd.value = colorCd;        	
-        	f.desertionNo.value = desertionNo;        	
-        	f.filename.value = filename;        	
-        	f.happenDt.value = happenDt;        	
-        	f.happenPlace.value = happenPlace;        	
-        	f.kindCd.value = kindCd;        	
-        	f.neuterYn.value = neuterYn;        	
-        	f.noticeEdt.value = noticeEdt;        	
-        	f.noticeNo.value = noticeNo;        	
-        	f.noticeSdt.value = noticeSdt;        	
-        	f.officetel.value = officetel;        	
-        	f.orgNm.value = orgNm;        	
-        	f.popfile.value = popfile;
-        	f.processState.value = processState;        	
-        	f.sexCd.value = sexCd;        	
-        	f.specialMark.value = specialMark;        	
-        	f.weight.value = weight;
-        	f.method = 'post';
-        	f.action = '/search';	// 주소 파싱할 api 호출 
-        	f.submit();
+           
+           var f = document.getElementById('testForm');
+           
+           f.kind.value = kind;         
+           f.age.value = age;           
+           f.careAddr.value = careAddr;            
+           f.careNm.value = careNm;           
+           f.careTel.value = careTel;           
+           f.chargeNm.value = chargeNm;           
+           f.colorCd.value = colorCd;           
+           f.desertionNo.value = desertionNo;           
+           f.filename.value = filename;           
+           f.happenDt.value = happenDt;           
+           f.happenPlace.value = happenPlace;           
+           f.kindCd.value = kindCd;           
+           f.neuterYn.value = neuterYn;           
+           f.noticeEdt.value = noticeEdt;           
+           f.noticeNo.value = noticeNo;           
+           f.noticeSdt.value = noticeSdt;           
+           f.officetel.value = officetel;           
+           f.orgNm.value = orgNm;           
+           f.popfile.value = popfile;
+           f.processState.value = processState;           
+           f.sexCd.value = sexCd;           
+           f.specialMark.value = specialMark;           
+           f.weight.value = weight;
+           f.method = 'post';
+           f.action = '/search';   // 주소 파싱할 api 호출 
+           f.submit();
         }
     </script>
 
@@ -184,109 +184,116 @@
 <body>
 <jsp:include page="/main/index.jsp"/>
 <form method="post" name="testForm" id="testForm" action="<c:url value='/test/main' />">
-	<input type="hidden" name="noticeNo" value="전국" />
-	<input type="hidden" name="processState" value="보호중" />
-	<input type="hidden" name="noticeSdt" value="DESC" />
+   <input type="hidden" name="noticeNo" value="전국" />
+   <input type="hidden" name="processState" value="보호중" />
+   <input type="hidden" name="noticeSdt" value="DESC" />
 
-	<input type="hidden" name="kind" />
-	<input type="hidden" name="age" />
-	<input type="hidden" name="careAddr" />
-	<input type="hidden" name="careNm" />
-	<input type="hidden" name="careTel" />
-	<input type="hidden" name="chargeNm" />
-	<input type="hidden" name="colorCd" />
-	<input type="hidden" name="desertionNo" />
-	<input type="hidden" name="filename" />
-	<input type="hidden" name="happenDt" />
-	<input type="hidden" name="happenPlace" />
-	<input type="hidden" name="kindCd" />
-	<input type="hidden" name="neuterYn" />
-	<input type="hidden" name="noticeEdt" />
-	<!-- <input type="hidden" name="noticeNo" /> -->
-	<!-- <input type="hidden" name="noticeSdt" /> -->
-	<input type="hidden" name="officetel" />
-	<input type="hidden" name="orgNm" />
-	<input type="hidden" name="popfile" />
-	<!-- <input type="hidden" name="processState" /> -->
-	<input type="hidden" name="sexCd" />
-	<input type="hidden" name="specialMark" />
-	<input type="hidden" name="weight" />
+   <input type="hidden" name="kind" />
+   <input type="hidden" name="age" />
+   <input type="hidden" name="careAddr" />
+   <input type="hidden" name="careNm" />
+   <input type="hidden" name="careTel" />
+   <input type="hidden" name="chargeNm" />
+   <input type="hidden" name="colorCd" />
+   <input type="hidden" name="desertionNo" />
+   <input type="hidden" name="filename" />
+   <input type="hidden" name="happenDt" />
+   <input type="hidden" name="happenPlace" />
+   <input type="hidden" name="kindCd" />
+   <input type="hidden" name="neuterYn" />
+   <input type="hidden" name="noticeEdt" />
+   <!-- <input type="hidden" name="noticeNo" /> -->
+   <!-- <input type="hidden" name="noticeSdt" /> -->
+   <input type="hidden" name="officetel" />
+   <input type="hidden" name="orgNm" />
+   <input type="hidden" name="popfile" />
+   <!-- <input type="hidden" name="processState" /> -->
+   <input type="hidden" name="sexCd" />
+   <input type="hidden" name="specialMark" />
+   <input type="hidden" name="weight" />
 
-
-    <div class="view">
-        <div class="wrapper">
-            <div class="search_box">
-                <div class="dropdown">
-                    <div class="default_option">전국</div>
-                    <ul class="region">
-                        <li>전국</li>
-                        <li>서울</li>
-                        <li>경기</li>
-                        <li>인천</li>
-                        <li>강원</li>
-                        <li>충북</li>
-                        <li>충남</li>
-                        <li>경북</li>
-                        <li>경남</li>
-                        <li>전북</li>
-                        <li>전남</li>
-                        <li>제주</li>
-                    </ul>
+<div class="view">
+    <div class="wrapper">
+        <div class="search_box nav nav-pills">
+            <div class="dropdown nav-item">
+                <div class="default_option nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       전국
                 </div>
-                <div class="dropdown2">
-                    <div class="default_option2">보호중</div>
-                    <ul class="state">
-                        <li>보호중</li>
-                        <li>종료</li>
-                    </ul>
+                <ul class="region dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">전국</li>
+                    <li class="dropdown-item" href="#">서울</li>
+                    <li class="dropdown-item" href="#">경기</li>
+                    <li class="dropdown-item" href="#">인천</li>
+                    <li class="dropdown-item" href="#">강원</li>
+                    <li class="dropdown-item" href="#">충북</li>
+                    <li class="dropdown-item" href="#">충남</li>
+                    <li class="dropdown-item" href="#">경북</li>
+                    <li class="dropdown-item" href="#">경남</li>
+                    <li class="dropdown-item" href="#">전북</li>
+                    <li class="dropdown-item" href="#">전남</li>
+                    <li class="dropdown-item" href="#">제주</li>
+                </ul>
+            </div>
+            <div class="dropdown2 nav-item">
+                <div class="default_option2 nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       보호중
                 </div>
-                <div class="dropdown3">
-                    <div class="default_option3">최신등록순</div>
-                    <ul class="order">
-                        <li>최신등록순</li>
-                        <li>보호기간 임박순</li>
-                    </ul>
+                <ul class="state dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">보호중</li>
+                    <li class="dropdown-item" href="#">종료</li>
+                </ul>
+            </div>
+            <div class="dropdown3 nav-item">
+                <div class="default_option3 nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       최신등록순
                 </div>
-                <div class="search_field">
-                    <input type="text" class="input" placeholder="Search" name="searchKeyword" value="${searchKeyword}">
-                    <i class="fas fa-search" onClick="goSearch()"></i>
-                </div>
+                <ul class="state dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">최신등록순</li>
+                    <li class="dropdown-item" href="#">보호기간 임박순</li>
+                </ul>
+            </div>
+            <div class="search_field">
+               <input type="text" class="input" placeholder="Search" name="searchKeyword" value="${searchKeyword}">
+                <i class="fas fa-search" onClick="goSearch()"></i>
             </div>
         </div>
     </div>
-    <br>
-
+</div>
+   
     <div class="container">
         <div class="text-center">
             <p class="lead my-3 font-italic">Protected animal list</p> <br />
         </div>
 
         <div class="row mb-2">
-        	<c:forEach items="${list}" var="sList" varStatus="status">
-       		 <div class="col-md-6">
+           <c:forEach items="${list}" var="sList" varStatus="status">
+              <div class="col-md-6">
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col p-4 d-flex flex-column position-static">
-                    	<c:if test="${sList.kind eq 'DOG'}" >
-                    		<h4><strong class="d-inline-block mb-2 text-success">
-                        		${sList.kind}
-                        	</strong></h4>
-                    	</c:if>
-                    	<c:if test="${sList.kind eq 'CAT'}" >
-                    		<h4><strong class="d-inline-block mb-2 text-danger">
-                        		${sList.kind}
-                        	</strong></h4>
-                    	</c:if>
-                    	<c:if test="${sList.kind eq 'OTHER'}" >
-                    		<h4><strong class="d-inline-block mb-2">
-                        		${sList.kind}
-                        	</strong></h4>
-                    	</c:if>
-                   		<strong class="d-inline-block mb-2">
-                       		${sList.noticeSdt}
-                       	</strong>
-                       	<strong class="d-inline-block mb-2">
-                       		${sList.processState}
-                       	</strong>
+                       <c:if test="${sList.kind eq 'DOG'}" >
+                          <h4><strong class="d-inline-block mb-2 text-success">
+                              ${sList.kind}
+                           </strong></h4>
+                       </c:if>
+                       <c:if test="${sList.kind eq 'CAT'}" >
+                          <h4><strong class="d-inline-block mb-2 text-danger">
+                              ${sList.kind}
+                           </strong></h4>
+                       </c:if>
+                       <c:if test="${sList.kind eq 'OTHER'}" >
+                          <h4><strong class="d-inline-block mb-2">
+                              ${sList.kind}
+                           </strong></h4>
+                       </c:if>
+                         <strong class="d-inline-block mb-2">
+                             ${sList.noticeSdt}
+                          </strong>
+                          <strong class="d-inline-block mb-2">
+                             ${sList.processState}
+                          </strong>
                         <strong class="mb-1">${sList.kindCd}</strong>
                         <p class="card-text mb-auto">${sList.sexCd}, ${sList.age}</p> <!-- "mb-1 text-muted" -->
                         <p class="card-text mb-auto">${sList.orgNm} ${sList.happenPlace} 발견</p>
@@ -298,7 +305,7 @@
                     </div>
                 </div>
             </div>
-        	</c:forEach>
+           </c:forEach>
         </div>
     </div>
 </form>

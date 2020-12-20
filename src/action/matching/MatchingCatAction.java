@@ -51,7 +51,7 @@ public class MatchingCatAction extends HttpServlet {
       String lightColor[] = {"노르웨이숲", "렉돌", "먼치킨", "샴", "스코티시", "스핑크스", "아비시니안", "터키시", "페르시안", "한국"};
       String darkColor[] = {"러시안", "메인쿤", "믹스", "뱅갈", "브리티시", "사바나", "샴", "스코티시", "아메리칸", "아비시니안", "한국"};
       
-      String longHair[] = {"노르웨이숲", "렉돌", "메인쿤", "스코티시", "터키시", "페르시안"};
+      String longHair[] = {"노르웨이숲", "렉돌", "메인쿤", "스코티시", "터키시", "페르시안", "믹스", "한국"};
       String shortHair[] = {"러시안", "먼치킨", "믹스", "뱅갈", "브리티시", "사바나", "샴", "스코티시", "스핑크스", "아메리칸", "아비시니안", "한국"};
       
       String color = request.getParameter("color");
@@ -74,7 +74,7 @@ public class MatchingCatAction extends HttpServlet {
       if(hair.equals("l")) {
          System.out.println("장모종: ");
          for(int i = 0; i < 8; i++) {
-        	 selectkind.add(longHair[i]);
+            selectkind.add(longHair[i]);
             System.out.print(longHair[i] + "/");
          }
          System.out.println("추가됨");
@@ -104,7 +104,7 @@ public class MatchingCatAction extends HttpServlet {
       else if(hair.equals("s")) {
          System.out.println("단모종: ");
          for(int i = 0; i < 12; i++) {
-        	 selectkind.add(shortHair[i]);
+            selectkind.add(shortHair[i]);
             System.out.print(shortHair[i] + "/");
          }
          System.out.println("추가됨");
@@ -174,9 +174,9 @@ public class MatchingCatAction extends HttpServlet {
          for (int i = 0; i < itemList.getLength(); i++) {
             Element item = (Element)itemList.item(i);
             String age = null, careAddr = null, careNm = null, careTel = null, colorCd = null, desertionNo = null,
-					kindCd = null, popfile = null, sexCd = null, specialMark = null, weight = null;
-			String rslt_age = null, rslt_careAddr = null, rslt_careNm = null, rslt_careTel = null, rslt_colorCd = null, rslt_desertionNo = null,
-					rslt_kindCd = null, rslt_popfile = null, rslt_sexCd = null, rslt_specialMark = null, rslt_weight = null;
+               kindCd = null, popfile = null, sexCd = null, specialMark = null, weight = null;
+         String rslt_age = null, rslt_careAddr = null, rslt_careNm = null, rslt_careTel = null, rslt_colorCd = null, rslt_desertionNo = null,
+               rslt_kindCd = null, rslt_popfile = null, rslt_sexCd = null, rslt_specialMark = null, rslt_weight = null;
             
             for (Node ch = item.getFirstChild(); ch != null; ch = ch.getNextSibling()) {
                String nodeName = ch.getNodeName();
@@ -184,36 +184,36 @@ public class MatchingCatAction extends HttpServlet {
                
                switch (nodeName) {
                   case "age": // 나이
-                	  age = text;
-//						System.out.println("age: " + age);
+                     age = text;
+//                  System.out.println("age: " + age);
                      break;
                   case "careAddr": // 보호소 주소
-                	  careAddr = text;
-//						System.out.println("careAddr: " + careAddr);
+                     careAddr = text;
+//                  System.out.println("careAddr: " + careAddr);
                      break;
                   case "careNm": // 보호소명
-                	  careNm = text;
-//						System.out.println("careNm: " + careNm);
+                     careNm = text;
+//                  System.out.println("careNm: " + careNm);
                      break;
                   case "careTel": // 보호소 전화번호
-                	  careTel = text;
-//						System.out.println("careTel: " + careTel);
+                     careTel = text;
+//                  System.out.println("careTel: " + careTel);
                      break;
                   case "colorCd": // 색상
-                	  colorCd = text;
+                     colorCd = text;
                      break;
                   case "desertionNo": // 유기번호
-                	  desertionNo = text;
-//						System.out.println("desertionNo: " + desertionNo);
+                     desertionNo = text;
+//                  System.out.println("desertionNo: " + desertionNo);
                      break;
                   case "kindCd": // 품종
                      String rslt = text.substring(5, text.length());
-						for(int j = 0; j < selectkind.size(); j++) {
-							if (rslt.contains(selectkind.get(j).toString())) {
-								kindCd = text;
-							}
-						}
-//						System.out.println("kindCd: " + kindCd);
+                  for(int j = 0; j < selectkind.size(); j++) {
+                     if (rslt.contains(selectkind.get(j).toString())) {
+                        kindCd = text;
+                     }
+                  }
+//                  System.out.println("kindCd: " + kindCd);
 //                     if (rslt.contains("노르웨이"))
 //                        matching.setMat_kind("노르웨이 숲");
 //                     else if (rslt.contains("랙돌"))
@@ -238,61 +238,61 @@ public class MatchingCatAction extends HttpServlet {
 //                        matching.setMat_kind(text);
                      break;
                   case "popfile": // 사진
-                	  popfile = text;
-//						System.out.println("popfile: " + popfile);
+                     popfile = text;
+//                  System.out.println("popfile: " + popfile);
                      break;
                   case "sexCd": // 성별
-                	  if (text.contains(sex)) {
-							sexCd = text;
-						}
-//						System.out.println("sexCd: " + sexCd);
+                     if (text.contains(sex)) {
+                     sexCd = text;
+                  }
+//                  System.out.println("sexCd: " + sexCd);
                      break;
                   case "specialMark": // 특이사항
-                	  specialMark = text;
-//						System.out.println("specialMark: " + specialMark);
+                     specialMark = text;
+//                  System.out.println("specialMark: " + specialMark);
                      break;
                   case "weight": // 몸무게
-                	  String wei = text.substring(0, text.length()-4);
-						wei = wei.replace(',', '.');
-						String temp = wei.substring(wei.length()-1);
-						if (temp.equals(".")) {
-							wei = wei.substring(0, wei.length()-1);
-						}
-						double num;
-						if (!wei.equals("")) {
-							num = Double.parseDouble(wei);
-							
-							if (size.equals("s")) {
-								if (num < 10.00) {
-									weight = Double.toString(num);
-								}
-							}
-							else if(size.equals("l")) {
-								if (num >= 10.00) {
-									weight = Double.toString(num);
-								}
-							}
-						}
-						else {
-							if (size.equals("s")) {
-								weight = "?";
-							}
-						}
-//						System.out.println("weight: " + weight);
+                     String wei = text.substring(0, text.length()-4);
+                  wei = wei.replace(',', '.');
+                  String temp = wei.substring(wei.length()-1);
+                  if (temp.equals(".")) {
+                     wei = wei.substring(0, wei.length()-1);
+                  }
+                  double num;
+                  if (!wei.equals("")) {
+                     num = Double.parseDouble(wei);
+                     
+                     if (size.equals("s")) {
+                        if (num < 10.00) {
+                           weight = Double.toString(num);
+                        }
+                     }
+                     else if(size.equals("l")) {
+                        if (num >= 10.00) {
+                           weight = Double.toString(num);
+                        }
+                     }
+                  }
+                  else {
+                     if (size.equals("s")) {
+                        weight = "?";
+                     }
+                  }
+//                  System.out.println("weight: " + weight);
                      break;
                }            
             }         
             if (age != null && careAddr != null&& careNm != null&& careTel != null&& colorCd != null&& desertionNo != null&&
-					kindCd != null&& popfile != null&& sexCd != null&& specialMark != null&& weight != null) {
-				System.out.println("매칭됨##");
-				rslt_age = age; rslt_careAddr = careAddr; rslt_careNm = careNm; rslt_careTel = careTel; rslt_colorCd = colorCd; rslt_desertionNo = desertionNo;
-						rslt_kindCd = kindCd; rslt_popfile = popfile; rslt_sexCd = sexCd; rslt_specialMark = specialMark; rslt_weight = weight;
-				System.out.println("매칭된값: k:" + k + "/ desertionNo: " + rslt_desertionNo + "/ kindCd: " + rslt_kindCd +
-						"/ sexCd: " + rslt_sexCd + "/ age: " + rslt_age + "/ colorCd: " + rslt_colorCd + "/ weight: " + rslt_weight+ "/ specialMark: " + rslt_specialMark
-						+ "/ popfile: " + rslt_popfile+ "/ careNm: " + rslt_careNm+ "/ careAddr: " + rslt_careAddr+ "/ careTel: " + rslt_careTel + "\n");
-				MatchingVO matching = new MatchingVO(k++, desertionNo, kindCd, sexCd, age, colorCd, weight, specialMark, popfile, careNm, careAddr, careTel);
-				matchingList.add(matching);
-			}
+               kindCd != null&& popfile != null&& sexCd != null&& specialMark != null&& weight != null) {
+            System.out.println("매칭됨##");
+            rslt_age = age; rslt_careAddr = careAddr; rslt_careNm = careNm; rslt_careTel = careTel; rslt_colorCd = colorCd; rslt_desertionNo = desertionNo;
+                  rslt_kindCd = kindCd; rslt_popfile = popfile; rslt_sexCd = sexCd; rslt_specialMark = specialMark; rslt_weight = weight;
+            System.out.println("매칭된값: k:" + k + "/ desertionNo: " + rslt_desertionNo + "/ kindCd: " + rslt_kindCd +
+                  "/ sexCd: " + rslt_sexCd + "/ age: " + rslt_age + "/ colorCd: " + rslt_colorCd + "/ weight: " + rslt_weight+ "/ specialMark: " + rslt_specialMark
+                  + "/ popfile: " + rslt_popfile+ "/ careNm: " + rslt_careNm+ "/ careAddr: " + rslt_careAddr+ "/ careTel: " + rslt_careTel + "\n");
+            MatchingVO matching = new MatchingVO(k++, desertionNo, kindCd, sexCd, age, colorCd, weight, specialMark, popfile, careNm, careAddr, careTel);
+            matchingList.add(matching);
+         }
          }
          
          // matchingList의 참조를 result.jsp로 전달

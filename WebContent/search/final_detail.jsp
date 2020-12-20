@@ -8,10 +8,10 @@
 
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel=stylesheet href="../resources/css/final_search_css.css" type="text/css">
+   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+   <link rel=stylesheet href="../resources/css/final_search_css.css" type="text/css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <title>검색</title>
+    <title>Dropdown Search Box</title>
     <script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script>
@@ -48,49 +48,49 @@
     });
         
     function goSearch() {
-    	console.log('call function');
-    	var f = document.getElementById('testForm');
-    	console.log(f);
-    	
-    	if(!f.searchKeyword.value) {
-    		f.searchKeyword.value = "";
-    	}
-    	
-    	f.method = 'post';
-    	f.action = '/test/main';
-    	f.submit();
+       console.log('call function');
+       var f = document.getElementById('testForm');
+       console.log(f);
+       
+       if(!f.searchKeyword.value) {
+          f.searchKeyword.value = "";
+       }
+       
+       f.method = 'post';
+       f.action = '/test/main';
+       f.submit();
     } 
     
     function goDetailPage(kind, age, careAddr, careNm, careTel, chargeNm, colorCd, desertionNo, filename, happenDt, happenPlace, kindCd, neuterYn, noticeEdt, noticeNo, noticeSdt, officetel, orgNm, popfile, processState, sexCd, specialMark, weight) {
-    	
-    	var f = document.getElementById('testForm');
-    	
-    	f.kind.value = kind;      	
-    	f.age.value = age;        	
-    	f.careAddr.value = careAddr;         	
-    	f.careNm.value = careNm;        	
-    	f.careTel.value = careTel;        	
-    	f.chargeNm.value = chargeNm;        	
-    	f.colorCd.value = colorCd;        	
-    	f.desertionNo.value = desertionNo;        	
-    	f.filename.value = filename;        	
-    	f.happenDt.value = happenDt;        	
-    	f.happenPlace.value = happenPlace;        	
-    	f.kindCd.value = kindCd;        	
-    	f.neuterYn.value = neuterYn;        	
-    	f.noticeEdt.value = noticeEdt;        	
-    	f.noticeNo.value = noticeNo;        	
-    	f.noticeSdt.value = noticeSdt;        	
-    	f.officetel.value = officetel;        	
-    	f.orgNm.value = orgNm;        	
-    	f.popfile.value = popfile;
-    	f.processState.value = processState;        	
-    	f.sexCd.value = sexCd;        	
-    	f.specialMark.value = specialMark;        	
-    	f.weight.value = weight;
-    	f.method = 'post';
-    	f.action = '/search';	// 주소 파싱할 api 호출 
-    	f.submit();
+       
+       var f = document.getElementById('testForm');
+       
+       f.kind.value = kind;         
+       f.age.value = age;           
+       f.careAddr.value = careAddr;            
+       f.careNm.value = careNm;           
+       f.careTel.value = careTel;           
+       f.chargeNm.value = chargeNm;           
+       f.colorCd.value = colorCd;           
+       f.desertionNo.value = desertionNo;           
+       f.filename.value = filename;           
+       f.happenDt.value = happenDt;           
+       f.happenPlace.value = happenPlace;           
+       f.kindCd.value = kindCd;           
+       f.neuterYn.value = neuterYn;           
+       f.noticeEdt.value = noticeEdt;           
+       f.noticeNo.value = noticeNo;           
+       f.noticeSdt.value = noticeSdt;           
+       f.officetel.value = officetel;           
+       f.orgNm.value = orgNm;           
+       f.popfile.value = popfile;
+       f.processState.value = processState;           
+       f.sexCd.value = sexCd;           
+       f.specialMark.value = specialMark;           
+       f.weight.value = weight;
+       f.method = 'post';
+       f.action = '/search';   // 주소 파싱할 api 호출 
+       f.submit();
     }
     </script>
 
@@ -118,8 +118,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+    <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -184,35 +184,35 @@
 <body>
 <jsp:include page="/main/index.jsp"/>
 <form method="post" name="testForm" id="testForm" action="<c:url value='/test/main' />">
-	<input type="hidden" name="noticeNo" value="전국" />
-	<input type="hidden" name="processState" value="보호중" />
-	<input type="hidden" name="noticeSdt" value="DESC" />
+   <input type="hidden" name="noticeNo" value="전국" />
+   <input type="hidden" name="processState" value="보호중" />
+   <input type="hidden" name="noticeSdt" value="DESC" />
 
-	<input type="hidden" name="kind" />
-	<input type="hidden" name="age" />
-	<input type="hidden" name="careAddr" />
-	<input type="hidden" name="careNm" />
-	<input type="hidden" name="careTel" />
-	<input type="hidden" name="chargeNm" />
-	<input type="hidden" name="colorCd" />
-	<input type="hidden" name="desertionNo" />
-	<input type="hidden" name="filename" />
-	<input type="hidden" name="happenDt" />
-	<input type="hidden" name="happenPlace" />
-	<input type="hidden" name="kindCd" />
-	<input type="hidden" name="neuterYn" />
-	<input type="hidden" name="noticeEdt" />
-	<!-- <input type="hidden" name="noticeNo" /> -->
-	<!-- <input type="hidden" name="noticeSdt" /> -->
-	<input type="hidden" name="officetel" />
-	<input type="hidden" name="orgNm" />
-	<input type="hidden" name="popfile" />
-	<!-- <input type="hidden" name="processState" /> -->
-	<input type="hidden" name="sexCd" />
-	<input type="hidden" name="specialMark" />
-	<input type="hidden" name="weight" />
+   <input type="hidden" name="kind" />
+   <input type="hidden" name="age" />
+   <input type="hidden" name="careAddr" />
+   <input type="hidden" name="careNm" />
+   <input type="hidden" name="careTel" />
+   <input type="hidden" name="chargeNm" />
+   <input type="hidden" name="colorCd" />
+   <input type="hidden" name="desertionNo" />
+   <input type="hidden" name="filename" />
+   <input type="hidden" name="happenDt" />
+   <input type="hidden" name="happenPlace" />
+   <input type="hidden" name="kindCd" />
+   <input type="hidden" name="neuterYn" />
+   <input type="hidden" name="noticeEdt" />
+   <!-- <input type="hidden" name="noticeNo" /> -->
+   <!-- <input type="hidden" name="noticeSdt" /> -->
+   <input type="hidden" name="officetel" />
+   <input type="hidden" name="orgNm" />
+   <input type="hidden" name="popfile" />
+   <!-- <input type="hidden" name="processState" /> -->
+   <input type="hidden" name="sexCd" />
+   <input type="hidden" name="specialMark" />
+   <input type="hidden" name="weight" />
 
-	<div class="view">
+   <div class="view">
         <div class="wrapper">
             <div class="search_box">
                 <div class="dropdown">
@@ -261,41 +261,35 @@
         </div>
 
        <!-- <div class="row mb-2">
-       		<div class="col-md-6"> --> 
+             <div class="col-md-6"> --> 
                 <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col-auto d-none d-lg-block">
-                    	<img class="bd-placeholder-img" width="400" height="500" 
-                            	src="<%=request.getParameter("popfile")%>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"> 
+                       <img class="bd-placeholder-img" width="400" height="500" 
+                               src="<%=request.getParameter("popfile")%>" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"> 
                     </div>
                     <div class="col p-4 d-flex flex-column position-static">
-                    	<h3><strong class="d-inline-block mb-2">
-                        		<%=request.getParameter("kind")%>
-       						</strong></h3>
-                        <h6 class="mb-1"><strong>|&nbsp;공고번호</strong>&emsp;&emsp;<%=request.getParameter("noticeNo")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;공고시작일</strong>&emsp;&emsp;<%=request.getParameter("noticeSdt")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;공고종료일</strong>&emsp;&emsp;<%=request.getParameter("noticeEdt")%></h6>
+                       <h3><strong class="d-inline-block mb-2">
+                              <%=request.getParameter("kind")%>
+                         </strong></h3><br>
+                        <h6 class="mb-1"><strong>&nbsp;공고번호</strong>&emsp;&emsp;&emsp;<%=request.getParameter("noticeNo")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;공고시작일</strong>&emsp;&emsp;<%=request.getParameter("noticeSdt")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;공고종료일</strong>&emsp;&emsp;<%=request.getParameter("noticeEdt")%></h6>
                         <br>
-                        <h6 class="mb-1"><strong>|&nbsp;품종</strong>&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("kindCd")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;출생년도</strong>&emsp;&emsp;<%=request.getParameter("age")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;성별</strong>&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("sexCd")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;색상</strong>&emsp;&emsp;<%=request.getParameter("colorCd")%></h6>
-                   		<h6 class="mb-1"><strong>|&nbsp;체중</strong>&emsp;&emsp;<%=request.getParameter("weight")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;중성화 여부</strong>&emsp;&emsp;<%=request.getParameter("neuterYn")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;특징</strong>&emsp;&emsp;<%=request.getParameter("specialMark")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;품종</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("kindCd")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;출생년도</strong>&emsp;&emsp;&emsp;<%=request.getParameter("age")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;성별</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("sexCd")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;색상</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("colorCd")%></h6>
+                         <h6 class="mb-1"><strong>&nbsp;체중</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("weight")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;중성화 여부</strong>&emsp;&emsp;<%=request.getParameter("neuterYn")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;특징</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("specialMark")%></h6>
                         <br>
-                        <h6 class="mb-1"><strong>|&nbsp;발견장소</strong>&emsp;&emsp;<%=request.getParameter("orgNm")%> <%=request.getParameter("happenPlace")%> 발견</h6>
-                        <h6 class="mb-1"><strong>|&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%>&nbsp;
-                        <a class="btn btn-warning" href="<c:url value='/shelter/info'>
-						<c:param name='careNm' value='<%=request.getParameter("careNm") %>'/>
-						<c:param name='careAddr' value='<%=request.getParameter("careAddr") %>'/>
-						</c:url>">
-						보호소 정보 보기</a></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;보호소 주소</strong>&emsp;&emsp;<%=request.getParameter("careAddr")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;보호소 전화번호</strong>&emsp;&emsp;<%=request.getParameter("careTel")%></h6>
-                        <h6 class="mb-1"><strong>|&nbsp;접수일</strong>&emsp;&emsp;<%=request.getParameter("happenDate")%></h6>
-                	</div>
+                        <h6 class="mb-1"><strong>&nbsp;발견장소</strong>&emsp;&emsp;&emsp;<%=request.getParameter("orgNm")%> <%=request.getParameter("happenPlace")%> 발견</h6>
+                        <h6 class="mb-1"><strong>&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;보호소 번호</strong>&emsp;&emsp;<%=request.getParameter("careTel")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;접수일</strong>&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("happenDate")%></h6>
+                   </div>
                 </div>
-	</div>
+   </div>
 </form>
     <footer class="blog-footer">
     </footer>
