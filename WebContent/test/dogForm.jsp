@@ -107,29 +107,27 @@
     <jsp:include page="/main/index.jsp"/>
   <div class="container">
         <div id="l-margin">
-            <br><p id="test-toptext-p" class="text-center"> &#x1F436 입양시험을 선택하셨습니다. </p>
-            <br>
-            <div id="ViewTimer"></div>
-            <br>
+            <br><br><br><p id="test-toptext-p" class="text-center"> &#x1F436 입양시험을 선택하셨습니다. </p>
+            <br><div id="ViewTimer"></div>
             <form method="POST" name="form" action="<c:url value='/test/score' />">
             	<!-- 마음가짐 5문제 -> 고정 문제 -->
-                <br><p id="test-text-p"> / 마음가짐 / </p><br>
+                <br><br><br><p id="test-text-p"> / 마음가짐 / </p><br>
                 <p>1. 하루에 한번, 적어도 이틀에 한번은 산책을 시킬 수 있나요?</p>
                 <input type="radio" name="test1" value="1">O &nbsp;
                 <input type="radio" name="test1" value="0">X<br><p></p>
-                <p>2. 어떤 어려움이 닥치더라도 반려견의 죽음까지 책임질 자신이 있나요?</p>
+                <br><p>2. 어떤 어려움이 닥치더라도 반려견의 죽음까지 책임질 자신이 있나요?</p>
                 <input type="radio" name="test2" value="1">O &nbsp;
                 <input type="radio" name="test2" value="0">X<br><p></p>
-                <p>3. 현재 집에 같이 거주중인 구성원이 모두 반려동물을 원하나요?</p>
+                <br><p>3. 현재 집에 같이 거주중인 구성원이 모두 반려동물을 원하나요?</p>
                 <input type="radio" name="test3" value="1">O &nbsp;
                 <input type="radio" name="test3" value="0">X<br><p></p>
-                <p>4. 경제적으로 지원이 가능한가요?(사료, 물품, 병원비 등)</p>
+                <br><p>4. 경제적으로 지원이 가능한가요?(사료, 물품, 병원비 등)</p>
                 <input type="radio" name="test4" value="1">O &nbsp;
                 <input type="radio" name="test4" value="0">X<br><p></p>
-                <p>5. 반려동물이 살기 적합한 환경에 거주하고 계신가요?</p>
+                <br><p>5. 반려동물이 살기 적합한 환경에 거주하고 계신가요?</p>
                 <input type="radio" name="test5" value="1">O &nbsp;
                 <input type="radio" name="test5" value="0">X<br><p></p>
-                <br><p id="test-text-p"> / 배경지식 및 습성 / </p><br>
+                <br><br><p id="test-text-p"> / 배경지식 및 습성 / </p><br>
                 <c:set var="i" value="6"/>
                 <!-- db에서 가져온 랜덤 15문제 -->
                 <c:forEach var="dogTest" items="${dogTestList}">
@@ -141,18 +139,16 @@
                 	<input type="hidden" name="answer${i}_@i" value="${dogTest.dogA}">
 					<c:set var="i" value="${i+1}"/>
                 </c:forEach>
-                <div class="text-center">
-                <input type="hidden" name="testKind" value="dog">
-                <input type="submit" value="제출하기">
+                
+                <br><br>
+				<div class="text-center">
+					<input type="hidden" name="testKind" value="dog">
+                	<button type="button" class="btn btn-primary" >제출하기</button>
                 </div>
              </form>
-            <br/><br/><br/>
+            <br><br><br>
         </div>
   </div>
-
-  <hr>
-
-
 <footer class="blog-footer">
 </footer>
 </body>

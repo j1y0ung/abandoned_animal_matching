@@ -108,28 +108,27 @@
     <jsp:include page="/main/index.jsp"/>
   <div class="container">
         <div id="l-margin">
-            <br><p id="test-toptext-p" class="text-center"> &#x1F63A 입양시험을 선택하셨습니다. </p>
-            <br>
-            <div id="ViewTimer"></div>
-            <br>
+            <br><br><br><p id="test-toptext-p" class="text-center"> &#x1F63A 입양시험을 선택하셨습니다. </p>
+            <br><div id="ViewTimer"></div>
             <form method="POST" name="form" action="<c:url value='/test/score' />">
             	<!-- 마음가짐 5문제 -> 고정 문제 -->
-                <br><p id="test-text-p"> / 마음가짐 / </p><br>
+                <br><br><br><p id="test-text-p"> / 마음가짐 / </p><br>
                 <p>1. 반려묘 키우는 데 발생하는 한 달 평균 10 - 20만원의 고정비를 낼 수 있다.</p>
                 <input type="radio" name="test1" value="1">O &nbsp;
-                <input type="radio" name="test1" value="0">X<br><p></p>
-                <p>2. 지금까지 미처 발견하지 못했던 털 알레르기 혹은 동물 알레르기가 생겼을 때 대처할 방법을 생각해두었다.</p>
+                <input type="radio" name="test1" value="0">X<br>
+                <br><p>2. 지금까지 미처 발견하지 못했던 털 알레르기 혹은 동물 알레르기가 생겼을 때 대처할 방법을 생각해두었다.</p>
                 <input type="radio" name="test2" value="1">O &nbsp;
-                <input type="radio" name="test2" value="0">X<br><p></p>
-                <p>3. 고양이를 키우고자 하는 이유가 가족이 원해서 혹은 일시적 지루함을 해소할 대상으로 생각하기 때문이다.</p>
+                <input type="radio" name="test2" value="0">X<br>
+                <br><p>3. 고양이를 키우고자 하는 이유가 가족이 원해서 혹은 일시적 지루함을 해소할 대상으로 생각하기 때문이다.</p>
                 <input type="radio" name="test3" value="0">O &nbsp;
-                <input type="radio" name="test3" value="1">X<br><p></p>
-                <p>4. 고양이가 가진 발톱과 본능으로 인해 소파, 가구 등이 망가져도 괜찮다.</p>
+                <input type="radio" name="test3" value="1">X<br>
+                <br><p>4. 고양이가 가진 발톱과 본능으로 인해 소파, 가구 등이 망가져도 괜찮다.</p>
                 <input type="radio" name="test4" value="1">O &nbsp;
-                <input type="radio" name="test4" value="0">X<br><p></p>
-                <p>5. 고양이의 본능을 존중할 준비가 되어 있다. </p>
+                <input type="radio" name="test4" value="0">X<br>
+                <br><p>5. 고양이의 본능을 존중할 준비가 되어 있다. </p>
                 <input type="radio" name="test5" value="1">O &nbsp;
-                <input type="radio" name="test5" value="0">X<br><p></p>
+                <input type="radio" name="test5" value="0">X<br>
+                <br><br><p id="test-text-p"> / 배경지식 및 습성 / </p><br>
                 <c:set var="i" value="6"/>
                 <!-- db에서 가져온 랜덤 15문제 -->
                 <c:forEach var="catTest" items="${catTestList}">
@@ -141,17 +140,16 @@
                 	<input type="hidden" name="answer${i}_@i" value="${catTest.catA}">
 					<c:set var="i" value="${i+1}"/>
                 </c:forEach>
-                <div class="text-center">
-                <input type="hidden" name="testKind" value="cat">
-                <input type="submit" value="제출하기">
+                
+                <br><br>
+				<div class="text-center">
+					<input type="hidden" name="testKind" value="cat">
+                	<button type="button" class="btn btn-primary" >제출하기</button>
                 </div>
              </form>
-            <br/><br/><br/>
+            <br><br><br>
         </div>
   </div>
-
-  <hr>
-
 <footer class="blog-footer">
 </footer>
 </body>

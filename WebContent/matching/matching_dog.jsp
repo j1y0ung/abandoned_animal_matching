@@ -60,32 +60,36 @@
 	
 	<div class="container">
 		<div id="l-margin">
-			<br><p id="test-toptext-p" class="text-center"> 강아지 매칭 </p>
+			<br><br><br><p id="test-toptext-p" class="text-center"> &#x1F436 매칭을 선택하셨습니다. </p>
 			<form name="f" method="get" action="/matching/dog" enctype="multipart/form-data">
-				1. 털빠짐<br>
-				<input type='radio' name='hair' value='l'/>적음
+				<br><br><br><p id="test-text-p"> / 선택해주세요 / </p><br>
+				<p>1. 털 빠짐</p>
+				<input type='radio' name='hair' value='l'/>적음 &nbsp;&nbsp;
 				<input type='radio' name='hair' value='m'/>많음<br>
-				2. 크기<br>
-				<input type='radio' name='size' value='s'/>중,소형견
+				<br><p>2. 크기</p>
+				<input type='radio' name='size' value='s'/>중,소형견 &nbsp;&nbsp;
 				<input type='radio' name='size' value='l'/>대형견<br>
-				3. 주거환경<br>
-				<input type='radio' name='environment' value='s'/>방 3개 이하의 다세대 주택
+				<br><p>3. 주거환경</p>
+				<input type='radio' name='environment' value='s'/>방 3개 이하의 다세대 주택 &nbsp;&nbsp;
 				<input type='radio' name='environment' value='l'/>넓거나 마당이 있는 집<br>
-				4. 지능<br>
-				<input type='radio' name='intelligence' value='l'/>낮은편
+				<br><p>4. 지능</p>
+				<input type='radio' name='intelligence' value='l'/>낮은편 &nbsp;&nbsp;
 				<input type='radio' name='intelligence' value='h'/>높은편<br>
-				5. 색상<br>
-				<input type='radio' name='color' value='갈'/>갈색
-				<input type='radio' name='color' value='검'/>검정색
+				<br><p>5. 색상</p>
+				<input type='radio' name='color' value='갈'/>갈색 &nbsp;&nbsp;
+				<input type='radio' name='color' value='검'/>검정색 &nbsp;&nbsp;
 				<input type='radio' name='color' value='흰'/>흰색<br>
-				6. 성별<br>
-				<input type='radio' name='sex' value='F'/>암컷
+				<br><p>6. 성별</p>
+				<input type='radio' name='sex' value='F'/>암컷 &nbsp;&nbsp;
 				<input type='radio' name='sex' value='M'/>수컷<br>
-				7. 중성화여부<br>
-				<input type='radio' name='neuter' value='Y'/>예
+				<br><p>7. 중성화여부</p>
+				<input type='radio' name='neuter' value='Y'/>예 &nbsp;&nbsp;
 				<input type='radio' name='neuter' value='N'/>아니오<br>
-				
-				<input type="button" value="매칭 결과 보기" onclick="checkdata(this.form)">
+				<br><br>
+				<div class="text-center">
+                	<button type="button" class="btn btn-primary" onclick="checkdata(this.form)">매칭 결과 보기</button>
+                </div>
+                <br><br><br>
 			</form>
 		</div>
 	</div>

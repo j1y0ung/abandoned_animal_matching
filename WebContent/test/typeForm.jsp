@@ -123,8 +123,6 @@
         </div>
   </div>
 
-  <hr>
-
 <footer class="blog-footer">
 </footer>
 </body>

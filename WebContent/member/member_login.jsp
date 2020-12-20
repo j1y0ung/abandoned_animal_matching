@@ -95,7 +95,8 @@
 <body>
 	<jsp:include page="/main/index.jsp"/>
 	
-	<div class="container">
+	<div class = "container">
+        
 		<div id="l-margin">
 		<div class="col-md-7 col-lg-8">
         <h4 class="mb-3">로그인</h4>
@@ -108,6 +109,7 @@
 				
 				<button class="w-100 btn btn-dark btn-lg" type="button" onclick="send(this.form);">로그인</button>
 			</form>
+		</div>
 		</div>
 	</div>
 </body>

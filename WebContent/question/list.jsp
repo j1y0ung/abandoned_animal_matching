@@ -194,10 +194,8 @@ function createQuestion(targetUri) {
    <div>
       <div class="float-right">
       <button type="button" class="btn btn-primary text-left" onClick="createQuestion('<c:url value='/question/create/form' />')">글쓰기</button>
-      <a class="btn btn-secondary text-right" href="<c:url value='/question/list'>
-         <c:param name='order' value='my_question'/>
-         </c:url>">
-      내가 쓴 글 보기</a>
+      <a class="btn btn-light" href="<c:url value='/question/list'>
+         <c:param name='order' value='my_question'/></c:url>"> 내가 쓴 글 보기</a>
       </div>
    </div>
    <br><br>

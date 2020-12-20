@@ -92,7 +92,7 @@
 	<div class="text-center">
 			<br><p id="dscriptext">매칭을 원하는 동물을 선택해주세요!</p><br/>
 				<div id="select">
-					<button id="btnText" class="btn btn-outline-info btn-lg" style="width:150pt;height:80pt;" onclick="check('cat');">강아지<br/>&#x1F436</button>
+					<button id="btnText" class="btn btn-outline-info btn-lg" style="width:150pt;height:80pt;" onclick="check('dog');">강아지<br/>&#x1F436</button>
 		            &nbsp;&nbsp;&nbsp;&nbsp;
 		            <button id="btnText" class="btn btn-outline-warning btn-lg" style="width:150pt;height:80pt;" onclick="check('cat');">고양이<br/>&#x1F63A</button>
 		            <br/><br/><br/>

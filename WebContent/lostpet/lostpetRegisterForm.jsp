@@ -100,54 +100,54 @@
              <fieldset>
              <div class="form-group row">
 		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">동물 종류</label>
-		      <div class="col-sm-2">
+		      <div class="col-sm-3">
 		      <input type="radio" name="animalType" value="<%="강아지"%>">강아지
-		      &nbsp;
+		      &nbsp;&nbsp;
 		      <input type="radio" name="animalType" value="<%="고양이"%>">고양이
 		      </div>
 	        </div>
 		    <div class="form-group row">
 		      <label for="InputownerName" class="col-sm-2 col-form-label">보호자 이름</label>
 		      <div class="col-sm-10">
-		      <input type="text" class="form-control" name="ownerName" id="InputownerName" placeholder="(ex.홍길동)">
+		      <input type="text" class="form-control" name="ownerName" id="InputownerName" placeholder="(ex. 홍길동)">
 		       </div>
 		    </div>
 		    <div class="form-group row">
 		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">보호자 전화번호</label>
 		      <div class="col-sm-10">
-		      <input type="text" class="form-control" name="ownerPhone" id="InputownerPhone" placeholder="(ex.010-1234-2345)">
+		      <input type="text" class="form-control" name="ownerPhone" id="InputownerPhone" placeholder="(ex. 010-1234-2345)">
 		      </div>
 		    </div>
 		    <div class="form-group row">
 		      <label for="InputanimalSpecies"  class="col-sm-2 col-form-label">동물 품종</label>
 		      <div class="col-sm-10">
-		      <input type="text" class="form-control" name="animalSpecies" id="InputanimalSpecies" placeholder="(ex.치와와)">
+		      <input type="text" class="form-control" name="animalSpecies" id="InputanimalSpecies" placeholder="(ex. 치와와)">
 		      </div>
 		    </div>
 		    <div class="form-group row">
-		      <label for="Inputregion"  class="col-sm-2 col-form-label">실종지역</label>
+		      <label for="Inputregion"  class="col-sm-2 col-form-label">실종 지역</label>
 		      <div class="col-sm-10">
-		      <input type="text" class="form-control" name="region" id="Inputregion" placeholder="(ex.경기도 파주 동패동)">
+		      <input type="text" class="form-control" name="region" id="Inputregion" placeholder="(ex. 경기도 파주 동패동)">
 		      </div>
 		    </div>
 		    <div class="form-group row">
 		      <label for="InputanimalAge"  class="col-sm-2 col-form-label">동물 나이</label>
 		      <div class="col-sm-10">
-		      <input type="number" class="form-control" name="animalAge" id="InputanimalAge" placeholder="(ex.1)">
-		      <small id="animalAgeHelp" class="form-text text-muted">1살이하는 1을 적어주세요.</small>
+		      <input type="number" class="form-control" name="animalAge" id="InputanimalAge" placeholder="(ex. 1)">
+		      <small id="animalAgeHelp" class="form-text text-muted">1살 이하는 1을 적어주세요</small>
 		      </div>
 		    </div>
 		    <div class="form-group row">
 		      <label for="InputownerPhone"  class="col-sm-2 col-form-label">동물 성별</label>
-		      <div class="col-sm-2">
-		      <input type="radio" name="animalGender" value="<%="암컷"%>">암컷&nbsp;
-		      <input type="radio" name="animalGender" value="<%="수컷"%>">수컷&nbsp;
-		      <input type="radio" name="animalGender" value="<%="모름"%>">모름
+		      <div class="col-sm-3">
+		      <input type="radio" name="animalGender" value="<%="암컷"%>">암컷&nbsp;&nbsp;
+		      <input type="radio" name="animalGender" value="<%="수컷"%>">수컷&nbsp;&nbsp;
+		      <input type="radio" name="animalGender" value="<%="모름"%>">모름&nbsp;&nbsp;
 		      </div>
 	        </div>
 
 	        <button type="button" class="btn btn-primary" onClick="lostPetCreate()">등록</button>
-	        <br/><br/>
+	        &nbsp;&nbsp;
 	        <a href="<c:url value='/lostpet/list' />" class="btn btn-light">진행상황보기</a>
 		  </fieldset>
             </form>

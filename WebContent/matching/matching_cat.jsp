@@ -57,25 +57,29 @@
 	
 	<div class="container">
 		<div id="l-margin">
-			<br><p id="test-toptext-p" class="text-center"> 고양이 매칭 </p>
+			<br><br><br><p id="test-toptext-p" class="text-center"> &#x1F63A 매칭을 선택하셨습니다. </p>
 			<form name="f" method="get" action="/matching/cat" enctype="multipart/form-data">
-				1. 털 길이<br>
-				<input type='radio' name='hair' value='s'/>단모종
+				<br><br><br><p id="test-text-p"> / 선택해주세요 / </p><br>
+				<p>1. 털 길이</p>
+				<input type='radio' name='hair' value='s'/>단모종 &nbsp;&nbsp;
 				<input type='radio' name='hair' value='l'/>장모종<br>
-				2. 크기<br>
-				<input type='radio' name='size' value='s'/>몸집이 작은 고양이
+				<br><p>2. 크기</p>
+				<input type='radio' name='size' value='s'/>몸집이 작은 고양이 &nbsp;&nbsp;
 				<input type='radio' name='size' value='l'/>몸집이 큰 고양이<br>
-				3. 색상<br>
-				<input type='radio' name='color' value='l'/>밝은색
+				<br><p>3. 색상</p>
+				<input type='radio' name='color' value='l'/>밝은색 &nbsp;&nbsp;
 				<input type='radio' name='color' value='d'/>어두운색<br>
-				4. 성별<br>
-				<input type='radio' name='sex' value='F'/>암컷
+				<br><p>4. 성별</p>
+				<input type='radio' name='sex' value='F'/>암컷 &nbsp;&nbsp;
 				<input type='radio' name='sex' value='M'/>수컷<br>
-				5. 중성화여부<br>
-				<input type='radio' name='neuter' value='Y'/>예
+				<br><p>5. 중성화여부</p>
+				<input type='radio' name='neuter' value='Y'/>예 &nbsp;&nbsp;
 				<input type='radio' name='neuter' value='N'/>아니오<br>
-				
-				<input type="button" value="매칭 결과 보기" onclick="checkdata(this.form)">
+				<br><br>
+				<div class="text-center">
+                	<button type="button" class="btn btn-primary" onclick="checkdata(this.form)">매칭 결과 보기</button>
+                </div>
+                <br><br><br>
 			</form>
 		</div>
 	</div>
