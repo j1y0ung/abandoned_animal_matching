@@ -336,16 +336,31 @@ public class MatchingDogAction extends HttpServlet {
 							}
 							double num;
 							if (!wei.equals("")) {
-								num = Double.parseDouble(wei);
+								try {
+									num = Double.parseDouble(wei);
+								}catch (NumberFormatException e) {
+									weight = null;
+									break;
+								}
 								
 								if (size.equals("s")) {
 									if (num < 10.00) {
-										weight = Double.toString(num);
+										try {
+											weight = Double.toString(num);
+										}catch (NumberFormatException e) {
+											weight = null;
+											break;
+										}
 									}
 								}
 								else if(size.equals("l")) {
 									if (num >= 10.00) {
-										weight = Double.toString(num);
+										try {
+											weight = Double.toString(num);
+										}catch (NumberFormatException e) {
+											weight = null;
+											break;
+										}
 									}
 								}
 							}

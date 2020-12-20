@@ -66,11 +66,8 @@
 				<input type='radio' name='size' value='s'/>몸집이 작은 고양이
 				<input type='radio' name='size' value='l'/>몸집이 큰 고양이<br>
 				3. 색상<br>
-				<input type='radio' name='color' value='노'/>노란색
-				<input type='radio' name='color' value='갈'/>갈색
-				<input type='radio' name='color' value='검'/>검정색
-				<input type='radio' name='color' value='회'/>회색
-				<input type='radio' name='color' value='흰'/>흰색<br>
+				<input type='radio' name='color' value='l'/>밝은색
+				<input type='radio' name='color' value='d'/>어두운색<br>
 				4. 성별<br>
 				<input type='radio' name='sex' value='F'/>암컷
 				<input type='radio' name='sex' value='M'/>수컷<br>

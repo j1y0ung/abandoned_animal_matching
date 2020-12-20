@@ -73,7 +73,7 @@ public class MatchingCatAction extends HttpServlet {
       List selectkind = new ArrayList();
       if(hair.equals("l")) {
          System.out.println("장모종: ");
-         for(int i = 0; i < 8; i++) {
+         for(int i = 0; i < 6; i++) {
         	 selectkind.add(longHair[i]);
             System.out.print(longHair[i] + "/");
          }
@@ -82,7 +82,7 @@ public class MatchingCatAction extends HttpServlet {
          if(color.equals("l")) {
             System.out.println("밝은색 고양이: ");
             // 장모종 중 밝은색 고양이 삭제
-            for(int i = 0; i < 11; i++) {
+            for(int i = 0; i < 10; i++) {
                if(selectkind.contains(darkColor[i])) {
                   System.out.println(darkColor[i] + "/");
                   selectkind.remove(darkColor[i]);
@@ -92,7 +92,7 @@ public class MatchingCatAction extends HttpServlet {
          }
          else if(color.equals("d")) {
             // 장모종 중 어두운색 고양이 삭제
-            for(int i = 0; i < 12; i++) {
+            for(int i = 0; i < 11; i++) {
                if(selectkind.contains(lightColor[i])) {
                   System.out.println(lightColor[i] + "/");
                   selectkind.remove(lightColor[i]);
@@ -112,7 +112,7 @@ public class MatchingCatAction extends HttpServlet {
          if(color.equals("l")) {
             System.out.println("밝은 색 고양이: ");
             // 단모종 중 어두운 색 고양이 삭제
-            for(int i = 0; i < 11; i++) {
+            for(int i = 0; i < 10; i++) {
                if(selectkind.contains(darkColor[i])) {
                   System.out.println(darkColor[i] + "/");
                   selectkind.remove(darkColor[i]);
@@ -123,7 +123,7 @@ public class MatchingCatAction extends HttpServlet {
          else if(color.equals("d")) {
             System.out.println("어두운 색 고양이: ");
             // 단모종 중 밝은 색 고양이 삭제
-            for(int i = 0; i < 12; i++) {
+            for(int i = 0; i < 11; i++) {
                if(selectkind.contains(lightColor[i])) {
                   System.out.println(lightColor[i] + "/");
                   selectkind.remove(lightColor[i]);
@@ -160,7 +160,7 @@ public class MatchingCatAction extends HttpServlet {
            document = builder.parse(content);
            
            System.out.println("Response Message Body:");
-//           printDomTree(document); // 파싱된 값 확인용
+           printDomTree(document); // 파싱된 값 확인용
          } catch (Exception ex) {
              throw new ServletException("XML parsing error!");
          } finally {
