@@ -144,7 +144,7 @@
                 <br><br>
 				<div class="text-center">
 					<input type="hidden" name="testKind" value="cat">
-                	<button type="button" class="btn btn-primary" >제출하기</button>
+                	<button type="submit" class="btn btn-primary" >제출하기</button>
                 </div>
              </form>
             <br><br><br>
