@@ -8,7 +8,7 @@
 <head>
 	<meta charset="UTF-8">
 
-	<title>입양후기 등록 화면</title>
+	<title>입양후기 등록</title>
 
 	<script>
 		function checkdata( f ){

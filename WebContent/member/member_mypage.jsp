@@ -107,7 +107,7 @@
 											<input type="hidden" value="${matvo.mat_id }" name="mat_id">
 											<input type="hidden" value="${matvo.mat_img }" name="titleImg">
 											<input type="hidden" value="${vo.mem_id }" name="mem_id">
-											<input type="button" value="입양후기작성" onclick="location.href='/review/form'">
+											<input type="button" value="입양 후기 작성" onclick="location.href='/review/form'">
 									</c:if>
 								</c:if>
 							</form>
@@ -116,18 +116,18 @@
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">
 						<tr>
 							<td colspan="2">
-								<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
-								<input type="hidden" name="code" value="adm">
-								<input type="button" value="입양신청관리" onclick="send(this.form);">
+								<form>
+									<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
+									<input type="hidden" name="code" value="adm">
+									<input type="button" value="내 보호소 입양신청관리" onclick="send(this.form);">
+								</form>
 							</td>
 						</tr>
 					</c:if>
 					<tr>
 						<td colspan="2">
-							<form>
-								<input type="hidden" name="updateCode" value="personal">
-								<button type="button" class="btn btn-dark" onclick="update(this.form);">수정</button>
-							</form>
+							<input type="hidden" name="updateCode" value="personal">
+							<button type="button" class="btn btn-dark" onclick="update(this.form);">수정</button>
 						</td>
 					</tr>
 				</table>
