@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="member">
+	
+	<select id="member_list" parameterType="java.lang.String" resultType="member">
+		select * from member order by mem_idx DESC
+	</select>
+	
+	<select id="member_one" parameterType="java.lang.String" resultType="member">
+		select * from member where mem_id=#{mem_id}
+	</select>
+	
+	<select id="member_careAdmin" parameterType="java.lang.String" resultType="member">
+		select * from member where mem_careAdmin != 'X' and mem_isAdmin='n'
+	</select>
+	
+	<insert id="member_insert" parameterType="member">
+		insert into member (mem_idx, mem_name, mem_id, mem_pwd, mem_phone, mem_email, mem_regdate, mem_membership,
+		mem_careAdmin, mem_isAdmin, mat_id) values(
+			seq_member_idx.nextVal,
+			#{mem_name},
+			#{mem_id},
+			#{mem_pwd},
+			#{mem_phone},
+			#{mem_email},
+			SYSDATE,
+			DEFAULT, #{mem_careAdmin}, DEFAULT, null
+			)
+	</insert>
+	
+	<delete id="member_delete" parameterType="string">
+		delete from member where mem_id=#{mem_id}
+	</delete>
+	
+	<update id="member_update" parameterType="member">
+		update member
+		set mem_pwd=#{mem_pwd}, mem_phone=#{mem_phone}, mem_email=#{mem_email}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_update_manager" parameterType="member">
+		update member
+		set mem_membership=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_careadmin_update" parameterType="member">
+		update member
+		set mem_careAdmin=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+	
+	<update id="member_isadmin_update" parameterType="member">
+		update member
+		set mem_isAdmin=#{inputStr}
+		where mem_id=#{mem_id}
+	</update>
+
+</mapper>

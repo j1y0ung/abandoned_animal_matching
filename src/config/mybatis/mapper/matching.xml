@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="matching">
+	
+	<select id="matching_list" parameterType="java.lang.String" resultType="matching">
+		select * from matching where mat_state='승인대기중'
+	</select>
+	
+	<select id="matching_admin_list" parameterType="String" resultType="matching">
+		select * from matching where mat_careName=#{careName}
+	</select>
+	
+	<select id="matching_list_one" parameterType="String" resultType="matching"> 
+		select * from matching where mem_id=#{mem_id}
+	</select>
+	
+	<insert id="matching_insert" parameterType="matching">
+		insert into matching values(
+			seq_matching_idx.nextVal,
+			#{mat_id},
+			#{mat_kind},
+			#{mat_sex},
+			#{mat_age},
+			#{mat_color},
+			#{mat_size},
+			#{mat_detail},
+			#{mat_img},
+			#{mat_careName},
+			#{mat_careAddress},
+			#{mat_tel},
+			#{mem_id},
+			SYSDATE,
+			DEFAULT
+			)
+	</insert>
+	
+	<delete id="matching_delete" parameterType="matching">
+		delete from matching where mat_id=#{mat_id} and mem_id=#{mem_id}
+	</delete>
+	
+	<update id="matching_update" parameterType="matching">
+		update matching
+		set mat_state='승인완료'
+		where mem_id=#{mem_id} and mat_id=#{mat_id}
+	</update>
+
+</mapper>

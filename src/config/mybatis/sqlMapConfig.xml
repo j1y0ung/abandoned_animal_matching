@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<typeAliases>
+		<typeAlias type="vo.MemberVO" alias="member"/>
+		<typeAlias type="vo.ReviewVO" alias="review"/>
+		<typeAlias type="vo.MatchingVO" alias="matching"/>
+		<typeAlias type="vo.TestVO" alias="test"/>
+		<typeAlias type="model.DogTest" alias="dogtest"/>
+		<typeAlias type="model.CatTest" alias="cattest"/>
+	</typeAliases>
+
+	<environments default="">
+		<environment id="">
+			<transactionManager type="JDBC" />
+			<dataSource type="JNDI">
+				<property value="java:comp/env/jdbc/oracle_test" name="data_source"/>
+			</dataSource>
+		</environment>
+	</environments>
+	
+	<mappers>
+		<mapper resource="config/mybatis/mapper/member.xml" />
+		<mapper resource="config/mybatis/mapper/review.xml" />
+		<mapper resource="config/mybatis/mapper/matching.xml" />
+		<mapper resource="config/mybatis/mapper/test.xml" />
+	</mappers>
+	
+</configuration>
+
+
+
+
+
+
+
+

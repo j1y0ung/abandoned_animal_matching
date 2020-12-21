@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="review">
+	
+	<select id="review_list" parameterType="java.lang.String" resultType="review">
+			select * from review
+	</select>
+	
+	<insert id="review_insert" parameterType="review" >
+		insert into review values(
+			seq_review_idx.nextVal,
+			#{rev_title},
+			#{rev_content},
+			#{rev_img},
+			#{rev_titleImg},
+			SYSDATE, 
+			#{mem_id},
+			#{mat_id})
+	</insert>
+	
+	<select id="review_list_one" parameterType="int" resultType="review"> 
+		select * from review where rev_idx = #{rev_idx}
+	</select>
+	
+	<delete id="review_delete" parameterType="int">
+		delete from review where rev_idx = #{rev_idx}
+	</delete>
+	
+	<select id="review_count" resultType="int">
+		select count(*) from review
+	</select>
+	
+	<!-- rownum이 적용된 쿼리 -->
+	<select id="review_list_page" parameterType="hashmap" resultType="review">
+		<![CDATA[
+			select rownum rnum, A.*
+			from ( select rownum rnum, B.*
+	       			from ( select * from review order by rev_idx ) B
+	      		 	where rownum <= #{endNo}
+	       			) A
+			where rnum >= #{startNo}
+		]]>
+	</select>
+</mapper>
