@@ -118,8 +118,8 @@
     <link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/blog/">
 
     <!-- Bootstrap core CSS -->
-    <!-- <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> -->
+     <link href="/docs/4.5/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous"> 
 
     <!-- Favicons -->
     <link rel="apple-touch-icon" href="/docs/4.5/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
@@ -133,18 +133,9 @@
 
 
     <style>
-        @font-face {
-            font-family: 'NEXON Lv1 Gothic OTF';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
-        @font-face {
-            font-family: 'RIDIBatang';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
-            font-weight: normal;
-            font-style: normal;
-        }
+       	@font-face { font-family: 'NEXON Lv1 Gothic OTF'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/NEXON Lv1 Gothic OTF.woff') format('woff'); font-weight: normal; font-style: normal; }
+       	@font-face { font-family: 'RIDIBatang'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff'); font-weight: normal; font-style: normal; }
+		
         .bd-placeholder-img {
             font-size: 1.125rem;
             text-anchor: middle;

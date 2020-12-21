@@ -212,48 +212,56 @@
    <input type="hidden" name="specialMark" />
    <input type="hidden" name="weight" />
 
-   <div class="view">
-        <div class="wrapper">
-            <div class="search_box">
-                <div class="dropdown">
-                    <div class="default_option">전국</div>
-                    <ul class="region">
-                        <li>전국</li>
-                        <li>서울</li>
-                        <li>경기</li>
-                        <li>인천</li>
-                        <li>강원</li>
-                        <li>충북</li>
-                        <li>충남</li>
-                        <li>경북</li>
-                        <li>경남</li>
-                        <li>전북</li>
-                        <li>전남</li>
-                        <li>제주</li>
-                    </ul>
+<div class="view">
+    <div class="wrapper">
+        <div class="search_box nav nav-pills">
+            <div class="dropdown nav-item">
+                <div class="default_option nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       전국
                 </div>
-                <div class="dropdown2">
-                    <div class="default_option2">보호중</div>
-                    <ul class="state">
-                        <li>보호중</li>
-                        <li>종료</li>
-                    </ul>
+                <ul class="region dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">전국</li>
+                    <li class="dropdown-item" href="#">서울</li>
+                    <li class="dropdown-item" href="#">경기</li>
+                    <li class="dropdown-item" href="#">인천</li>
+                    <li class="dropdown-item" href="#">강원</li>
+                    <li class="dropdown-item" href="#">충북</li>
+                    <li class="dropdown-item" href="#">충남</li>
+                    <li class="dropdown-item" href="#">경북</li>
+                    <li class="dropdown-item" href="#">경남</li>
+                    <li class="dropdown-item" href="#">전북</li>
+                    <li class="dropdown-item" href="#">전남</li>
+                    <li class="dropdown-item" href="#">제주</li>
+                </ul>
+            </div>
+            <div class="dropdown2 nav-item">
+                <div class="default_option2 nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       보호중
                 </div>
-                <div class="dropdown3">
-                    <div class="default_option3">최신등록순</div>
-                    <ul class="order">
-                        <li>최신등록순</li>
-                        <li>보호기간 임박순</li>
-                    </ul>
+                <ul class="state dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">보호중</li>
+                    <li class="dropdown-item" href="#">종료</li>
+                </ul>
+            </div>
+            <div class="dropdown3 nav-item">
+                <div class="default_option3 nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                    aria-haspopup="true" aria-expanded="false">
+                       최신등록순
                 </div>
-                <div class="search_field">
-                    <input type="text" class="input" placeholder="Search" name="searchKeyword" value="${searchKeyword}">
-                    <i class="fas fa-search" onClick="goSearch()"></i>
-                </div>
+                <ul class="state dropdown-menu" style="">
+                    <li class="dropdown-item" href="#">최신등록순</li>
+                    <li class="dropdown-item" href="#">보호기간 임박순</li>
+                </ul>
+            </div>
+            <div class="search_field">
+               <input type="text" class="input" placeholder="Search" name="searchKeyword" value="${searchKeyword}">
+                <i class="fas fa-search" onClick="goSearch()"></i>
             </div>
         </div>
     </div>
-    <br>
+</div>
 
      <div class="container">
         <div class="text-center">
@@ -279,7 +287,7 @@
                         <h6 class="mb-1"><strong>&nbsp;출생년도</strong>&emsp;&emsp;&emsp;<%=request.getParameter("age")%></h6>
                         <h6 class="mb-1"><strong>&nbsp;성별</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("sexCd")%></h6>
                         <h6 class="mb-1"><strong>&nbsp;색상</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("colorCd")%></h6>
-                         <h6 class="mb-1"><strong>&nbsp;체중</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("weight")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;체중</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("weight")%></h6>
                         <h6 class="mb-1"><strong>&nbsp;중성화 여부</strong>&emsp;&emsp;<%=request.getParameter("neuterYn")%></h6>
                         <h6 class="mb-1"><strong>&nbsp;특징</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("specialMark")%></h6>
                         <br>
