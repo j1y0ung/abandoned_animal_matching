@@ -41,6 +41,18 @@
     		padding: 15px;
     	}
     </style>
+    <script>
+	  	function check(f) {
+	  		var exist = "${exist}" // 기존에 입양 신청 여부
+	  		if (exist == "y") {
+	  			alert("이미 다른 신청 내역이 있습니다.");
+	  		}
+	  		else {
+	  			alert("신청 완료.\n마이페이지->입양 신청 현황에서 확인하실 수 있습니다.");
+				f.submit();
+	  		}
+	  	}
+  </script>
 </head>
 
 <body>
@@ -94,7 +106,7 @@
 								<input type="hidden" name="mat_careAddress" value="<c:out value="${careAddress }"/>"/>
 								<input type="hidden" name="mat_tel" value="<c:out value="${tel }"/>"/>
 								
-								<input type="submit" value="입양신청">
+								<input type="button" value="입양신청" onclick="check(this.form);">
 							</form>
 						</td>
 					</tr>

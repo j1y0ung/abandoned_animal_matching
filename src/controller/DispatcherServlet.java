@@ -38,15 +38,16 @@ public class DispatcherServlet extends HttpServlet {
             if (uri == null) return;
             
             if (uri.startsWith("redirect:")) {	
+            	// redirection
             	String targetUri = contextPath + uri.substring("redirect:".length());
             	response.sendRedirect(targetUri);	// redirect to url            
             }
             else {
+            	// forwarding
             	RequestDispatcher rd = request.getRequestDispatcher(uri);
                 rd.forward(request, response);		// forward to the view page
             }                   
         } catch (Exception e) {
-        	System.out.println(".");
 //            logger.error("Exception : {}", e);
 //            throw new ServletException(e.getMessage());
         }

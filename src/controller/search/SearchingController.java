@@ -24,10 +24,6 @@ public class SearchingController implements Controller {
 		
 		logger.info("SearchingController");
 		String pageName = "/search/main";
-		 //로그인 여부 확인	
-//		 if (!MemberSessionUtils.hasLogined(request.getSession())) { 
-//			 return "redirect:/member/member_login.jsp"; // login form 요청으로 redirect
-//		 }
 
 		String searchText = request.getParameter("searchText") != null ? request.getParameter("searchText") : "";
 		String searchType = request.getParameter("searchType") != null ? request.getParameter("searchType") : "";

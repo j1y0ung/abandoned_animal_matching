@@ -116,11 +116,9 @@
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">
 						<tr>
 							<td colspan="2">
-								<form>
 									<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
 									<input type="hidden" name="code" value="adm">
 									<input type="button" value="내 보호소 입양신청관리" onclick="send(this.form);">
-								</form>
 							</td>
 						</tr>
 					</c:if>

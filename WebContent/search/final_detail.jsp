@@ -284,9 +284,17 @@
                         <h6 class="mb-1"><strong>&nbsp;특징</strong>&emsp;&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("specialMark")%></h6>
                         <br>
                         <h6 class="mb-1"><strong>&nbsp;발견장소</strong>&emsp;&emsp;&emsp;<%=request.getParameter("orgNm")%> <%=request.getParameter("happenPlace")%> 발견</h6>
-                        <h6 class="mb-1"><strong>&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%></h6>
+                        <h6 class="mb-1"><strong>&nbsp;보호소 이름</strong>&emsp;&emsp;<%=request.getParameter("careNm")%>
+                        <a class="btn btn-warning" href="<c:url value='/shelter/info'>
+      					<c:param name='careNm' value='<%=request.getParameter("careNm")%>'/>
+      					<c:param name='careAddr' value='<%=request.getParameter("careAddr")%>'/>
+      					</c:url>">보호소 정보 보기</a>
+                        </h6>
                         <h6 class="mb-1"><strong>&nbsp;보호소 번호</strong>&emsp;&emsp;<%=request.getParameter("careTel")%></h6>
-                        <h6 class="mb-1"><strong>&nbsp;접수일</strong>&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("happenDate")%></h6>
+                        <c:set var="vo" value='<%=request.getParameter("happenDate")%>' />
+                        <c:if test="${not empty vo}">
+                        	<h6 class="mb-1"><strong>&nbsp;접수일</strong>&emsp;&emsp;&emsp;&emsp;<%=request.getParameter("happenDate")%></h6>
+                        </c:if>
                    </div>
                 </div>
    </div>

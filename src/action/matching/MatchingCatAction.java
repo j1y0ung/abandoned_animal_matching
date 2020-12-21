@@ -30,6 +30,7 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import dao.MatchingDAO;
 import vo.MatchingVO;
 
 //고양이 매칭작업 후 매칭 결과 페이지로 이동
@@ -294,7 +295,15 @@ public class MatchingCatAction extends HttpServlet {
 				matchingList.add(matching);
 			}
          }
-         
+			String mem_id = (String) session.getAttribute("mem_id");
+			String exist = "n";
+			MatchingVO mvo = MatchingDAO.getInstance().selectOne(mem_id);
+			if (mvo != null) {
+				exist = "y";
+			}
+			
+		 // 기존에 입양신청 내역있는지 체크 -> 있을 경우 신청 불가
+	      request.setAttribute("exist", exist);
          // matchingList의 참조를 result.jsp로 전달
           request.setAttribute("matchingList", matchingList);   
 //          System.out.println("matchingList: " + matchingList);

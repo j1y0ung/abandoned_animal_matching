@@ -76,6 +76,7 @@
             <c:if test="${score >= 75}">
             	<h4>합격!</h4><br/>
             	<p>당신의 점수는 ${score}입니다.</p>
+            	<p>등급이 '${membership}'로 상승되었습니다.</p>
             </c:if>
             <c:if test="${score < 75}">
             	<h4>불합격!</h4><br/>
