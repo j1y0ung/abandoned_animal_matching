@@ -156,7 +156,7 @@
 				<input type="text" id="check_view_box" name="careAdmin" style="width:300px; display:none;" placeholder="보호소명을 정확히 입력해주세요" /><br><br>
 				
 				<button class="btn btn-dark btn-lg" type="button" onclick="send( this.form );">회원가입</button>&nbsp;
-				<button class="btn btn-primary btn-lg" type="reset" onclick="location.href='/member/list'">취소</button>
+				<button class="btn btn-light btn-lg" type="reset" onclick="location.href='/member/list'">취소</button>
 			</form>
 		</div>
 	</div>
