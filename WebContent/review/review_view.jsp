@@ -12,12 +12,13 @@
 			if( confirm("삭제하시겠습니까?") == false ){
 				return;
 			}
+			console.log(rev_idx);
 			
 			//ajax를 통해 삭제 처리
 			var url = "/review/delete";
 			var param = "rev_idx="+rev_idx;
 			
-			sendRequest(url, param, resultFn, "POST");
+			sendRequest(url, resultFn, "POST");
 		}
 		
 		function resultFn() {
@@ -50,7 +51,7 @@
 			작성일: ${vo.rev_date }<br>
 			작성자: ${vo.mem_id }
 			<hr><br>
-			<img src="../images/${ vo.rev_img }"><br>
+			<img src="/images/${ vo.rev_img }"><br>
 			내용 : ${vo.rev_content }<br>
 			<c:if test="${sessionScope.mem_id == vo.mem_id || sessionScope.mem_id == 'admin'}">
 				<input type="button" value="삭제" onclick="del('${vo.rev_idx}');"/>

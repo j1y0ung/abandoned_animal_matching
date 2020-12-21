@@ -98,19 +98,15 @@
 					<tr>
 						<td>입양 신청 현황</td>
 						<td>
-							<form>
-								<c:if test="${ matvo.mat_img != null }">
-									<img src="${matvo.mat_img }" style="width:100px; height:130px;"/><br>
-									${matvo.mat_kind}<br>
-									상태: ${matvo.mat_state}<br>
-									<c:if test="${ matvo.mat_state == '승인완료' }">
-											<input type="hidden" value="${matvo.mat_id }" name="mat_id">
-											<input type="hidden" value="${matvo.mat_img }" name="titleImg">
-											<input type="hidden" value="${vo.mem_id }" name="mem_id">
-											<input type="button" value="입양 후기 작성" onclick="location.href='/review/form'">
-									</c:if>
+							<c:if test="${ matvo.mat_img != null }">
+								<img src="${matvo.mat_img }" style="width:100px; height:130px;"/><br>
+								${matvo.mat_kind}<br>
+								상태: ${matvo.mat_state}<br>
+								<c:set var="ok" value="0" />
+								<c:if test="${ matvo.mat_state == '승인완료' }">
+									<input type="button" value="입양 후기 작성" onclick="location.href='/review/form?mat_id=${matvo.mat_id }&mat_img=${matvo.mat_img }&mem_id=${vo.mem_id}'">
 								</c:if>
-							</form>
+							</c:if>
 						</td>
 					</tr>
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">

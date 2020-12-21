@@ -20,7 +20,7 @@
 <body>
 	<jsp:include page="/main/index.jsp"/>
 
-	<form name="f" method="post" action="/review/insert" enctype="multipart/form-data">
+	<form name="f" method="post" action="/review/insert?mat_id=${mat_id }&title_img=${title_img }&mem_id=${mem_id}" enctype="multipart/form-data">
 		<table align="center" width="600" border="1" style="border-collapse : collapse">
 			<tr>
 				<td>제목</td>
@@ -37,12 +37,9 @@
 			<tr>
 				<td colspan="5" align="center"></td>
 				<td>
-					<c:set var="titleImg" value="${titleImg}" />
-					<input type="hidden" value="${titleImg}" name="titleImg">
-					<c:set var="mem_id" value="${mem_id}" />
-					<input type="hidden" value="${mem_id}" name="mem_id">
-					<c:set var="mat_id" value="${mat_id}" />
-					<input type="hidden" value="${mat_id}" name="mat_id">
+					<input type="hidden" value="${requestScope.mat_id}" name="mat_id"/>
+					<input type="hidden" value="${requestScope.mat_id}" name="mat_id"/>
+					<input type="hidden" value="${requestScope.title_img}" name="mat_titleImg"/>
 					<input type="button" value="글 등록하기" onclick="checkdata(this.form);">
 					<input type="reset" value="초기화">
 				</td>

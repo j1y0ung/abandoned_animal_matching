@@ -33,7 +33,7 @@
 				<tr>
 			</c:if>
 					<td>
-						<img src="../images/${p.rev_img}" width="200" height="200"><br>
+						<img src="/images/${p.rev_img}" width="200" height="200"><br>
 						<a href="<c:url value='/review/view?rev_idx=${p.rev_idx}' />">${ p.rev_title }</a>
 					</td>
 			<c:if test="${count % 4 == 3}">
