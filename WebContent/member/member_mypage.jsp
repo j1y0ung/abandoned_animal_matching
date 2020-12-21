@@ -42,6 +42,10 @@
       	margin-top: 40px;
       	margin-bottom: 30px;
       }
+      #dtext{
+		font-size: 0.8rem;
+		position: adsolute;
+		}
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
@@ -60,6 +64,7 @@
 			f.method = "POST";
 			f.submit();
 		}
+		
 	</script>
 </head>
 
@@ -114,35 +119,38 @@
 						</td>
 					</tr>
 					<tr>
-						<td>내가 쓴 Q&A 게시글</td>
-						<c:forEach var="que" items="${vo.questionList}">
-							<td><a href="<c:url value='/question/view'>
+						<td>최근 내가 쓴 Q&A 게시글</td><td id="dtext">
+						<c:forEach var="que" begin="0" end="4" items="${vo.questionList}">
+							<table><tr><a href="<c:url value='/question/view'>
                     		 <c:param name='que_id' value='${que.id}'/>
                      		</c:url>">
-                  			${que.title}</a>${date}</td>
+                  			${que.title}</a></tr></table>
 						</c:forEach>
+						</td>
 					</tr>
 					<tr>
-						<td>내가 쓴 Q&A 댓글</td>
-						<c:forEach var="reply" items="${vo.replyList}">
-							<td><a href="<c:url value='/question/view'>
+						<td>최근 내가 쓴 Q&A 댓글</td><td id="dtext">
+						<c:forEach var="reply" begin="0" end="4" items="${vo.replyList}">
+							<table><tr><a href="<c:url value='/question/view'>
                     		 <c:param name='que_id' value='${reply.que_id}'/>
                      		</c:url>">
-                  			${reply.content}</a>${reply.reg_date}</td>
+                  			${reply.content}</a></tr></table>
 						</c:forEach>
+						</td>
 					</tr>
 					<tr>
-						<td>내가 쓴 입양 후기</td>
+						<td>최근 내가 쓴 입양 후기</td><td id="dtext">
 						<c:forEach var="review" items="${vo.reviewList}">
-							<td><a href="<c:url value='/review/view'>
+							<table><tr><a href="<c:url value='/review/view'>
                     		 <c:param name='rev_idx' value='${review.rev_idx}'/>
                      		</c:url>">
-                  			${review.rev_title}</a>${review.rev_date}</td>
+                  			${review.rev_title}</a></tr></table>
 						</c:forEach>
+						</td>
 					</tr>					
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">
 						<tr>
-							<td colspan="2">
+							<td>
 								<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
 								<input type="hidden" name="code" value="adm">
 								<input type="button" value="입양신청관리" onclick="send(this.form);">
@@ -150,7 +158,7 @@
 						</tr>
 					</c:if>
 					<tr>
-						<td colspan="2">
+						<td colspan="10">
 								<input type="hidden" name="updateCode" value="personal">
 								<button type="button" class="btn btn-dark" onclick="update(this.form);">수정</button>
 						</td>
