@@ -111,6 +111,7 @@ function createReply(f) {// 답변 등록
 </head>
 <body>
   	<jsp:include page="/main/index.jsp"/>
+  	<br><br><br>
 <div class="container">
     <div class="row">
         <div class="col">
