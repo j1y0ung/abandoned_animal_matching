@@ -83,7 +83,7 @@
 
 <body>
 	<jsp:include page="/main/index.jsp"/>
-	
+	<br><br><br>
 	<div class="container">
         <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
                     <div class="col-auto d-none d-lg-block">
