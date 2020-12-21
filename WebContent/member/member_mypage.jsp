@@ -98,19 +98,15 @@
 					<tr>
 						<td>입양 신청 현황</td>
 						<td>
-							<form>
-								<c:if test="${ matvo.mat_img != null }">
-									<img src="${matvo.mat_img }" style="width:100px; height:130px;"/><br>
-									${matvo.mat_kind}<br>
-									상태: ${matvo.mat_state}<br>
-									<c:if test="${ matvo.mat_state == '승인완료' }">
-											<input type="hidden" value="${matvo.mat_id }" name="mat_id">
-											<input type="hidden" value="${matvo.mat_img }" name="titleImg">
-											<input type="hidden" value="${vo.mem_id }" name="mem_id">
-											<input type="button" value="입양후기작성" onclick="location.href='/review/form'">
-									</c:if>
+							<c:if test="${ matvo.mat_img != null }">
+								<img src="${matvo.mat_img }" style="width:100px; height:130px;"/><br>
+								${matvo.mat_kind}<br>
+								상태: ${matvo.mat_state}<br>
+								<c:set var="ok" value="0" />
+								<c:if test="${ matvo.mat_state == '승인완료' }">
+									<input type="button" value="입양 후기 작성" onclick="location.href='/review/form?mat_id=${matvo.mat_id }&mat_img=${matvo.mat_img }&mem_id=${vo.mem_id}'">
 								</c:if>
-							</form>
+							</c:if>
 						</td>
 					</tr>
 					<tr>
@@ -119,7 +115,7 @@
 							<td><a href="<c:url value='/question/view'>
                     		 <c:param name='que_id' value='${que.id}'/>
                      		</c:url>">
-                  			${que.title}</a>${date}</td>
+                  			${que.title}</a></td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -128,7 +124,7 @@
 							<td><a href="<c:url value='/question/view'>
                     		 <c:param name='que_id' value='${reply.que_id}'/>
                      		</c:url>">
-                  			${reply.content}</a>${reply.reg_date}</td>
+                  			${reply.content}</a></td>
 						</c:forEach>
 					</tr>
 					<tr>
@@ -137,15 +133,15 @@
 							<td><a href="<c:url value='/review/view'>
                     		 <c:param name='rev_idx' value='${review.rev_idx}'/>
                      		</c:url>">
-                  			${review.rev_title}</a>${review.rev_date}</td>
+                  			${review.rev_title}</a></td>
 						</c:forEach>
 					</tr>					
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">
 						<tr>
 							<td colspan="2">
-								<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
-								<input type="hidden" name="code" value="adm">
-								<input type="button" value="입양신청관리" onclick="send(this.form);">
+									<input type="hidden" name="careName" value="${ vo.mem_careAdmin }">
+									<input type="hidden" name="code" value="adm">
+									<input type="button" value="내 보호소 입양신청관리" onclick="send(this.form);">
 							</td>
 						</tr>
 					</c:if>

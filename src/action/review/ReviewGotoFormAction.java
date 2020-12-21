@@ -26,12 +26,17 @@ public class ReviewGotoFormAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 		
-		String title_img = request.getParameter("titleImg");
+		String title_img = request.getParameter("mat_img");
 		String mem_id = request.getParameter("mem_id");
 		String mat_id = request.getParameter("mat_id");
+		System.out.println("title_img:" + title_img);
+		System.out.println("mem_id:" + mem_id);
+		System.out.println("mat_id:" + mat_id);
 		
-		// matchingList의 참조를 result.jsp로 전달
- 		request.setAttribute("title_img", title_img);	
+		request.setAttribute("title_img", title_img);
+		request.setAttribute("mem_id", mem_id);
+		request.setAttribute("mat_id", mat_id);
+ 		
  		request.getRequestDispatcher("/review/review_reg_form.jsp").forward(request, response);
 	}
 }

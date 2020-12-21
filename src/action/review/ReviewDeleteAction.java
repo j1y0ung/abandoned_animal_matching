@@ -19,8 +19,10 @@ public class ReviewDeleteAction extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		
 		String strIdx = request.getParameter("rev_idx");
+		System.out.println("strIdx:" + strIdx);
 		
 		int rev_idx = Integer.parseInt(strIdx);
+		System.out.println("rev_idx:" + rev_idx);
 		
 		//DAO에서 해당 idx의 행을 지우는 작업 완료 후 결과 값 받음
 		int res = ReviewDAO.getInstance().delete(rev_idx); //1이면 성공, 0이면 실패

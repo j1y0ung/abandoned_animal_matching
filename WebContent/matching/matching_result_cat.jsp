@@ -41,6 +41,7 @@
           padding: 15px;
        }
     </style>
+
    <script>
   	function check(f) {
   		var exist = "${exist}" // 기존에 입양 신청 여부
@@ -53,6 +54,7 @@
   		}
   	}
   </script>
+
 </head>
 
 <body>

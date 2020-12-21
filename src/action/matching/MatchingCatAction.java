@@ -301,7 +301,7 @@ public class MatchingCatAction extends HttpServlet {
 			if (mvo != null) {
 				exist = "y";
 			}
-
+			
 		 // 기존에 입양신청 내역있는지 체크 -> 있을 경우 신청 불가
 	      request.setAttribute("exist", exist);
          // matchingList의 참조를 result.jsp로 전달

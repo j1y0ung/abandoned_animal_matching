@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<title>회원 목록 페이지</title>
+	<title>회원목록</title>
 	
 	<script>
 		function del(mem_id) {

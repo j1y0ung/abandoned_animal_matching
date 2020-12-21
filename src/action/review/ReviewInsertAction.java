@@ -2,6 +2,8 @@ package action.review;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,6 +14,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import dao.ReviewDAO;
+import vo.MemberVO;
 import vo.ReviewVO;
 
 // 입양후기 추가작업 후 입양후기 목록 페이지로 이동
@@ -22,8 +25,10 @@ public class ReviewInsertAction extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		request.setCharacterEncoding("utf-8");
 
-		String path = request.getServletContext().getRealPath("/images/");
-		System.out.println(path);
+		String path = request.getSession().getServletContext().getContext("/upload").getRealPath("images");
+		System.out.println("path" +path);
+		response.setContentType("text/html; charset=UTF-8");
+		PrintWriter out = response.getWriter();
 
 		int max_size = 1024*1024*100; 
 
@@ -32,6 +37,7 @@ public class ReviewInsertAction extends HttpServlet {
 													max_size, // 최대 업로드 용량
 													"utf-8", // 수신 인코딩
 													new DefaultFileRenamePolicy());
+
 		String rev_img = "no_file";
 
 		File f = mr.getFile("rev_img"); // <input type="file" name="r_img">
@@ -42,21 +48,18 @@ public class ReviewInsertAction extends HttpServlet {
 		// 파일 외의 파라미터 획득 (request 에선 찾을수 없음)
 		String rev_title = mr.getParameter("rev_title");
 		String rev_content = mr.getParameter("rev_content");
-		String rev_titleImg = mr.getParameter("titleImg");
+		String rev_titleImg = rev_img;
 		String mem_id = mr.getParameter("mem_id");
 		String mat_id = mr.getParameter("mat_id");
 
 		System.out.println(rev_title);
 		System.out.println(rev_content);
+		System.out.println(rev_img);
+		System.out.println(rev_titleImg);
+		System.out.println(mem_id);
+		System.out.println(mat_id);
 
-		ReviewVO vo = new ReviewVO();
-
-		vo.setRev_title(rev_title);
-		vo.setRev_content(rev_content);
-		vo.setRev_img(rev_img);
-		vo.setRev_titleImg(rev_titleImg);
-		vo.setMem_id(mem_id);
-		vo.setMat_id(mat_id);
+		ReviewVO vo = new ReviewVO(0, rev_title, rev_content, rev_img, rev_titleImg, mem_id, mat_id);
 
 		// DB에 insert
 		int res = ReviewDAO.getInstance().insert(vo);
