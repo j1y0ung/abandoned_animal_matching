@@ -99,6 +99,7 @@ public class ScoreTestController implements Controller {
 			}
 		}
 		request.setAttribute("score", score);
+
 		return "/test/result.jsp";
 	}
 }

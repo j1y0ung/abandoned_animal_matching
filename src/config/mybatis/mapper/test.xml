@@ -40,7 +40,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		where mem_id=#{mem_id}
 	</update>
 
-	<update id="teset_update_dogFail" parameterType="test">
+	<update id="test_update_dogFail" parameterType="test">
 		update test
 		set dogFailDate=#{inputDate}, dogFailNum = dogFailNum + 1
 		where mem_id=#{mem_id}

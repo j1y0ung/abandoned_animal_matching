@@ -113,6 +113,33 @@
 							</form>
 						</td>
 					</tr>
+					<tr>
+						<td>내가 쓴 Q&A 게시글</td>
+						<c:forEach var="que" items="${vo.questionList}">
+							<td><a href="<c:url value='/question/view'>
+                    		 <c:param name='que_id' value='${que.id}'/>
+                     		</c:url>">
+                  			${que.title}</a>${date}</td>
+						</c:forEach>
+					</tr>
+					<tr>
+						<td>내가 쓴 Q&A 댓글</td>
+						<c:forEach var="reply" items="${vo.replyList}">
+							<td><a href="<c:url value='/question/view'>
+                    		 <c:param name='que_id' value='${reply.que_id}'/>
+                     		</c:url>">
+                  			${reply.content}</a>${reply.reg_date}</td>
+						</c:forEach>
+					</tr>
+					<tr>
+						<td>내가 쓴 입양 후기</td>
+						<c:forEach var="review" items="${vo.reviewList}">
+							<td><a href="<c:url value='/review/view'>
+                    		 <c:param name='rev_idx' value='${review.rev_idx}'/>
+                     		</c:url>">
+                  			${review.rev_title}</a>${review.rev_date}</td>
+						</c:forEach>
+					</tr>					
 					<c:if test="${ vo.mem_membership == '보호소관리자' }">
 						<tr>
 							<td colspan="2">
@@ -124,10 +151,8 @@
 					</c:if>
 					<tr>
 						<td colspan="2">
-							<form>
 								<input type="hidden" name="updateCode" value="personal">
 								<button type="button" class="btn btn-dark" onclick="update(this.form);">수정</button>
-							</form>
 						</td>
 					</tr>
 				</table>

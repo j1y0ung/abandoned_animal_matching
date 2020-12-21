@@ -67,22 +67,6 @@
     </style>
     <!-- Custom styles for this template -->
     <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,900" rel="stylesheet">
-<!--   <script>
-/*   function initMap() {
-      var uluru = {lat: -25.363, lng: 131.044};
-      var map = new google.maps.Map(document.getElementById('map'), {
-        zoom: 4,
-        center: uluru
-      });
-      var marker = new google.maps.Marker({
-        position: uluru,
-        map: map
-      });
-    } */
-  </script>
-  <script async defer
-  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDhAd3t73rKM-WoSl9o7HA7Q-8pWLp1hWc&callback=initMap">
-  </script> -->
   </head>
   <body>
     <jsp:include page="/main/index.jsp"/>
