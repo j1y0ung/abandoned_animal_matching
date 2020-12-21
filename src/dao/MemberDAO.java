@@ -135,4 +135,15 @@ public class MemberDAO {
 		return res;
 	}
 	
+	// 마이페이지에서 사용. 멤버의 회원정보, 멤버가 작성한 Q&A 게시글, Q&A 댓글, 입양후기 가지고 옴. 
+	public MemberVO memberDetails( String mem_id ) {
+		MemberVO vo = null;
+		
+		SqlSession sqlSession = factory.openSession();
+		vo = sqlSession.selectOne("member.member_detail", mem_id);
+		
+		sqlSession.close();
+		
+		return vo;
+	}
 }

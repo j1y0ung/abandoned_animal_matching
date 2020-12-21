@@ -56,5 +56,52 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-ma
 		set mem_isAdmin=#{inputStr}
 		where mem_id=#{mem_id}
 	</update>
-
+	
+	<resultMap type="member" id="memberMap">
+        <result property="mem_id" column="mem_id" />
+        <result property="mem_pwd" column="mem_pwd" />
+        <result property="mem_phone" column="mem_phone" />
+        <result property="mem_email" column="mem_email" />
+        <result property="mem_name" column="mem_name" />
+        <result property="mem_membership" column="mem_membership" />
+		<result property="mem_careAdmin" column="mem_careAdmin" />
+		<collection property="questionList" resultMap="questionMap">
+		</collection>
+        <collection property="replyList" resultMap="replyMap">
+        </collection>
+        <collection property="reviewList" resultMap="reviewMap">
+        </collection>
+    </resultMap>
+ 
+    <resultMap type="model.Reply" id="replyMap">
+    	<result property="que_id" column="que_id" />
+        <result property="writer_id" column="writer_id" />
+        <result property="content" column="content" />
+        <result property="reg_date" column="reg_date" />
+    </resultMap>
+    
+    <resultMap type="model.Question" id="questionMap">
+    	<result property="id" column="que_id" />
+        <result property="writer_id" column="writer_id" />
+        <result property="title" column="title" />
+        <result property="date" column="dateTime" />
+    </resultMap>
+ 
+ 	<resultMap type="review" id="reviewMap">
+    	<result property="rev_idx" column="rev_idx" />
+        <result property="rev_title" column="rev_title" />
+        <result property="rev_date" column="rev_date" />
+        <result property="mem_id" column="mem_id" />
+    </resultMap>
+    
+    <select id="member_detail" resultMap="memberMap">
+        SELECT mem.mem_id, mem_pwd, mem_phone, mem_email, mem_name, reply.content, reply.que_id, reply.reg_date, 
+        		question.que_id, question.writer_id, question.title, question.dateTime,
+        		review.rev_idx, review.rev_title, review.rev_date, review.mem_id
+        FROM member mem 
+        	LEFT OUTER JOIN reply ON mem.mem_id = reply.writer_id
+        	LEFT OUTER JOIN question ON mem.mem_id = question.writer_id
+        	LEFT OUTER JOIN review ON mem.mem_id = review.mem_id
+        WHERE mem.mem_id=#{mem_id}
+    </select>
 </mapper>

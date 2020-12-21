@@ -1,6 +1,10 @@
 package vo;
 
 import java.io.Serializable;
+import java.util.List;
+
+import model.Question;
+import model.Reply;
 
 @SuppressWarnings("serial")
 public class MemberVO implements Serializable {
@@ -16,6 +20,9 @@ public class MemberVO implements Serializable {
 	private String	mem_careAdmin;		// 보호소명
 	private String	mem_isAdmin;		// 보호소 관리자 여부
 	private String	mat_id;				// 입양 완료된 동물
+	private List<Question> questionList; // 게시글 목록
+	private List<Reply> replyList; // 게시글 댓글 목록
+	private List<ReviewVO> reviewList; // 입양후기 목록
 	
 	public MemberVO() {
 		super();
@@ -125,6 +132,30 @@ public class MemberVO implements Serializable {
 	}
 	public void setMem_careAdmin(String mem_careAdmin) {
 		this.mem_careAdmin = mem_careAdmin;
+	}
+
+	public List<Question> getQuestionList() {
+		return questionList;
+	}
+
+	public void setQuestionList(List<Question> questionList) {
+		this.questionList = questionList;
+	}
+
+	public List<Reply> getReplyList() {
+		return replyList;
+	}
+
+	public void setReplyList(List<Reply> replyList) {
+		this.replyList = replyList;
+	}
+
+	public List<ReviewVO> getReviewList() {
+		return reviewList;
+	}
+
+	public void setReviewList(List<ReviewVO> reviewList) {
+		this.reviewList = reviewList;
 	}
 	
 }

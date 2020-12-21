@@ -3,7 +3,11 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>입양 테스트 결과</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title>입양테스트 결과</title>
     <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 
@@ -60,9 +64,24 @@
         text-anchor: middle;
       }
 
-      #text1{
-        font-size: 1.25rem;
-        text-anchor: middle;
+      #testbtn-dog{
+        margin-right: 20px;
+      }
+
+      #l-margin{
+          margin-left: 40px;
+      }
+
+      #test-text-p{
+        font-family: 'RIDIBatang';
+        font-size: 1rem;
+        color:rgb(168, 158, 21);
+      }
+
+      #test-toptext-p{
+        font-family: 'RIDIBatang';
+        font-size: 1rem;
+        color:dimgrey;
       }
     </style>
     <!-- Custom styles for this template -->
@@ -70,25 +89,21 @@
   </head>
   <body>
     <jsp:include page="/main/index.jsp"/>
-  <div class="container">
+    <div class="container">
         <div class="text-center">
             <br/><br/><br/>
-            <c:if test="${score >= 75}">
+            <c:if test="${score >= 90}">
             	<h4>합격!</h4><br/>
             	<p>당신의 점수는 ${score}입니다.</p>
+            	<p>등급이 '${membership}'로 상승되었습니다.</p>
             </c:if>
-            <c:if test="${score < 75}">
+            <c:if test="${score < 90}">
             	<h4>불합격!</h4><br/>
             	<p>당신의 점수는 ${score}입니다.</p>
             </c:if>
             <br/><br/><br/>
         </div>
   </div>
-
-  <hr>
-
-
-
 <footer class="blog-footer">
 </footer>
 </body>

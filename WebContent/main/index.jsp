@@ -11,7 +11,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/resources/css/nav_style.css">
     <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap" rel="stylesheet">
-    <title>Nav bar</title>
+    <title>유기동물입양서비스</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/2d323a629b.js" crossorgin="annoymous"></script>
     <script src="/resources/js/main.js" defer>
     
@@ -24,6 +25,22 @@
            font-size: 1.1rem;
            text-anchor: middle;
          }
+         
+         .membtn{
+         	float: left;
+         }
+         
+         .memText{
+         	margin-top: 3px;
+         	margin-right: 5px;
+         	float: left;
+         }
+
+         .parent{
+		    margin: auto;
+		    position: relative;
+		}
+
     </style>
 </head>
 
@@ -41,19 +58,26 @@
             <li><a href="<c:url value='/lostpet/register/form' />">실종동물 찾기</a></li>
            <li><a href="<c:url value='/review/list' />">입양후기</a></li>
            <li><a href="<c:url value='/question/list' />">Q&A</a></li>
-        </ul>   
+        </ul> 
+        <div class="membtn">
         <c:if test="${ empty sessionScope.mem_id }"> <!-- 로그아웃 상태 -->
             <a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/member_login.jsp' />">로그인</a>
             <a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/member_insert_form.jsp' />">회원가입</a>
       </c:if>
+      <div class="parent">
       <c:if test="${ !empty sessionScope.mem_id }"> <!-- 로그인 상태 -->
-         <p>${sessionScope.mem_id}님</p>
+        <div class="membtn">
          <a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/logout' />">로그아웃</a>
          <a class="btn btn-sm btn-outline-secondary" href="<c:url value='/member/mypage' />">마이페이지</a>
          <c:if test="${ sessionScope.mem_id == 'admin' }">
          <a class="btn btn-sm btn-outline-secondary" href="<c:url value='/adminonly' />">관리</a>
          </c:if>
+         <div class="memText">
+         <p id="text">${sessionScope.mem_id}님</p>
+       </div>
       </c:if>
+      </div>
+      </div>
     </nav>
 </body>
 

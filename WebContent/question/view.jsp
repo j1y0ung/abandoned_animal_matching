@@ -163,7 +163,7 @@ function createReply(f) {// 답변 등록
     	<div class="col">
     		<c:set var="i" value="0"/>
     		<c:set var="j" value="0"/>
-    		<!-- 게시글에 달린 댓글들 출력  -->>
+    		<!-- 게시글에 달린 댓글들 출력  -->
     		<c:forEach var="reply" items="${replyList}">
     			<!-- 원댓글들만 출력 not 대댓글 -->
     			<c:if test="${reply.parent_re_id eq '0'}">
